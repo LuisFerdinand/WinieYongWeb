@@ -9,13 +9,17 @@ Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/products/{type}', [PageController::class, 'productDetail'])->name('product.detail');
 Route::get('/services/{type}', [PageController::class, 'serviceDetail'])->name('service.detail');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
+Route::post('/contact-submit', [PageController::class, 'submit'])->name('contact.submit');
 
 // Route::get('/products/excavators', function () {
 //     return view('products.excavators');
 // });
 
-// Route::get('/products/cranes', function () {
+// Route::get('/products/cranes', function () 
 //     return view('products.cranes');
 // });
 

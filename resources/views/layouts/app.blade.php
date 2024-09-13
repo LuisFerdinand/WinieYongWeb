@@ -16,7 +16,9 @@
     <!-- Main Content -->
     <main class="">
         @yield('content')
-    </main>
+    </main>\
+
+    <script src="{{ asset('js/navbar.js') }}" defer></script>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">

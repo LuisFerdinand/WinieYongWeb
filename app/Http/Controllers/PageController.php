@@ -37,4 +37,16 @@ class PageController extends Controller
         // Logic for service detail pages
         return view('service-detail', ['type' => $type]);
     }
+
+    public function submit(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        return redirect()->route('contact')->with('success', 'Thank you for your message! We will get back to you soon.');
+    }
 }
