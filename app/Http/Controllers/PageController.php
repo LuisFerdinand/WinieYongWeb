@@ -21,21 +21,10 @@ class PageController extends Controller
         return view('products');
     }
 
-    public function services()
-    {
-        return view('services');
-    }
-
     public function productDetail($type)
     {
         // Logic for product detail pages
         return view('product-detail', ['type' => $type]);
-    }
-
-    public function serviceDetail($type)
-    {
-        // Logic for service detail pages
-        return view('service-detail', ['type' => $type]);
     }
 
     public function submit(Request $request)

@@ -30,23 +30,25 @@
 </section>
 
 <section id="accordion-section" class="max-w-[1440px] mx-auto my-8 px-2">
-    <!-- Accordion Item 1 -->
+    <!-- Section Title -->
     <p class="text-teal-600 text-center font-bold mb-0">|<span> Benefit</span></p>
-    <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Why do you Choose Us</h1>
+    <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Why Choose Us</h1>
+
+    <!-- Accordion Item 1 -->
     <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-lg mb-2">
         <h2 class="accordion-header mb-0">
             <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-white border-0 transition-transform duration-200 ease-in-out hover:bg-gray-100 focus:outline-none"
                 type="button" aria-expanded="false" aria-controls="accordion-collapse1">
-                Accordion Item 1
-                <span class="accordion-icon">
+                High-Quality Equipment
+                <span class="accordion-icon transition-transform duration-200 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12H4.5" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                 </span>
             </button>
         </h2>
         <div id="accordion-collapse1" class="accordion-body hidden px-5 py-4">
-            This is the content for Accordion Item 1.
+            Our heavy machinery is sourced from industry-leading manufacturers, ensuring durability and reliability in even the toughest environments. We prioritize quality to ensure your projects run smoothly.
         </div>
     </div>
 
@@ -55,16 +57,16 @@
         <h2 class="accordion-header mb-0">
             <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-white border-0 transition-transform duration-200 ease-in-out hover:bg-gray-100 focus:outline-none"
                 type="button" aria-expanded="false" aria-controls="accordion-collapse2">
-                Accordion Item 2
-                <span class="accordion-icon">
+                Expert Support and Service
+                <span class="accordion-icon transition-transform duration-200 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12H4.5" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                 </span>
             </button>
         </h2>
         <div id="accordion-collapse2" class="accordion-body hidden px-5 py-4">
-            This is the content for Accordion Item 2.
+            Our team of experts offers 24/7 customer support, ensuring that any issues you encounter are addressed quickly. We also provide comprehensive training and maintenance services to maximize your equipment's uptime.
         </div>
     </div>
 
@@ -73,19 +75,83 @@
         <h2 class="accordion-header mb-0">
             <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-white border-0 transition-transform duration-200 ease-in-out hover:bg-gray-100 focus:outline-none"
                 type="button" aria-expanded="false" aria-controls="accordion-collapse3">
-                Accordion Item 3
-                <span class="accordion-icon">
+                Cost-Effective Solutions
+                <span class="accordion-icon transition-transform duration-200 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12H4.5" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                 </span>
             </button>
         </h2>
         <div id="accordion-collapse3" class="accordion-body hidden px-5 py-4">
-            This is the content for Accordion Item 3.
+            We offer flexible financing and leasing options to help you manage your budget while accessing top-of-the-line machinery. Our competitive pricing ensures you get the best value for your investment.
         </div>
     </div>
+
+    <!-- Accordion Item 4 -->
+    <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-lg mb-2">
+        <h2 class="accordion-header mb-0">
+            <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-white border-0 transition-transform duration-200 ease-in-out hover:bg-gray-100 focus:outline-none"
+                type="button" aria-expanded="false" aria-controls="accordion-collapse4">
+                Industry Experience
+                <span class="accordion-icon transition-transform duration-200 ease-in-out">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </span>
+            </button>
+        </h2>
+        <div id="accordion-collapse4" class="accordion-body hidden px-5 py-4">
+            With over 20 years of experience in the heavy machinery industry, we understand the unique challenges faced by businesses. Our expertise allows us to provide tailored solutions to meet your specific needs.
+        </div>
+    </div>
+
+    <!-- Accordion Item 5 -->
+    <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-lg mb-2">
+        <h2 class="accordion-header mb-0">
+            <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-white border-0 transition-transform duration-200 ease-in-out hover:bg-gray-100 focus:outline-none"
+                type="button" aria-expanded="false" aria-controls="accordion-collapse5">
+                Safety and Compliance
+                <span class="accordion-icon transition-transform duration-200 ease-in-out">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </span>
+            </button>
+        </h2>
+        <div id="accordion-collapse5" class="accordion-body hidden px-5 py-4">
+            We prioritize safety by ensuring our machines comply with the latest industry regulations. All equipment undergoes rigorous testing, ensuring they meet safety standards and minimize risks on-site.
+        </div>
+    </div>
+
+    <!-- Accordion Item 6 -->
+    <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-lg mb-2">
+        <h2 class="accordion-header mb-0">
+            <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-white border-0 transition-transform duration-200 ease-in-out hover:bg-gray-100 focus:outline-none"
+                type="button" aria-expanded="false" aria-controls="accordion-collapse6">
+                Eco-Friendly Technologies
+                <span class="accordion-icon transition-transform duration-200 ease-in-out">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </span>
+            </button>
+        </h2>
+        <div id="accordion-collapse6" class="accordion-body hidden px-5 py-4">
+            Our commitment to sustainability means that our machinery incorporates the latest eco-friendly technologies. We strive to reduce environmental impact while maintaining high performance, helping you meet your green goals.
+        </div>
+    </div>
+
+
+
+
 </section>
+
+<style>
+    .accordion-button[aria-expanded="true"] .accordion-icon {
+        transform: rotate(180deg);
+    }
+</style>
 
 <section class="bg-gray-100 py-16">
     <div class="max-w-[1440px] mx-auto px-6">

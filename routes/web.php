@@ -2,39 +2,40 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PartController;
+use App\Http\Controllers\PricingPlanController;
+use App\Http\Controllers\RentalController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/products/{type}', [PageController::class, 'productDetail'])->name('product.detail');
-Route::get('/services/{type}', [PageController::class, 'serviceDetail'])->name('service.detail');
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
 Route::post('/contact-submit', [PageController::class, 'submit'])->name('contact.submit');
 
-// Route::get('/products/excavators', function () {
-//     return view('products.excavators');
-// });
 
-// Route::get('/products/cranes', function () 
-//     return view('products.cranes');
-// });
+// Service Route
+use App\Http\Controllers\ServiceController;
 
-// Route::get('/products/bulldozers', function () {
-//     return view('products.bulldozers');
-// });
+Route::get('/rental', [ServiceController::class, 'rental'])->name('service.rental');
+Route::get('/repair', [ServiceController::class, 'repair'])->name('service.repair');
+// Route::get('/parts', [ServiceController::class, 'parts'])->name('service.parts');
 
-// Route::get('/services/rentals', function () {
-//     return view('services.rentals');
-// });
+// Rental Controller
+Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index');
+Route::get('/rentals/{id}', [RentalController::class, 'show'])->name('rental.show');
+Route::get('/search', [RentalController::class, 'search'])->name('rentals.search');
+Route::resource('rental', RentalController::class)->only(['index', 'show']);
+Route::get('/rentals/search', [RentalController::class, 'search'])->name('rental.search');
 
-// Route::get('/services/maintenance', function () {
-//     return view('services.maintenance');
-// });
+// Route to repair page
+Route::get('/repair', [ServiceController::class, 'repair'])->name('service.repair');
 
-// Route::get('/services/parts', function () {
-//     return view('services.parts');
-// });
+
+// Route to parts page
+Route::get('/parts', [PartController::class, 'index'])->name('parts.index');
+Route::get('/parts/{id}', [PartController::class, 'show'])->name('parts.show');

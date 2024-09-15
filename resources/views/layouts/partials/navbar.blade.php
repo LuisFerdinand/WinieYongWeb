@@ -48,9 +48,11 @@
                     </button>
                     <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="service-dropdown" role="menu" aria-orientation="vertical" aria-labelledby="service-button" tabindex="-1">
                         <div class="py-1" role="none">
-                            <a href="{{ route('service.detail', 'rentals') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Machinery Rentals</a>
-                            <a href="{{ route('service.detail', 'maintenance') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Repair & Maintenance</a>
-                            <a href="{{ route('service.detail', 'parts') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Parts & Accessories</a>
+                            <a href="{{ route('rental.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Machinery Rentals</a>
+
+                            <a href="{{ route('service.repair') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Repair & Maintenance</a>
+                            <a href="{{ route('parts.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Parts & Accessories</a>
+
                         </div>
                     </div>
                 </li>
@@ -123,18 +125,17 @@
                     <!-- Dropdown Menu -->
                     <div class="absolute left-0 mt-2 w-full bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="mobile-service-dropdown" role="menu" aria-orientation="vertical" aria-labelledby="mobile-service-button" tabindex="-1">
                         <div class="py-1" role="none">
-                            <a href="{{ route('service.detail', 'rentals') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Machinery Rentals</a>
-                            <a href="{{ route('service.detail', 'maintenance') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Repair & Maintenance</a>
-                            <a href="{{ route('service.detail', 'parts') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Parts & Accessories</a>
+                            <a href="{{ route('rental.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Machinery Rentals</a>
+                            <a href="{{ route('service.repair') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Repair & Maintenance</a>
+                            <a href="{{ route('parts.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Parts & Accessories</a>
                         </div>
                     </div>
-                </div>
 
-                <!-- Mobile Contact -->
-                <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                    <a href="{{ route('contact') }}" class="w-full h-full">Contact</a>
-                </button>
+                    <!-- Mobile Contact -->
+                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <a href="{{ route('contact') }}" class="w-full h-full">Contact</a>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 </header>
