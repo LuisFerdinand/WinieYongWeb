@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Repair Services')
+
 @section('content')
-<div class="max-w-[1440px] mx-auto px-4 py-8 mt-20">
+<div class="max-w-[1440px] mx-auto px-4 py-20 lg:px-6 min-h-screen flex flex-col">
+
+    <p class="text-teal-600 text-center font-bold mb-2">|<span> Repair</span></p>
     <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">Heavy Machinery Repair Services</h1>
 
     <!-- Introduction Section -->
@@ -12,7 +16,7 @@
     </div>
 
     <!-- Marketing Section: Why Choose Us -->
-    <div class="bg-blue-100 p-8 rounded-lg shadow-md mb-12 text-center">
+    <div class="bg-teal-100 p-8 rounded-lg shadow-md mb-12 text-center">
         <h2 class="text-3xl font-semibold text-gray-800 mb-4">Why Choose Our Heavy Machinery Repair Services?</h2>
         <p class="text-lg text-gray-600 mb-6">
             With over 10 years of experience in the industry, our team provides top-notch repair solutions tailored to your machinery's specific needs. We use the latest diagnostic tools and genuine parts to ensure your machines run like new.
@@ -35,28 +39,32 @@
 
     <!-- Services List -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <!-- Example Service 1 -->
         <div class="bg-white shadow-lg rounded-lg p-6 text-center">
-            <img src="/images/excavator-repair.jpg" alt="Excavator Repair" class="w-full h-40 object-cover rounded-md mb-4">
+            <img src="/img/repair/excavator.jpg" alt="Excavator Repair" class="w-full h-40 object-cover rounded-md mb-4">
             <h3 class="text-2xl font-semibold text-gray-800 mb-2">Excavator Repair</h3>
             <p class="text-gray-600 mb-4">Full-service repair and maintenance for all types of excavators, from hydraulic systems to engine overhauls.</p>
-            <a href="contact" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md inline-block">Contact Us</a>
+            <a href="{{ route('contact') }}" class="text-white bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-md inline-block">Contact Us</a>
         </div>
 
-        <!-- Example Service 2 -->
         <div class="bg-white shadow-lg rounded-lg p-6 text-center">
-            <img src="/images/bulldozer-repair.jpg" alt="Bulldozer Repair" class="w-full h-40 object-cover rounded-md mb-4">
+            <img src="/img/repair/bulldozer.jpg" alt="Bulldozer Repair" class="w-full h-40 object-cover rounded-md mb-4">
             <h3 class="text-2xl font-semibold text-gray-800 mb-2">Bulldozer Repair</h3>
             <p class="text-gray-600 mb-4">Expert repairs for all bulldozer parts, including tracks, engines, and hydraulic systems.</p>
-            <a href="contact" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md inline-block">Contact Us</a>
+            <a href="{{ route('contact') }}" class="text-white bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-md inline-block">Contact Us</a>
         </div>
 
-        <!-- Example Service 3 -->
         <div class="bg-white shadow-lg rounded-lg p-6 text-center">
-            <img src="/images/crane-repair.jpg" alt="Crane Repair" class="w-full h-40 object-cover rounded-md mb-4">
+            <img src="/img/repair/crane.jpg" alt="Crane Repair" class="w-full h-40 object-cover rounded-md mb-4">
             <h3 class="text-2xl font-semibold text-gray-800 mb-2">Crane Repair</h3>
             <p class="text-gray-600 mb-4">Specialized crane repair services, from structural repairs to hydraulic and electrical system maintenance.</p>
-            <a href="contact" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md inline-block">Contact Us</a>
+            <a href="{{ route('contact') }}" class="text-white bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-md inline-block">Contact Us</a>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+            <img src="/img/repair/loader.jpg" alt="Loader Repair" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-2">Loader Repair</h3>
+            <p class="text-gray-600 mb-4">Comprehensive repair services for loaders, including transmission and hydraulic system repairs.</p>
+            <a href="{{ route('contact') }}" class="text-white bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-md inline-block">Contact Us</a>
         </div>
     </div>
 
@@ -73,7 +81,7 @@
     <div class="mt-12 text-center">
         <h2 class="text-3xl font-semibold text-gray-800 mb-4">Get in Touch</h2>
         <p class="text-lg text-gray-600 mb-6">Have any questions or need repair services? Contact us today to book an appointment!</p>
-        <a href="/contact" class="text-white bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg inline-block">Contact Us Now</a>
+        <a href="/contact" class="text-white bg-teal-600 hover:bg-teal-700 px-6 py-3 rounded-lg inline-block">Contact Us Now</a>
     </div>
 </div>
 @endsection

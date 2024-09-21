@@ -1,49 +1,57 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container mx-auto px-4 py-8 mt-20">
-    <h1 class="text-4xl md:text-6xl text-center font-bold leading-tight mb-8">Rentals</h1>
+@section('title', 'Available Parts')
 
+@section('content')
+<div class="max-w-[1440px] mx-auto px-4 py-20 mt-20">
+    <p class="text-teal-600 font-bold text-center mb-2">|<span> Parts</span></p>
+    <h1 class="text-4xl font-extrabold mb-8 text-center text-gray-800">Check out our Available Parts</h1>
 
     <!-- Search Bar and Filters -->
     <div class="mb-8 flex justify-center">
-        <form action="{{ route('rentals.index') }}" method="GET" class="flex space-x-4">
-            <input type="text" name="search" placeholder="Search rentals..." class="border border-gray-300 rounded-lg py-2 px-4 shadow-sm" value="{{ request('search') }}">
-            <select name="category" class="border border-gray-300 rounded-lg py-2 px-4 shadow-sm">
+        <form action="{{ route('parts.index') }}" method="GET" class="flex flex-wrap justify-center space-x-4">
+            <input type="text" name="search" placeholder="Search parts..." class="border border-gray-300 rounded-lg py-2 px-4 shadow-sm w-full md:w-auto mb-4 md:mb-0" value="{{ request('search') }}">
+            <select name="category" class="border border-gray-300 rounded-lg py-2 px-4 shadow-sm w-full md:w-auto mb-4 md:mb-0">
                 <option value="">Category</option>
-                <option value="apartment" {{ request('category') == 'apartment' ? 'selected' : '' }}>Apartment</option>
-                <option value="house" {{ request('category') == 'house' ? 'selected' : '' }}>House</option>
-                <option value="condo" {{ request('category') == 'condo' ? 'selected' : '' }}>Condo</option>
+                <option value="engine" {{ request('category') == 'engine' ? 'selected' : '' }}>Engine</option>
+                <option value="body" {{ request('category') == 'body' ? 'selected' : '' }}>Body</option>
+                <option value="interior" {{ request('category') == 'interior' ? 'selected' : '' }}>Interior</option>
             </select>
-            <select name="price_range" class="border border-gray-300 rounded-lg py-2 px-4 shadow-sm">
+            <select name="price_range" class="border border-gray-300 rounded-lg py-2 px-4 shadow-sm w-full md:w-auto mb-4 md:mb-0">
                 <option value="">Price Range</option>
-                <option value="0-1" {{ request('price_range') == '0-1' ? 'selected' : '' }}>0 - 1,000,000</option>
-                <option value="1-2" {{ request('price_range') == '1-2' ? 'selected' : '' }}>1,000,000 - 2,000,000</option>
-                <option value="2-3" {{ request('price_range') == '2-3' ? 'selected' : '' }}>2,000,000 - 3,000,000</option>
-                <option value="3-4" {{ request('price_range') == '3-4' ? 'selected' : '' }}>3,000,000 - 4,000,000</option>
+                <option value="0-500000" {{ request('price_range') == '0-500000' ? 'selected' : '' }}>0 - 500,000</option>
+                <option value="500000-1000000" {{ request('price_range') == '500000-1000000' ? 'selected' : '' }}>500,000 - 1,000,000</option>
+                <option value="1000000-2000000" {{ request('price_range') == '1000000-2000000' ? 'selected' : '' }}>1,000,000 - 2,000,000</option>
             </select>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Filter</button>
+            <button type="submit" class="bg-teal-600 hover:bg-teal-700 text-white py-2 px-4 rounded-lg w-full md:w-auto">Filter</button>
         </form>
     </div>
 
-    <!-- Rentals Grid -->
+    <!-- Parts Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        @foreach($rentals as $rental)
-        <div class="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-200">
-            <img src="{{ $rental->image_url }}" class="w-full h-48 object-cover" alt="{{ $rental->name }}">
+        @foreach($parts as $part)
+        <div class="bg-white shadow-md rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+            <div class="relative">
+                <img src="{{ $part->image_url }}" class="w-full h-48 object-cover" alt="{{ $part->name }}">
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+                <div class="absolute bottom-0 left-0 p-4">
+                    <h2 class="text-xl font-semibold mb-2 text-white">{{ $part->name }}</h2>
+                </div>
+            </div>
             <div class="p-4">
-                <h2 class="text-xl font-semibold mb-2">{{ $rental->name }}</h2>
-                <p class="text-gray-600 mb-4">{{ Str::limit($rental->description, 100) }}</p>
-                <p class="text-gray-800 font-bold mb-4">Rp {{ number_format($rental->price, 2, ',', '.') }}</p>
-                <a href="{{ route('rental.show', $rental->id) }}" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg inline-block">View Details</a>
+                <p class="text-gray-600 mb-4">{{ Str::limit($part->description, 100) }}</p>
+                <p class="text-gray-800 font-bold mb-4">Rp {{ number_format($part->price, 2, ',', '.') }}</p>
+                <p class="text-gray-700 mb-2"><strong>Contact:</strong> {{ $part->contact }}</p>
+                <p class="text-gray-700 mb-2"><strong>Location:</strong> {{ $part->location }}</p>
+                <a href="{{ route('parts.show', $part->id) }}" class="text-teal-600 bg-white border border-teal-600 hover:bg-teal-600 hover:text-white px-4 py-2 rounded-lg inline-block transition duration-300 ease-in-out">View Details</a>
             </div>
         </div>
         @endforeach
     </div>
 
     <!-- Pagination -->
-    <div class="mt-8">
-        {{ $rentals->appends(request()->input())->links() }}
+    <div class="mt-8 flex justify-center">
+        {{ $parts->appends(request()->input())->links() }}
     </div>
 </div>
 @endsection

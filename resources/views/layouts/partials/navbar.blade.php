@@ -31,9 +31,8 @@
                     </button>
                     <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="product-dropdown" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                         <div class="py-1" role="none">
-                            <a href="{{ route('product.detail', 'excavators') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Excavators</a>
-                            <a href="{{ route('product.detail', 'cranes') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Cranes</a>
-                            <a href="{{ route('product.detail', 'bulldozers') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Bulldozers</a>
+                            <a href="{{ route('products.sunward.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Sunward</a>
+
                         </div>
                     </div>
                 </li>
@@ -55,6 +54,13 @@
 
                         </div>
                     </div>
+                </li>
+
+                <!-- Career -->
+                <li>
+                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <a href="{{ route('career.index') }}" class="w-full h-full">Career</a>
+                    </button>
                 </li>
 
                 <!-- Contact -->
@@ -106,9 +112,7 @@
                     <!-- Dropdown Menu -->
                     <div class="absolute z-50 left-0 mt-2 w-full bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="mobile-product-dropdown" role="menu" aria-orientation="vertical" aria-labelledby="mobile-product-button" tabindex="-1">
                         <div class="py-1" role="none">
-                            <a href="{{ route('product.detail', 'excavators') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Excavators</a>
-                            <a href="{{ route('product.detail', 'cranes') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Cranes</a>
-                            <a href="{{ route('product.detail', 'bulldozers') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Bulldozers</a>
+                            <a href="{{ route('products.sunward.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Sunward</a>
                         </div>
                     </div>
                 </div>
@@ -131,11 +135,16 @@
                         </div>
                     </div>
 
-                    <!-- Mobile Contact -->
-                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                        <a href="{{ route('contact') }}" class="w-full h-full">Contact</a>
-                    </button>
                 </div>
+                <!-- Mobile Career -->
+                <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    <a href="{{ route('career.index') }}" class="w-full h-full">Career</a>
+                </button>
+
+                <!-- Mobile Contact -->
+                <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    <a href="{{ route('contact') }}" class="w-full h-full">Contact</a>
+                </button>
             </div>
         </div>
 </header>

@@ -3,11 +3,15 @@
 @section('content')
 <div class="max-w-[1440px] mx-auto px-4 py-8 mt-20">
     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-        <img src="{{ $part->image_url }}" class="w-full h-96 object-cover" alt="{{ $part->name }}">
+        <div class="relative">
+            <img src="{{ $part->image_url }}" class="w-full h-96 object-cover" alt="{{ $part->name }}">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+            <div class="absolute bottom-0 left-0 p-6">
+                <h1 class="text-4xl font-bold text-white mb-2">{{ $part->name }}</h1>
+                <p class="text-lg text-white">{{ Str::limit($part->description, 150) }}</p>
+            </div>
+        </div>
         <div class="p-6">
-            <h1 class="text-4xl font-bold mb-4">{{ $part->name }}</h1>
-            <p class="text-lg text-gray-700 mb-6">{{ $part->description }}</p>
-
             <!-- Part Details -->
             <div class="bg-gray-100 p-4 rounded-lg mb-6">
                 <h2 class="text-2xl font-semibold mb-2">Details</h2>
@@ -17,6 +21,14 @@
                     <li><strong>Contact:</strong> {{ $part->contact }}</li>
                     <li><strong>Location:</strong> {{ $part->location }}</li>
                 </ul>
+            </div>
+
+            <!-- Map Section (Optional) -->
+            <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Location</h2>
+                <div class="w-full h-64 rounded-lg overflow-hidden">
+                    <iframe class="w-full h-full" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{ urlencode($part->location) }}&output=embed"></iframe>
+                </div>
             </div>
 
             <!-- Contact or Purchase Section -->

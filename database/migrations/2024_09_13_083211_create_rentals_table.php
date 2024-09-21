@@ -21,6 +21,8 @@ class CreateRentalsTable extends Migration
             $table->string('image_url')->nullable(); // URL to an image of the property
             $table->string('category'); // Category of the rental property
             $table->boolean('availability_status')->default(true); // Availability status of the rental
+            $table->date('available_from')->nullable(); // When the rental is available from
+            $table->date('available_to')->nullable(); // Until when the rental is available
             $table->timestamps();
         });
     }

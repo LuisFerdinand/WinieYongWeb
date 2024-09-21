@@ -3,14 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rental;
+use App\Models\RentalClick; // Ensure you import your RentalClick model
 use Illuminate\Http\Request;
 
 class RentalController extends Controller
 {
-    // Display a list of all rentals
+    // Display a list of all rentals with filtering and search capabilities
     public function index(Request $request)
     {
-        $rentals = $this->filterRentals($request);
+        $query = Rental::query();
+
+        // Search functionality
+        if ($request->has('search') && $request->search != '') {
+            $query->where('name', 'like', "%{$request->search}%")
+                ->orWhere('description', 'like', "%{$request->search}%");
+        }
+
+        // Filter by category
+        if ($request->has('category') && $request->category != '') {
+            $query->where('category', $request->category);
+        }
+
+        // Filter by price range
+        if ($request->has('price_range') && $request->price_range != '') {
+            list($minPrice, $maxPrice) = explode('-', $request->price_range);
+            $query->whereBetween('price', [(float)$minPrice, (float)$maxPrice]);
+        }
+
+        // Retrieve paginated rentals
+        $rentals = $query->paginate(10);
+
         return view('services.rental.index', compact('rentals'));
     }
 
@@ -21,36 +43,39 @@ class RentalController extends Controller
         return view('services.rental.show', compact('rental'));
     }
 
-    // Search rentals based on query
-    public function search(Request $request)
+    // Track clicks on rentals
+    public function trackClick($id)
     {
-        $search = $request->input('search');
+        // Find the rental
+        $rental = Rental::findOrFail($id);
 
-        // Retrieve paginated rentals with search query
-        $rentals = Rental::when($search, function ($query, $search) {
-            return $query->where('name', 'like', "%{$search}%")
-                ->orWhere('description', 'like', "%{$search}%");
-        })->paginate(10);
+        // Check if the rental already has a click entry
+        $rentalClick = RentalClick::where('rental_id', $id)->first();
 
-        return view('services.rental.index', compact('rentals'))->with('search', $search);
+        if ($rentalClick) {
+            // If exists, increment the click count
+            $rentalClick->click_count++;
+            $rentalClick->save();
+        } else {
+            // If not, create a new record
+            RentalClick::create([
+                'rental_id' => $rental->id,
+                'rental_name' => $rental->name,
+                'click_count' => 1,
+            ]);
+        }
+
+        // Redirect user to WhatsApp
+        return redirect('https://wa.me/+6285248209388?text=I%20am%20interested%20in%20' . urlencode($rental->name));
     }
 
-    // Filter rentals based on category and price range
-    private function filterRentals(Request $request)
+
+    // New method to get click data for the dashboard
+    public function getClickData()
     {
-        $query = Rental::query();
+        // Fetch click data
+        $clickData = RentalClick::select('rental_name', 'clicks_per_day')->get();
 
-        // Filter by category
-        if ($request->has('category') && $request->category != '') {
-            $query->where('category', $request->category);
-        }
-
-        // Filter by price range
-        if ($request->has('price_range') && $request->price_range != '') {
-            list($minPrice, $maxPrice) = explode('-', $request->price_range);
-            $query->whereBetween('price', [(float)$minPrice * 1000000, (float)$maxPrice * 1000000]);
-        }
-
-        return $query->paginate(10);
+        return view('dashboard.index', compact('clickData'));
     }
 }
