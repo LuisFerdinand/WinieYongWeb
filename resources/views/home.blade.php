@@ -6,7 +6,7 @@
 <section class="relative bg-cover bg-center h-screen text-white" style="background-image: url('https://plus.unsplash.com/premium_photo-1677682551132-586778bbe520?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
     <div class="absolute inset-0 bg-black opacity-60"></div>
     <div class="relative max-w-[1440px] container mx-auto h-full flex flex-col justify-center items-center text-center md:text-left md:items-start p-6">
-        <p class="text-teal-600 font-bold mb-0">|<span> Sambas Perkasa Jaya</span></p>
+        <p class="text-teal-600 font-bold mb-0">|<span> Sambas Karya Perkasa</span></p>
         <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Powering Your Projects <br>with Precision</h1>
         <p class="md:text-xl mb-6">Leading provider of heavy machinery and equipment for construction and industry</p>
         <a href="{{ route('contact') }}" class="bg-yellow-500 text-gray-900 hover:bg-yellow-400 px-6 py-3 rounded-lg text-lg font-semibold">Get in Touch</a>

@@ -52,11 +52,12 @@
                     </td>
                     <td class="border px-4 py-2">
                         @if($rental->image_url)
-                        <img src="{{ $rental->image_url }}" alt="{{ $rental->name }}" class="w-16 h-16 object-cover">
+                        <img src="{{ asset('storage/' . $rental->image_url) }}" alt="{{ $rental->name }}" class="w-16 h-16 object-cover">
                         @else
                         <span class="text-gray-500">No image</span>
                         @endif
                     </td>
+
                     <td class="border px-4 py-2">
                         <a href="{{ route('rental-management.edit', $rental->id) }}" class="text-yellow-500 font-bold hover:text-yellow-300">Edit</a>
                         <form action="{{ route('rental-management.destroy', $rental->id) }}" method="POST" class="inline-block">

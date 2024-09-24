@@ -45,11 +45,14 @@
             </div>
 
             <div class="mb-4">
-                <label for="image_url" class="block text-gray-700">Image URL</label>
-                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg">
+                <label for="image_url" class="block text-gray-700">Image</label>
+                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg" accept="image/*" onchange="previewImage(event)">
+
                 @if($part->image_url)
-                <img src="{{ $part->image_url }}" alt="{{ $part->name }}" class="mt-2 w-32 h-32 object-cover">
+                <img id="existingImage" src="{{ asset('storage/' . $part->image_url) }}" alt="{{ $part->name }}" class="mt-2 w-32 h-32 object-cover">
                 @endif
+                <!-- New image preview area -->
+                <img id="newImagePreview" class="mt-2 w-32 h-32 object-cover hidden">
             </div>
 
             <div class="mt-4">
@@ -59,4 +62,31 @@
         </div>
     </form>
 </div>
+
+<script>
+    // Function to preview the image when selected
+    function previewImage(event) {
+        const input = event.target;
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            const newImagePreview = document.getElementById('newImagePreview');
+            const existingImage = document.getElementById('existingImage');
+
+            // Set the source of the new image preview
+            newImagePreview.src = reader.result;
+            newImagePreview.classList.remove('hidden'); // Display the preview image
+
+            // Hide the existing image preview if it exists
+            if (existingImage) {
+                existingImage.classList.add('hidden');
+            }
+        };
+
+        // Read the uploaded file
+        if (input.files && input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection

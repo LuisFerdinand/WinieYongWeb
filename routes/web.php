@@ -19,6 +19,8 @@ use App\Http\Controllers\PartManagementController;
 use App\Http\Controllers\JobManagementController;
 use App\Http\Controllers\ProductManagementController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
 
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -62,6 +64,13 @@ Route::get('/products/sunward/{id}', [ProductController::class, 'show'])->name('
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// reset password route
+Route::get('password/reset', [ResetPasswordController::class, 'showResetRequestForm'])->name('password.request');
+Route::post('password/email', [ResetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);

@@ -24,8 +24,10 @@ class JobController extends Controller
     }
 
     // Handle job application submission
+    // Handle job application submission
     public function apply(Request $request, $id)
     {
+        // Validate form data
         $request->validate([
             'name' => 'required|string|max:255',
             'age' => 'required|integer',
@@ -33,16 +35,26 @@ class JobController extends Controller
             'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
         ]);
 
-        // Store the uploaded CV
-        $cvPath = $request->file('cv')->store('cvs');
+        $job = Job::findOrFail($id);
 
-        // Prepare the data for the email
-        $data = $request->only('name', 'age', 'school');
-        $data['cv_path'] = $cvPath; // Include the path to the CV
+        // Store the uploaded CV file
+        $cvPath = $request->file('cv')->store('cvs', 'public');
 
-        // Send the email to Ferdinand
-        Mail::to('ferdinandluis88@gmail.com')->send(new JobApplicationMail($data));
+        // Prepare email data
+        $data = [
+            'name' => $request->name,
+            'age' => $request->age,
+            'school' => $request->school,
+            'job_title' => $job->title,
+            'cv_path' => $cvPath,
+        ];
 
-        return redirect()->back()->with('success', 'Your application has been submitted successfully!');
+        try {
+            // Send email
+            Mail::to('ferdinandluis88@gmail.com')->send(new JobApplicationMail($data));
+            return redirect()->back()->with('success', 'Application submitted successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to send application. Please try again.');
+        }
     }
 }

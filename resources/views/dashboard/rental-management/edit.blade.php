@@ -52,8 +52,21 @@
             </div>
 
             <div class="mb-4">
-                <label for="image_url" class="block text-gray-700">Image URL</label>
-                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg">
+                <label for="current_image" class="block text-gray-700">Current Image</label>
+                @if($rental->image_url)
+                <img id="currentImage" src="{{ asset('storage/' . $rental->image_url) }}" alt="{{ $rental->name }}" class="w-32 h-32 object-cover mb-4">
+                @else
+                <p class="text-gray-500">No image available</p>
+                @endif
+            </div>
+
+            <div class="mb-4">
+                <label for="image_url" class="block text-gray-700">Upload New Image</label>
+                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg" accept="image/*">
+            </div>
+
+            <div class="mb-4">
+                <img id="previewImage" class="hidden w-32 h-32 object-cover mb-4">
             </div>
 
             <div class="mt-4">
@@ -63,4 +76,19 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.getElementById('image_url').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewImage = document.getElementById('previewImage');
+                previewImage.src = e.target.result;
+                previewImage.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 @endsection

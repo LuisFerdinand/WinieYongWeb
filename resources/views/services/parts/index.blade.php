@@ -32,7 +32,7 @@
         @foreach($parts as $part)
         <div class="bg-white shadow-md rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
             <div class="relative">
-                <img src="{{ $part->image_url }}" class="w-full h-48 object-cover" alt="{{ $part->name }}">
+                <img src="{{ asset('storage/' . $part->image_url) }}" class="w-full h-48 object-cover" alt="{{ $part->name }}">
                 <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
                 <div class="absolute bottom-0 left-0 p-4">
                     <h2 class="text-xl font-semibold mb-2 text-white">{{ $part->name }}</h2>

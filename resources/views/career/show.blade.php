@@ -8,6 +8,20 @@
         <p class="text-base sm:text-lg text-gray-500">Explore this exciting career opportunity.</p>
     </div>
 
+    @if (session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
+    </div>
+    @endif
+
+    @if (session('error'))
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">{{ session('error') }}</span>
+    </div>
+    @endif
+
     <div class="w-full max-w-3xl bg-white rounded-lg border shadow-lg p-6 mb-10">
         <div class="mb-6">
             <p class="text-lg text-gray-700 mb-2"><strong class="font-medium">Position:</strong> {{ $job->position }}</p>

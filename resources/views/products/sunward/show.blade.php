@@ -17,7 +17,7 @@
 
         <!-- Product Image -->
         <div class="w-full lg:w-1/2">
-            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-64 lg:h-96 object-cover rounded-lg shadow-lg mb-6 lg:mb-0 hover:shadow-2xl transition-shadow duration-300">
+            <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="w-full h-64  object-cover">
         </div>
 
         <!-- Product Information -->

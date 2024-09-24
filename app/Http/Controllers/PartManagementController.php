@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Part;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class PartManagementController extends Controller
 {
@@ -42,13 +43,14 @@ class PartManagementController extends Controller
         ]);
 
         // Handle file upload
+        $path = null; // Initialize the path variable
         if ($request->hasFile('image_url')) {
             $file = $request->file('image_url');
-            $path = $file->store('images', 'public'); // Save to public storage
-            $request->merge(['image_url' => $path]);
+            $path = $file->store('parts', 'public'); // Save to public storage
         }
 
-        Part::create($request->all());
+        // Create the part, merging the path if it exists
+        Part::create(array_merge($request->all(), ['image_url' => $path]));
         return redirect()->route('part-management.index')->with('success', 'Part created successfully.');
     }
 
@@ -74,18 +76,35 @@ class PartManagementController extends Controller
 
         // Handle file upload
         if ($request->hasFile('image_url')) {
+            // Delete the old image if it exists
+            if ($part->image_url) {
+                Storage::disk('public')->delete($part->image_url);
+            }
+
+            // Store the new image
             $file = $request->file('image_url');
-            $path = $file->store('images', 'public'); // Save to public storage
-            $request->merge(['image_url' => $path]);
+            $path = $file->store('parts', 'public'); // Save to public storage
+            $part->image_url = $path;
         }
 
-        $part->update($request->all());
+        // Update the part with the other fields
+        $part->update($request->except('image_url')); // Exclude image_url from mass assignment
+        $part->save();
+
         return redirect()->route('part-management.index')->with('success', 'Part updated successfully.');
     }
+
 
     public function destroy($id)
     {
         $part = Part::findOrFail($id);
+
+        // Check if the image exists and delete it from storage
+        if ($part->image_url) {
+            Storage::disk('public')->delete($part->image_url);
+        }
+
+        // Delete the part record from the database
         $part->delete();
 
         return redirect()->route('part-management.index')->with('success', 'Part deleted successfully.');

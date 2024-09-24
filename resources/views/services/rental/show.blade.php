@@ -15,7 +15,7 @@
 
         <!-- Rental Image -->
         <div class="w-full lg:w-1/2">
-            <img src="{{ $rental->image_url }}" alt="{{ $rental->name }}" class="w-full h-64 lg:h-96 object-cover rounded-lg shadow-lg mb-6 lg:mb-0 hover:shadow-2xl transition-shadow duration-300">
+            <img src="{{ asset('storage/' . $rental->image_url) }}" alt="{{ $rental->name }}" class="w-full h-auto  lg:h-96 object-cover rounded-lg shadow-lg mb-6 lg:mb-0 hover:shadow-2xl transition-shadow duration-300">
         </div>
 
         <!-- Rental Information -->

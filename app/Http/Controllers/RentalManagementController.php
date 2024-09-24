@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rental;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class RentalManagementController extends Controller
 {
@@ -31,27 +32,32 @@ class RentalManagementController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
             'price' => 'required|numeric',
-            'category' => 'required',
-            'availability_status' => 'required|boolean',
+            'category' => 'required|string|max:255',
             'available_from' => 'nullable|date',
             'available_to' => 'nullable|date',
-            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+            'availability_status' => 'required|boolean',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
         ]);
 
         // Handle file upload
         if ($request->hasFile('image_url')) {
             $file = $request->file('image_url');
-            $path = $file->store('images', 'public'); // Save to public storage
-            $request->merge(['image_url' => $path]);
+            $path = $file->store('rentals', 'public'); // Save to public storage in the 'rentals' directory
+            $validatedData['image_url'] = $path; // Add the path to the validated data array
         }
 
-        Rental::create($request->all());
+        // Create the rental with the gathered data
+        Rental::create($validatedData);
+
         return redirect()->route('rental-management.index')->with('success', 'Rental created successfully.');
     }
+
+
 
     public function edit($id)
     {
@@ -61,33 +67,52 @@ class RentalManagementController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'category' => 'required',
-            'availability_status' => 'required|boolean',
-            'available_from' => 'nullable|date',
-            'available_to' => 'nullable|date',
-            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
-        ]);
-
+        // Find the rental by ID
         $rental = Rental::findOrFail($id);
 
-        // Handle file upload
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'category' => 'required|string|max:255',
+            'available_from' => 'nullable|date',
+            'available_to' => 'nullable|date',
+            'availability_status' => 'required|boolean',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
+        ]);
+
+        // Check if a new image is uploaded
         if ($request->hasFile('image_url')) {
+            // Delete the old image if it exists
+            if ($rental->image_url && Storage::disk('public')->exists($rental->image_url)) {
+                Storage::disk('public')->delete($rental->image_url);
+            }
+
+            // Store the new image
             $file = $request->file('image_url');
-            $path = $file->store('images', 'public'); // Save to public storage
-            $request->merge(['image_url' => $path]);
+            $path = $file->store('rentals', 'public'); // Save to public storage in the 'rentals' directory
+            $validatedData['image_url'] = $path; // Add the path to the validated data array
         }
 
-        $rental->update($request->all());
+        // Update the rental with the validated data
+        $rental->update($validatedData);
+
         return redirect()->route('rental-management.index')->with('success', 'Rental updated successfully.');
     }
+
+
+
 
     public function destroy($id)
     {
         $rental = Rental::findOrFail($id);
+
+        // Delete the image from storage if it exists
+        if ($rental->image_url) {
+            Storage::disk('public')->delete($rental->image_url);
+        }
+
         $rental->delete();
 
         return redirect()->route('rental-management.index')->with('success', 'Rental deleted successfully.');

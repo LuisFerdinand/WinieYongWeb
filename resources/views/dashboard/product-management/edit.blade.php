@@ -46,7 +46,19 @@
 
             <div class="mb-4">
                 <label for="image_url" class="block text-gray-700">Image URL</label>
-                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg">
+                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg" accept="image/*" onchange="previewImage(event)">
+            </div>
+
+            @if($product->image_url)
+            <div class="mb-4">
+                <label class="block text-gray-700">Current Image</label>
+                <img src="{{ asset('storage/' . $product->image_url) }}" id="currentImage" alt="{{ $product->name }}" class="mt-2 w-32 h-32 object-cover">
+            </div>
+            @endif
+
+            <div class="mb-4">
+                <label class="block text-gray-700">New Image Preview</label>
+                <img id="imagePreview" src="#" alt="Image Preview" class="mt-2 w-32 h-32 object-cover hidden">
             </div>
 
             <div class="mt-4">
@@ -56,4 +68,24 @@
         </div>
     </form>
 </div>
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        const file = input.files[0];
+        const preview = document.getElementById('imagePreview');
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('hidden'); // Show the preview
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '#'; // Reset preview
+            preview.classList.add('hidden'); // Hide the preview if no file is selected
+        }
+    }
+</script>
 @endsection

@@ -45,7 +45,7 @@
                     <td class="border px-4 py-2">{{ Str::limit($product->specifications, 100) ?? 'N/A' }}</td>
                     <td class="border px-4 py-2">
                         @if($product->image_url)
-                        <img src="{{ Storage::url($product->image_url) }}" alt="{{ $product->name }}" class="w-16 h-16 object-cover">
+                        <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="w-16 h-16 object-cover">
                         @else
                         <span class="text-gray-500">No image</span>
                         @endif

@@ -6,10 +6,12 @@
 </head>
 
 <body>
-    <h1>Job Application from {{ $data['name'] }}</h1>
+    <h2>New Job Application Received</h2>
+    <p><strong>Job Title:</strong> {{ $data['job_title'] }}</p>
+    <p><strong>Name:</strong> {{ $data['name'] }}</p>
     <p><strong>Age:</strong> {{ $data['age'] }}</p>
     <p><strong>School:</strong> {{ $data['school'] }}</p>
-    <p><strong>CV:</strong> Attached</p>
+    <p>The CV is attached to this email.</p>
 </body>
 
 </html>

@@ -1,8 +1,13 @@
 <!-- Navbar Partial -->
-<header id="navbar" class="bg-gray-900 text-white p-4 fixed w-full top-0 left-0 z-50">
+<header id="navbar" class="bg-gray-900 text-white px-4 py-1 fixed w-full top-0 left-0 z-50">
     <div class="max-w-[1440px] mx-auto flex justify-between items-center">
         <!-- Logo and Title -->
-        <h1 class="text-xl font-bold">Jaya Sambas Perkasa</h1>
+        <h1 class="flex items-center">
+            <a href="{{ route('home') }}" class="flex items-center">
+                <img src="{{ asset('img/logo.png') }}" alt="Jaya Sambas Perkasa Logo" class="h-auto w-16">
+            </a>
+        </h1>
+
 
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex">

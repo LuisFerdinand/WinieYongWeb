@@ -36,7 +36,7 @@
                 @foreach($products as $index => $product)
                 <div class="flex-none w-full md:w-1/3 p-4">
                     <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-56 object-cover">
+                        <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="w-full h-64  object-cover">
                         <div class="px-6 py-10">
                             <h3 class="text-2xl font-semibold mb-2 text-gray-800">{{ $product->name }}</h3>
                             <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 100) }}</p>
