@@ -33,6 +33,8 @@
                     <li><strong>Available From:</strong> {{ $rental->available_from ? $rental->available_from->format('F d, Y') : 'N/A' }}</li>
                     <li><strong>Available To:</strong> {{ $rental->available_to ? $rental->available_to->format('F d, Y') : 'N/A' }}</li>
                     <li><strong>Availability Status:</strong> {{ $rental->availability_status ? 'Available' : 'Not Available' }}</li>
+                    <li><strong>Stock:</strong> {{ $rental->stock }}</li>
+
                 </ul>
             </div>
 
@@ -55,7 +57,7 @@
         <div class="bg-gray-100 p-4 rounded-lg mb-6">
             <h2 class="text-2xl font-semibold mb-2">Location</h2>
             <div class="w-full h-64 rounded-lg overflow-hidden">
-                <iframe class="w-full h-full" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{ urlencode($rental->location) }}&output=embed"></iframe>
+                <iframe class="w-full h-full" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{ urlencode($rental->product_location) }}&output=embed"></iframe>
             </div>
         </div>
     </section>

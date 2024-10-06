@@ -43,6 +43,11 @@
                             <i class="fas fa-users mr-3"></i> Users
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('project-management.index') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200">
+                            <i class="fa-solid fa-briefcase mr-3"></i> Projects
+                        </a>
+                    </li>
 
 
                     <!-- Rentals Dropdown Menu -->
@@ -56,11 +61,20 @@
                             </svg>
                         </button>
                         <div id="rentals-dropdown" class="hidden mt-1 space-y-1">
-                            <a href="{{ route('rental-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200" role="menuitem">Machinery Rentals</a>
-                            <a href="{{ route('job-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200" role="menuitem">Job Management</a>
-                            <a href="{{ route('part-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200" role="menuitem">Parts & Accessories</a>
-                            <a href="{{ route('product-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200" role="menuitem">Sunward</a>
+                            <a href="{{ route('rental-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200" role="menuitem">
+                                <i class="fas fa-cogs mr-2"></i> Machinery Rentals
+                            </a>
+                            <a href="{{ route('job-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200" role="menuitem">
+                                <i class="fas fa-briefcase mr-2"></i> Job Management
+                            </a>
+                            <a href="{{ route('part-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200" role="menuitem">
+                                <i class="fas fa-wrench mr-2"></i> Parts & Accessories
+                            </a>
+                            <a href="{{ route('product-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200" role="menuitem">
+                                <i class="fas fa-industry mr-2"></i> Sunward
+                            </a>
                         </div>
+
                     </li>
 
                     <li>

@@ -15,14 +15,16 @@ class CreateRentalsTable extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Name of the rental property
-            $table->text('description'); // Description of the property
-            $table->decimal('price', 15, 2); // Price of the rental in Rupiah
-            $table->string('image_url')->nullable(); // URL to an image of the property
-            $table->string('category'); // Category of the rental property
-            $table->boolean('availability_status')->default(true); // Availability status of the rental
-            $table->date('available_from')->nullable(); // When the rental is available from
-            $table->date('available_to')->nullable(); // Until when the rental is available
+            $table->string('name');
+            $table->text('description');
+            $table->decimal('price', 15, 2);
+            $table->string('image_url')->nullable();
+            $table->string('category');
+            $table->boolean('availability_status')->default(true);
+            $table->date('available_from')->nullable();
+            $table->date('available_to')->nullable();
+            $table->integer('stock')->default(0);
+            $table->string('product_location')->nullable();
             $table->timestamps();
         });
     }

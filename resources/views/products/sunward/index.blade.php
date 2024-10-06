@@ -7,8 +7,8 @@
 
     <!-- Introduction Section -->
     <section class="my-16">
-        <p class="text-teal-600 font-bold mb-2">|<span> Sunward</span></p>
-        <h1 class="text-5xl font-extrabold text-gray-800 mb-6">Welcome to Sunward Heavy Machinery</h1>
+        <p class="text-teal-600 tracking-widest font-bold mb-2">|<span> Sunward</span></p>
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6">Welcome to Sunward Heavy Machinery</h1>
         <p class="text-lg text-gray-700 leading-relaxed mb-4">
             Sunward is an innovative and leading brand in the heavy machinery industry, specializing in the production of construction equipment that meets global standards. With a wide range of products like excavators, cranes, bulldozers, and more, Sunward is dedicated to advancing the construction industry with superior technology and durable equipment.
         </p>
@@ -26,40 +26,72 @@
 
     <hr>
 
-    <!-- Product Carousel Section -->
-    <section class="mt-16" x-data="{ activeIndex: 0 }">
-        <h2 class="text-4xl font-bold mb-8 text-gray-800 text-center">Explore Sunward Products</h2>
+
+    <!-- Product Showcase Section -->
+    <section class="my-16" x-data="{ 
+    activeIndex: 0,
+    totalProducts: {{ count($products) }},
+    next() {
+        this.activeIndex = (this.activeIndex + 1) % this.totalProducts;
+    },
+    prev() {
+        this.activeIndex = (this.activeIndex - 1 + this.totalProducts) % this.totalProducts;
+    }
+}">
+        <p class="text-teal-600 text-center tracking-widest font-bold mb-2">|<span> Products</span></p>
+        <h2 class="text-4xl md:text-6xl font-bold mb-8 text-gray-800 text-center">Explore Sunward Products</h2>
         <div class="relative w-full overflow-hidden">
-            <!-- Carousel Items -->
-            <div class="flex transition-transform duration-700 ease-in-out"
-                :style="{ transform: `translateX(-${activeIndex * 100}%)` }">
-                @foreach($products as $index => $product)
-                <div class="flex-none w-full md:w-1/3 p-4">
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                        <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="w-full h-64  object-cover">
-                        <div class="px-6 py-10">
-                            <h3 class="text-2xl font-semibold mb-2 text-gray-800">{{ $product->name }}</h3>
-                            <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 100) }}</p>
-                            <p class="text-xl font-bold mb-4">Rp. {{ number_format($product->price, 2) }}</p>
-                            <a href="{{ route('products.sunward.show', $product->id) }}" class="text-teal-600 hover:underline">View Details</a>
-                        </div>
+            <!-- Flex Container for Image and Product Info -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
+                <!-- Image Carousel -->
+                <div class="relative w-full md:w-1/2 h-64 md:h-96">
+                    @foreach($products as $index => $product)
+                    <div class="absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out"
+                        :class="{ 'opacity-100': activeIndex === {{ $index }}, 'opacity-0': activeIndex !== {{ $index }} }">
+                        <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
                     </div>
+                    @endforeach
+
                 </div>
-                @endforeach
+                <!-- Arrow Controls -->
+                <button @click="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-r-md hover:bg-opacity-75 transition-colors duration-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button @click="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-l-md hover:bg-opacity-75 transition-colors duration-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+
+                <!-- Product Information -->
+                <div class="w-full md:w-1/2 overflow-hidden p-6">
+                    @foreach($products as $index => $product)
+                    <div x-show="activeIndex === {{ $index }}" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100">
+                        <h3 class="text-3xl font-semibold text-gray-800 uppercase mb-0">{{ $product->name }}</h3>
+                        <p class="text-teal-500 font-bold tracking-wide mb-2">{{$product->model_number}}</p>
+                        <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 200) }}</p>
+                        <p class="text-xl font-bold mb-4">Rp. {{ number_format($product->price, 2) }}</p>
+                        <a href="{{ route('products.sunward.show', $product->id) }}" class="text-teal-600 hover:underline">View Details</a>
+                    </div>
+                    @endforeach
+                </div>
             </div>
 
-            <!-- Carousel Controls with Teal Background -->
-            <button @click="activeIndex = (activeIndex - 1 + Math.ceil({{ count($products) }} / getVisibleItems())) % Math.ceil({{ count($products) }} / getVisibleItems())"
-                class="absolute left-5 top-1/2 transform -translate-y-1/2 bg-teal-600 text-white px-5 py-3 rounded-full hover:bg-teal-700 focus:outline-none transition-colors duration-200 text-lg">
-                &#8249;
-            </button>
-            <button @click="activeIndex = (activeIndex + 1) % Math.ceil({{ count($products) }} / getVisibleItems())"
-                class="absolute right-5 top-1/2 transform -translate-y-1/2 bg-teal-600 text-white px-5 py-3 rounded-full hover:bg-teal-700 focus:outline-none transition-colors duration-200 text-lg">
-                &#8250;
-            </button>
-
+            <!-- Dot Controls -->
+            <div class="flex justify-center space-x-2">
+                @foreach($products as $index => $product)
+                <button @click="activeIndex = {{ $index }}"
+                    class="w-3 h-3 rounded-full transition-colors duration-200 ease-in-out"
+                    :class="{ 'bg-teal-600': activeIndex === {{ $index }}, 'bg-gray-300': activeIndex !== {{ $index }} }">
+                </button>
+                @endforeach
+            </div>
         </div>
     </section>
+
+
 </div>
 
 <!-- JavaScript for Carousel -->

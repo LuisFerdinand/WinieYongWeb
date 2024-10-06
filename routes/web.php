@@ -1,29 +1,31 @@
 <?php
 
 use App\Mail\JobApplicationMail;
+use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PartController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 
-use App\Http\Controllers\RentalManagementController;
-use App\Http\Controllers\PartManagementController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\JobManagementController;
+use App\Http\Controllers\PartManagementController;
+use App\Http\Controllers\RentalManagementController;
 use App\Http\Controllers\ProductManagementController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProjectManagementController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 
 
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/projects/{id}', [PageController::class, 'show'])->name('project.show');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', function () {
     return view('contact');
@@ -85,6 +87,7 @@ Route::middleware(['auth', 'check.role:admin'])->group(function () {
     Route::resource('part-management', PartManagementController::class);
     Route::resource('job-management', JobManagementController::class);
     Route::resource('product-management', ProductManagementController::class);
+    Route::resource('project-management', ProjectManagementController::class);
 });
 
 

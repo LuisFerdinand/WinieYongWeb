@@ -18,6 +18,13 @@
 
     <a href="{{ route('rental-management.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg mb-4 inline-block">Add New Rental</a>
 
+    <!-- Search Form -->
+    <form method="GET" action="{{ route('rental-management.index') }}" class="mb-4">
+        <input type="text" name="search" placeholder="Search rentals..." value="{{ $search }}" class="px-4 py-2 border rounded-lg">
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Search</button>
+        <a href="{{ route('rental-management.index') }}" class="bg-gray-300 text-black px-4 py-2 rounded-lg">Reset</a>
+    </form>
+
     <!-- Responsive Table Wrapper -->
     <div class="overflow-x-auto">
         <table class="min-w-full bg-white">
@@ -35,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($rentals as $rental)
+                @forelse($rentals as $rental)
                 <tr>
                     <td class="border px-4 py-2">{{ $rental->name }}</td>
                     <td class="border px-4 py-2">{{ Str::limit($rental->description, 100) }}</td>
@@ -67,7 +74,11 @@
                         </form>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="9" class="text-center py-4">No rentals found.</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
@@ -79,15 +90,15 @@
         @endphp
 
         @if ($currentPage > 1)
-        <a href="{{ url()->current() }}?page={{ $currentPage - 1 }}" class="px-3 py-1 bg-gray-200 rounded">Previous</a>
+        <a href="{{ url()->current() }}?page={{ $currentPage - 1 }}&search={{ $search }}" class="px-3 py-1 bg-gray-200 rounded">Previous</a>
         @endif
 
         @for ($i = 1; $i <= $totalPages; $i++)
-            <a href="{{ url()->current() }}?page={{ $i }}" class="px-3 py-1 mx-1 {{ $currentPage == $i ? 'bg-blue-500 text-white' : 'bg-gray-200' }} rounded">{{ $i }}</a>
+            <a href="{{ url()->current() }}?page={{ $i }}&search={{ $search }}" class="px-3 py-1 mx-1 {{ $currentPage == $i ? 'bg-blue-500 text-white' : 'bg-gray-200' }} rounded">{{ $i }}</a>
             @endfor
 
             @if ($currentPage < $totalPages)
-                <a href="{{ url()->current() }}?page={{ $currentPage + 1 }}" class="px-3 py-1 bg-gray-200 rounded">Next</a>
+                <a href="{{ url()->current() }}?page={{ $currentPage + 1 }}&search={{ $search }}" class="px-3 py-1 bg-gray-200 rounded">Next</a>
                 @endif
     </div>
 </div>

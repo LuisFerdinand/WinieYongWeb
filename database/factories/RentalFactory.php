@@ -30,6 +30,8 @@ class RentalFactory extends Factory
             'availability_status' => $this->faker->boolean, // Random availability status
             'available_from' => $this->faker->dateTimeBetween('now', '+1 month'), // Available from current date to next month
             'available_to' => $this->faker->dateTimeBetween('+1 month', '+6 months'), // Available until 6 months from now
+            'stock' => $this->faker->numberBetween(0, 100),
+            'product_location' => $this->faker->city,
         ];
     }
 }

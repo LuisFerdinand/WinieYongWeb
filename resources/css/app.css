@@ -17,3 +17,7 @@
     color: #ff8a50;
     /* Hover color */
 }
+
+.accordion-button[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+}

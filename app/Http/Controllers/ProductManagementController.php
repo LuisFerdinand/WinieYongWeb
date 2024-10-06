@@ -10,19 +10,33 @@ class ProductManagementController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10; // Number of items per page
-        $page = $request->input('page', 1); // Get the current page, default is 1
+        $perPage = 10;
+        $page = $request->input('page', 1);
+        $search = $request->input('search');
 
-        $totalProducts = Product::count(); // Get total number of products
-        $products = Product::skip(($page - 1) * $perPage)->take($perPage)->get(); // Fetch products for the current page
+        // Fetch products based on search query
+        $query = Product::query();
+
+        if ($search) {
+            $query->where('name', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%")
+                ->orWhere('category', 'like', "%{$search}%")
+                ->orWhere('model_number', 'like', "%{$search}%")
+                ->orWhere('specifications', 'like', "%{$search}%");
+        }
+
+        $totalProducts = $query->count(); // Get total number of products based on search
+        $products = $query->skip(($page - 1) * $perPage)->take($perPage)->get(); // Fetch products for the current page
 
         return view('dashboard.product-management.index', [
             'products' => $products,
             'totalProducts' => $totalProducts,
             'perPage' => $perPage,
             'currentPage' => $page,
+            'search' => $search, // Pass search input to the view
         ]);
     }
+
 
     public function create()
     {

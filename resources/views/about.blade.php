@@ -6,62 +6,148 @@
 
 <link rel="stylesheet" href="css/style.css">
 <!-- About Us Section -->
-<section class="mt-8 py-16 bg-gray-300 h-screen flex items-center justify-center">
-    <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 px-4">
-        <div class="md:w-2/3">
-            <h3 class="text-xl font-semibold mb-2">About Us</h3>
-            <h1 class="text-5xl font-bold mb-4">PT. Perkasa Jaya Sambas</h1>
-            <p class="text-lg mb-6">Our company has been at the forefront of heavy machinery solutions, offering top-notch equipment and services to meet the demands of the construction and industrial sectors. With a rich history of innovation and excellence, we are committed to delivering quality and reliability.</p>
-            <p class="text-lg mb-6">Founded in [Year], we have grown to become a leading provider of heavy machinery. Our team of experts is dedicated to ensuring that our customers receive the best possible support and service. We take pride in our work and strive to exceed expectations in everything we do.</p>
-        </div>
-        <div class="md:w-1/3">
-            <img src="img/image1.jpg" alt="Company Image" height="" class="w-full rounded-lg shadow-lg h-full fit-cover">
-        </div>
-    </div>
-
-</section>
-
-<!-- Mission and Vision Section -->
-<section class="px-4 h-screen flex flex-col items-center justify-center bg-gray-900 text-white">
-    <div class="max-w-[1440px] mx-auto text-center mb-8">
-        <!-- Title and Subtitle -->
-        <p class="text-teal-600 text-center font-bold mb-0">|<span> Vision & Mission</span></p>
-        <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Quality, Integrity and Efficiency</h1>
-    </div>
-
-    <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-around gap-16">
-        <!-- Vision Section -->
-        <div class="md:w-1/2">
-            <h3 class="text-2xl font-bold mb-4 text-center">Vision</h3>
-            <p class="text-lg text-center">
-                Menjadikan Perusahaan terdepan, terbaik dan berkesinambungan dalam membagikan pelayanan jasa konstruksi, pengadaan unit dan barang dengan menjaga komitmen mutu dan tepat waktu.
-            </p>
-        </div>
-
-        <!-- Mission Section -->
-        <div class="md:w-1/2">
-            <h3 class="text-2xl font-bold mb-4 text-center">Mission</h3>
-            <ul class="text-lg list-decimal list-inside text-center md:text-left space-y-2">
-                <li>Menetapkan kepuasan klien sebagai komitmen utama</li>
-                <li>Menempatkan mitra kerja sebagai bagian integral dari tim kerja</li>
-                <li>Memiliki sumber daya manusia yang profesional, berintegritas tinggi serta berorientasi kepada peningkatan secara terus-menerus</li>
-                <li>Meningkatkan keunggulan kompetitif dengan cara:
-                    <ul class="list-disc pl-7">
-                        <li>Menciptakan Inovasi melalui pemanfaatan teknologi</li>
-                        <li>Memilih mitra kerja yang handal</li>
-                    </ul>
-                </li>
-                <li>Memperluas peluang usaha melalui pengembangan jejaring profesi</li>
-                <li>Memberikan nilai tambah bagi para pemegang saham</li>
-            </ul>
+<section class="flex items-center justify-center py-24 md:h-screen px-4">
+    <div class="max-w-[1440px] mx-auto">
+        <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 md:pr-8">
+                <p class="text-teal-600 text-center tracking-widest font-bold mb-0 md:text-left">|<span> About Us</span></p>
+                <h1 class="text-4xl md:text-5xl font-bold text-teal-900 mb-4 text-center md:text-left">A team of reliable and experienced Contractors</h1>
+                <p id="mainText" class="text-gray-700 mb-6 text-sm text-center md:text-left md:text-base">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <div id="buttonContainer" class="flex flex-wrap gap-2 mb-6 justify-center md:justify-start border-b-2 pb-2">
+                    <button onclick="showText('vision', this)" class="btn-transition bg-teal-500 text-white px-3 py-1 rounded-full text-xs md:text-sm active-button">Our Vision</button>
+                    <button onclick="showText('mission', this)" class="btn-transition bg-teal-500 text-white px-3 py-1 rounded-full text-xs md:text-sm">Our Mission</button>
+                    <button onclick="showText('value', this)" class="btn-transition bg-teal-500 text-white px-3 py-1 rounded-full text-xs md:text-sm">Our Value</button>
+                </div>
+                <div id="dynamicText" class="text-gray-700 mb-6 transition-all duration-500 opacity-100 visible shadow-md border-l-2 border-t-2 border-teal-500 p-2">
+                    <p class="text-gray-700">Menjadikan Perusahaan terdepan, terbaik dan berkesinambungan dalam membagikan pelayanan jasa konstruksi, pengadaan unit dan barang dengan menjaga komitmen mutu dan tepat waktu.</p>
+                </div>
+                <div class="flex items-center justify-center md:justify-start space-x-4">
+                    <button class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded transition-all duration-300 text-sm md:text-base">
+                        LEARN MORE
+                    </button>
+                    <div class="flex items-center text-gray-700 text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                        </svg>
+                        <span>+62-852-482-09388</span>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-8 md:mt-0 flex items-center justify-center">
+                <div class="relative">
+                    <img src="img/image1.jpg" alt="Contractors at work" class="rounded-lg shadow-lg w-full h-auto">
+                    <div class="absolute bottom-2 right-0 bg-teal-500 text-white py-1 px-10 md:py-4 rounded-l-lg md:rounded-l-xl text-xs md:text-sm flex gap-3">
+                        <span class="text-xl md:text-3xl font-bold">25.</span>
+                        <span class="block">YEARS OF<br>EXPERIENCE</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+
+
+<script>
+    function showText(type, element) {
+        const dynamicText = document.getElementById("dynamicText");
+
+        // Reset the current text content
+        dynamicText.classList.remove("visible");
+
+        setTimeout(() => {
+            if (type === 'vision') {
+                dynamicText.innerHTML = `
+                    <p class="text-gray-700">Menjadikan Perusahaan terdepan, terbaik dan berkesinambungan dalam membagikan pelayanan jasa konstruksi, pengadaan unit dan barang dengan menjaga komitmen mutu dan tepat waktu.</p>`;
+            } else if (type === 'mission') {
+                dynamicText.innerHTML = `
+                    <ul class="text-lg list-decimal list-inside text-center md:text-left space-y-2">
+                        <li>Menetapkan kepuasan klien sebagai komitmen utama</li>
+                        <li>Menempatkan mitra kerja sebagai bagian integral dari tim kerja</li>
+                        <li>Memiliki sumber daya manusia yang profesional, berintegritas tinggi serta berorientasi kepada peningkatan secara terus-menerus</li>
+                        <li>Meningkatkan keunggulan kompetitif dengan cara:
+                            <ul class="list-disc pl-7">
+                                <li>Menciptakan Inovasi melalui pemanfaatan teknologi</li>
+                                <li>Memilih mitra kerja yang handal</li>
+                            </ul>
+                        </li>
+                        <li>Memperluas peluang usaha melalui pengembangan jejaring profesi</li>
+                        <li>Memberikan nilai tambah bagi para pemegang saham</li>
+                    </ul>`;
+            } else if (type === 'value') {
+                dynamicText.innerHTML = `
+                    <p class="text-gray-700">Our core values are integrity, quality, and commitment to customer satisfaction. We believe in building lasting relationships based on trust and excellence.</p>`;
+            }
+            dynamicText.classList.add("visible");
+        }, 300);
+
+        // Remove the 'active-button' class from all buttons
+        const buttons = document.querySelectorAll('#buttonContainer button');
+        buttons.forEach(button => button.classList.remove('active-button'));
+
+        // Add 'active-button' class to the clicked button
+        element.classList.add('active-button');
+    }
+</script>
+
+<!-- What We Offer Section -->
+<section class="relative bg-white py-12" style="background-image: url('img/about/bg1.jpg'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-black opacity-70 z-10 pointer-events-none"></div> <!-- Increased opacity to 0.7 -->
+    <div class="relative max-w-6xl mx-auto px-4 z-20">
+        <p class="text-teal-400 tracking-widest text-center font-bold mb-0">|<span> Services & Products</span></p> <!-- Changed to a lighter text color -->
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-200 text-center mb-8">What We Offer</h2> <!-- Made the heading text bigger and lighter -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+
+            <!-- Rental Card -->
+            <div class="bg-gray-200 rounded-lg shadow-xl overflow-hidden transform transition duration-300">
+                <img src="img/about/rental.jpg" alt="Rental Service" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800">Heavy Machine Rental</h3>
+                    <p class="text-gray-600 mt-2">Quality heavy machines available for rent to suit your project needs.</p>
+                </div>
+                <div class="bg-teal-500 text-center py-3 hover:bg-teal-600 transition duration-300">
+                    <a href="/rental" class="text-white font-bold px-4 py-2 inline-block rounded-lg transition">View Rental Services</a>
+                </div>
+            </div>
+
+            <!-- Product Card -->
+            <div class="bg-gray-200 rounded-lg shadow-xl overflow-hidden transform transition duration-300">
+                <img src="img/about/sunward.png" alt="Our Products" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800">Our Products</h3>
+                    <p class="text-gray-600 mt-2">Explore our wide range of heavy machines designed for various industries.</p>
+                </div>
+                <div class="bg-teal-500 text-center py-3 hover:bg-teal-600 transition duration-300">
+                    <a href="/poducts.sunward" class="text-white font-bold px-4 py-2 inline-block rounded-lg transition">View Products</a>
+                </div>
+            </div>
+
+            <!-- Spare Parts Card -->
+            <div class="bg-gray-200 rounded-lg shadow-xl overflow-hidden transform transition duration-300">
+                <img src="img/about/parts.jpg" alt="Spare Parts" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800">Spare Parts</h3>
+                    <p class="text-gray-600 mt-2">High-quality spare parts available to keep your machinery running efficiently.</p>
+                </div>
+                <div class="bg-teal-500 text-center py-3 hover:bg-teal-600 transition duration-300">
+                    <a href="/parts" class="text-white font-bold  px-4 py-2 inline-block rounded-lg">View Spare Parts</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
 
 
 <!-- Certifications Section with Margin-Top -->
-<section class="py-16 bg-gray-300">
-    <p class="text-teal-600 text-center font-bold mb-0">|<span> Certifications</span></p>
+<section class="max-w-[1440px] mx-auto px-4 py-16">
+    <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Certifications</span></p>
     <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Our Certifications of Heavy Machine Business</h1>
 
     <div class="slider max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8" style="
@@ -85,8 +171,8 @@
 </section>
 
 <!-- Partners Section with Margin-Top -->
-<section class="py-16 bg-gray-300">
-    <p class="text-teal-600 text-center font-bold mb-0">|<span> Partners</span></p>
+<section class="max-w-[1440px] mx-auto px-4 py-16">
+    <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Partners</span></p>
     <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Visit our partnership</h1>
     <div class="slider max-w-5xl mx-auto flex justify-around" style="
     --width: 200px; 
@@ -110,7 +196,8 @@
 
 <!-- Meet the Team Section -->
 <section class="py-16 bg-gray-100">
-    <div class="container mx-auto text-center">
+    <div class=" mx-auto max-w-[1440px] text-center">
+        <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Partners</span></p>
         <h2 class="text-3xl font-bold mb-6">Meet Our Team</h2>
         <div class="flex flex-wrap justify-center">
             <!-- Team Member 1 -->
@@ -133,4 +220,33 @@
         </div>
     </div>
 </section>
+
+<style>
+    .btn-transition {
+        transition: all 0.3s ease;
+    }
+
+    .btn-transition:hover {
+        background-color: #2c7a7b;
+        transform: scale(1.1);
+    }
+
+    #dynamicText {
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    #dynamicText.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .active-button {
+        background-color: #2c7a7b !important;
+        /* Change this color as desired */
+        color: #fff;
+        transform: scale(1.05);
+    }
+</style>
 @endsection

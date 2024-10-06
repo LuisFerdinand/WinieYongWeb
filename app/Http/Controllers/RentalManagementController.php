@@ -13,17 +13,29 @@ class RentalManagementController extends Controller
     {
         $perPage = 10; // Number of items per page
         $page = $request->input('page', 1); // Get the current page, default is 1
+        $search = $request->input('search'); // Get the search query
 
-        $totalRentals = Rental::count(); // Get total number of rentals
-        $rentals = Rental::skip(($page - 1) * $perPage)->take($perPage)->get(); // Fetch rentals for the current page
+        // Fetch rentals with search functionality
+        $query = Rental::query();
+
+        if ($search) {
+            $query->where('name', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%")
+                ->orWhere('category', 'like', "%$search%");
+        }
+
+        $totalRentals = $query->count(); // Get total number of rentals based on search
+        $rentals = $query->skip(($page - 1) * $perPage)->take($perPage)->get(); // Fetch rentals for the current page
 
         return view('dashboard.rental-management.index', [
             'rentals' => $rentals,
             'totalRentals' => $totalRentals,
             'perPage' => $perPage,
             'currentPage' => $page,
+            'search' => $search, // Pass search value to the view
         ]);
     }
+
 
     public function create()
     {
@@ -41,7 +53,9 @@ class RentalManagementController extends Controller
             'available_from' => 'nullable|date',
             'available_to' => 'nullable|date',
             'availability_status' => 'required|boolean',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'stock' => 'required|integer|min:0',
+            'product_location' => 'nullable|string|max:255',
         ]);
 
         // Handle file upload
@@ -79,7 +93,9 @@ class RentalManagementController extends Controller
             'available_from' => 'nullable|date',
             'available_to' => 'nullable|date',
             'availability_status' => 'required|boolean',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'stock' => 'required|integer|min:0',
+            'product_location' => 'nullable|string|max:255',
         ]);
 
         // Check if a new image is uploaded

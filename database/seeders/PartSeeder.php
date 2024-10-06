@@ -9,6 +9,6 @@ class PartSeeder extends Seeder
 {
     public function run()
     {
-        Part::factory()->count(50)->create();
+        Part::factory()->count(10)->create();
     }
 }

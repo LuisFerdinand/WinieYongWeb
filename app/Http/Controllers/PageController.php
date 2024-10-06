@@ -2,13 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function home()
     {
-        return view('home');
+        // Fetch all projects
+        $projects = Project::all();
+
+        // Pass the projects to the home view
+        return view('home', compact('projects'));
+    }
+
+    public function show($id)
+    {
+        // Find the project by ID
+        $project = Project::findOrFail($id);
+
+        // Pass the project to the show view
+        return view('project-detail', compact('project'));
     }
 
     public function about()

@@ -3,8 +3,10 @@
     <div class="max-w-[1440px] mx-auto flex justify-between items-center">
         <!-- Logo and Title -->
         <h1 class="flex items-center">
-            <a href="{{ route('home') }}" class="flex items-center">
-                <img src="{{ asset('img/logo.png') }}" alt="Jaya Sambas Perkasa Logo" class="h-auto w-16">
+            <a href="{{ route('home') }}" class="flex items-center text-gray-300">
+                <img src="{{ asset('img/logo.png') }}" alt="Jaya Sambas Perkasa Logo" class="h-auto w-16 mr-1">
+                <span class="text-[30px] mr-1"> |</span>
+                <p class="text-xs font-inter pt-2 "> Sambas Karya <br> Perkasa</p>
             </a>
         </h1>
 
@@ -152,4 +154,31 @@
                 </button>
             </div>
         </div>
+
 </header>
+<nav class="absolute w-full z-10 top-20 text-gray-500 px-4" aria-label="breadcrumb">
+    <div class="max-w-[1440px] mx-auto">
+        <ol class="breadcrumb flex space-x-2 items-center text-sm">
+            <!-- Home Link -->
+            <li class="breadcrumb-item">
+                <a href="{{ url('/') }}" class="text-teal-500 hover:text-teal-400 transition-colors duration-200">Beranda</a>
+            </li>
+
+            @if (Request::segment(1))
+            <span class="text-gray-500">›</span>
+            <li class="breadcrumb-item">
+                <a href="{{ url(Request::segment(1)) }}" class="text-teal-500 hover:text-teal-400 transition-colors duration-200">
+                    {{ ucfirst(Request::segment(1)) }}
+                </a>
+            </li>
+            @endif
+
+            @if (Request::segment(2))
+            <span class="text-gray-500">›</span>
+            <li class="breadcrumb-item text-gray-300" aria-current="page">
+                {{ ucfirst(Request::segment(2)) }}
+            </li>
+            @endif
+        </ol>
+    </div>
+</nav>
