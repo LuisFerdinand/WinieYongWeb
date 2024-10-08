@@ -4,16 +4,18 @@ use App\Mail\JobApplicationMail;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CvController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
-
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\JobManagementController;
 use App\Http\Controllers\PartManagementController;
@@ -56,8 +58,8 @@ Route::get('/careers/{id}', [JobController::class, 'show'])->name('career.show')
 Route::post('/career/{id}/apply', [JobController::class, 'apply'])->name('career.apply');
 
 // Product Route
-Route::get('/products/sunward', [ProductController::class, 'index'])->name('products.sunward.index');
-Route::get('/products/sunward/{id}', [ProductController::class, 'show'])->name('products.sunward.show');
+Route::get('/sunward', [ProductController::class, 'index'])->name('sunward.index');
+Route::get('/sunward/{id}', [ProductController::class, 'show'])->name('sunward.show');
 
 
 
@@ -103,3 +105,11 @@ Route::middleware(['auth', 'check.role:admin'])->group(function () {
     Route::post('/dashboard/users/{id}/update-role', [UserController::class, 'updateRole'])->name('users.updateRole');
     Route::delete('/dashboard/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
+
+// Mail to Contact
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
+
+// Cv Storage
+Route::get('/dashboard/cvs', [CvController::class, 'index'])->name('cvs.index');
+Route::delete('/dashboard/cvs/{filename}', [CvController::class, 'destroy'])->name('cvs.destroy');

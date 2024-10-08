@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reset Password</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
 </head>
 
 <body class="bg-gray-100">

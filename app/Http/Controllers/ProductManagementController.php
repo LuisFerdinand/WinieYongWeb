@@ -55,10 +55,16 @@ class ProductManagementController extends Controller
             'model_number' => 'nullable|string',
             'specifications' => 'nullable|string',
             'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+            'power_output' => 'nullable|numeric',
+            'dimensions' => 'nullable|string|max:255',
+            'fuel_type' => 'nullable|string|max:255',
+            'usage_instructions' => 'nullable|string',
+            'rating' => 'nullable|numeric|min:0|max:5',
+            'reviews_count' => 'nullable|integer|min:0',
         ]);
 
         // Initialize the data array for the product
-        $data = $request->only(['name', 'description', 'price', 'stock', 'category', 'model_number', 'specifications']);
+        $data = $request->only(['name', 'description', 'price', 'stock', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions', 'rating', 'reviews_count']);
 
         // Handle file upload
         if ($request->hasFile('image_url')) {
@@ -83,21 +89,25 @@ class ProductManagementController extends Controller
     {
         // Validate incoming request data
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
-            'category' => 'nullable|string',
-            'model_number' => 'nullable|string',
-            'specifications' => 'nullable|string',
+            'model_number' => 'nullable|string|max:255',
             'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+            'power_output' => 'nullable|numeric',
+            'dimensions' => 'nullable|string|max:255',
+            'fuel_type' => 'nullable|string|max:255',
+            'usage_instructions' => 'nullable|string',
+            'rating' => 'nullable|numeric|min:0|max:5',
+            'reviews_count' => 'nullable|integer|min:0',
         ]);
 
         // Find the product by ID
         $product = Product::findOrFail($id);
 
         // Initialize the data array for the product
-        $data = $request->only(['name', 'description', 'price', 'stock', 'category', 'model_number', 'specifications']);
+        $data = $request->only(['name', 'description', 'price', 'stock', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions', 'rating', 'reviews_count']);
 
         // Handle file upload
         if ($request->hasFile('image_url')) {
@@ -131,6 +141,6 @@ class ProductManagementController extends Controller
         // Delete the product record from the database
         $product->delete();
 
-        return redirect()->route('part-management.index')->with('success', 'Part deleted successfully.');
+        return redirect()->route('product-management.index')->with('success', 'Part deleted successfully.');
     }
 }

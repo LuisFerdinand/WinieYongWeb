@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-[1440px] mx-auto min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 mt-20">
+<div class="max-w-[1440px] mx-auto min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 mt-32 ">
     <div class="text-center mb-12">
-        <p class="text-teal-600 font-bold">|<span> Career</span></p>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6">{{ $job->title }}</h1>
+        <p class="text-teal-600 tracking-widest font-bold">|<span> Career</span></p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-6">{{ $job->title }}</h1>
         <p class="text-base sm:text-lg text-gray-500">Explore this exciting career opportunity.</p>
     </div>
 
@@ -52,6 +52,10 @@
                 <div>
                     <label for="school" class="block text-sm font-medium text-gray-700 mb-2">School</label>
                     <input type="text" id="school" name="school" required class="w-full border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm p-3" />
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm p-3" />
                 </div>
                 <div>
                     <label for="cv" class="block text-sm font-medium text-gray-700 mb-2">Upload CV</label>

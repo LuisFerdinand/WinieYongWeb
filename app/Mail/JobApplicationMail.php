@@ -32,6 +32,7 @@ class JobApplicationMail extends Mailable
     {
         return $this->view('emails.job-application')
             ->subject('New Job Application: ' . $this->data['job_title'])
+            ->from($this->data['email'], $this->data['name']) // Add this line
             ->attachFromStorageDisk('public', $this->data['cv_path'], "{$this->data['name']}_cv.pdf")
             ->with('data', $this->data);
     }

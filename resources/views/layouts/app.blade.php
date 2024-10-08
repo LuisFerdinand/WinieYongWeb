@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Heavy Machinery Workshop')</title>
     @vite('resources/css/app.css')
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
+
 </head>
 
 <body class="bg-gray-100">
 
     <!-- Include Navbar -->
     @include('layouts.partials.navbar')
+    <x-breadcrumb />
+
 
 
     <!-- Main Content -->
-    <main class="">
-
+    <main>
         @yield('content')
     </main>
 

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Products')
+@section('title', 'Sunward Products')
 
 @section('content')
 <div class="max-w-[1440px] mx-auto py-20 px-6">
 
     <!-- Introduction Section -->
-    <section class="my-16">
+    <section class="py-16">
         <p class="text-teal-600 tracking-widest font-bold mb-2">|<span> Sunward</span></p>
         <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6">Welcome to Sunward Heavy Machinery</h1>
         <p class="text-lg text-gray-700 leading-relaxed mb-4">
@@ -73,7 +73,7 @@
                         <p class="text-teal-500 font-bold tracking-wide mb-2">{{$product->model_number}}</p>
                         <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 200) }}</p>
                         <p class="text-xl font-bold mb-4">Rp. {{ number_format($product->price, 2) }}</p>
-                        <a href="{{ route('products.sunward.show', $product->id) }}" class="text-teal-600 hover:underline">View Details</a>
+                        <a href="{{ route('sunward.show', $product->id) }}" class="text-teal-600 hover:underline">View Details</a>
                     </div>
                     @endforeach
                 </div>

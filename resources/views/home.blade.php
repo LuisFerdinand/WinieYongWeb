@@ -3,9 +3,9 @@
 @section('title', 'Home')
 
 @section('content')
-<section class="relative bg-cover bg-center h-screen text-white" style="background-image: url('https://plus.unsplash.com/premium_photo-1677682551132-586778bbe520?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+<section class="relative bg-cover bg-center h-screen text-white" style="background-image: url('https://images.unsplash.com/photo-1523848309072-c199db53f137?');">
     <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
-    <div class="relative max-w-[1440px] container mx-auto h-full flex flex-col justify-center items-center text-center md:text-left md:items-start p-6">
+    <div class="relative max-w-[1440px] container mx-auto h-full flex flex-col justify-center items-center text-center md:text-left md:items-start p-4">
         <!-- Company Tagline -->
         <p class="text-teal-500 font-bold mb-2 tracking-widest uppercase" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
             | Sambas Karya Perkasa
@@ -33,7 +33,7 @@
     </div>
 </section>
 
-<section id="accordion-section" class="max-w-[1440px] mx-auto my-8 px-2 ">
+<section id="accordion-section" class="max-w-[1440px] mx-auto py-20 px-4">
     <!-- Section Title -->
     <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Benefit</span></p>
     <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Why Choose Us</h1>
@@ -150,45 +150,10 @@
     </div>
 </section>
 
-<!-- Add Swiper CSS -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-<section class="py-16 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2244&q=80');">
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-    <div class="max-w-[1440px] mx-auto px-6 relative z-10">
-        <p class="text-teal-400 text-center tracking-widest font-bold mb-0">| Our Work</p>
-        <h2 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10 text-white">Featured Projects</h2>
-
-        <!-- Swiper Carousel Container -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <!-- Dynamic Project Slides -->
-                @foreach($projects as $project)
-                <div class="swiper-slide bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="{{ asset('storage/' . $project->project_image) }}" alt="{{ $project->project_name }}" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">{{ $project->project_name }}</h3>
-                        <p class="text-gray-600 mb-4">{{ Str::limit($project->project_description, 100) }}</p>
-                        <a href="{{ route('project.show', $project->id) }}" class="text-teal-600 font-semibold hover:text-teal-800">Learn More →</a>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-
-            <!-- Add Navigation -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
-</section>
-
-<section class="py-16 px-4 max-w-6xl mx-auto">
+<section class="py-20 px-4 max-w-[1440px] mx-auto my-auto">
     <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Workflow</span></p>
     <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Our Project Workflow</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative py-10">
         <!-- Step 1: Site Assessment -->
         <div class="flex flex-col items-center text-center">
             <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white border-2 border-teal-500 rounded-full">
@@ -243,10 +208,42 @@
     </div>
 </section>
 
+<!-- Add Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
+<section class="py-20 bg-cover bg-center relative overflow-hidden shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2244&q=80');">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="max-w-[1440px] mx-auto px-6 relative z-10">
+        <p class="text-teal-400 text-center tracking-widest font-bold mb-0">| Our Work</p>
+        <h2 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10 text-white">Featured Projects</h2>
 
+        <!-- Swiper Carousel Container -->
+        <div class="swiper-container overflow-hidden">
+            <div class="swiper-wrapper">
+                <!-- Dynamic Project Slides -->
+                @foreach($projects as $project)
+                <div class="swiper-slide bg-white rounded-lg shadow-md overflow-hidden ">
+                    <img src="{{ asset('storage/' . $project->project_image) }}" alt="{{ $project->project_name }}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">{{ $project->project_name }}</h3>
+                        <p class="text-gray-600 mb-4">{{ Str::limit($project->project_description, 100) }}</p>
+                        <a href="{{ route('project.show', $project->id) }}" class="text-teal-600 font-semibold hover:text-teal-800">Learn More →</a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
 
-<section class="bg-gray-100 py-16">
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-gray-100 py-20">
     <div class="max-w-[1440px] mx-auto px-6">
         <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Testimonials</span></p>
         <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">What Our Clients Say</h1>
@@ -345,4 +342,64 @@
         },
     });
 </script>
+
+
+<style>
+    .swiper-button-next,
+    .swiper-button-prev {
+        background-color: rgba(0, 128, 128, 0.5);
+        color: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        background-color: rgba(0, 128, 128, 0.8);
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .swiper-button-next {
+        right: 10px;
+    }
+
+    .swiper-button-prev {
+        left: 10px;
+    }
+
+    .swiper-button-next.swiper-button-disabled,
+    .swiper-button-prev.swiper-button-disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    .swiper-pagination-bullet {
+        background-color: rgba(0, 128, 128, 0.5);
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #008080;
+        width: 12px;
+        height: 12px;
+    }
+
+    .swiper-pagination-bullet:hover {
+        background-color: rgba(0, 128, 128, 0.8);
+    }
+</style>
 @endsection

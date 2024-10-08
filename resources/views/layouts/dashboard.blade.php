@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Optional: Include Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
 </head>
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
@@ -49,6 +50,12 @@
                         </a>
                     </li>
 
+                    <!-- CV Storage Menu Item -->
+                    <li>
+                        <a href="{{ route('cvs.index') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200">
+                            <i class="fas fa-file-upload mr-3"></i> CV Storage
+                        </a>
+                    </li>
 
                     <!-- Rentals Dropdown Menu -->
                     <li class="relative">
@@ -74,7 +81,6 @@
                                 <i class="fas fa-industry mr-2"></i> Sunward
                             </a>
                         </div>
-
                     </li>
 
                     <li>
@@ -88,6 +94,7 @@
                     </li>
                 </ul>
             </nav>
+
         </div>
 
         <!-- Main content -->

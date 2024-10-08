@@ -3,7 +3,7 @@
 @section('title', 'Contact Us')
 
 @section('content')
-<section class="min-h-screen py-20 flex items-center justify-center">
+<section class="min-h-screen py-32 lg:py-20 flex items-center justify-center">
     <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div class="lg:flex">
@@ -75,26 +75,19 @@
                         @csrf
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
-                            <input type="text" id="name" name="name" class="mt-1 py-2 px-1 block w-full border border-gray-700 rounded-md shadow-sm sm:text-sm" required>
+                            <input type="text" id="name" name="name" class="mt-1 py-2 px-1 block w-full border border-gray-700 rounded-md">
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                            <input type="email" id="email" name="email" class="mt-1 py-2 px-1 block w-full border border-gray-700 rounded-md shadow-sm sm:text-sm" required>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 py-2 px-1 block w-full border border-gray-700 rounded-md">
                         </div>
                         <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
-                            <input type="text" id="subject" name="subject" class="mt-1 py-2 px-1 block w-full border border-gray-700 rounded-md shadow-sm sm:text-sm" required>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Your Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 py-2 px-1 block w-full border border-gray-700 rounded-md"></textarea>
                         </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                            <textarea id="message" name="message" rows="4" class="mt-1 py-2 px-1 block w-full border border-gray-700 rounded-md shadow-sm sm:text-sm" required></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
-                                Send Message
-                            </button>
-                        </div>
+                        <button type="submit" class="w-full py-2 px-4 bg-teal-600 text-white rounded-md">Send Message</button>
                     </form>
+
                 </div>
             </div>
         </div>

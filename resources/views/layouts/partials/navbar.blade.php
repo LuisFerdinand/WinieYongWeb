@@ -16,66 +16,46 @@
             <ul class="flex space-x-1">
                 <!-- Home -->
                 <li>
-                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('home') ? 'bg-gray-700' : 'bg-transparent' }}">
-                        <a href="{{ route('home') }}" class="w-full h-full">Home</a>
-                    </button>
+                    <a href="{{ route('home') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('home') ? 'bg-gray-700' : '' }}">
+                        Home
+                    </a>
                 </li>
 
                 <!-- About -->
                 <li>
-                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('about') ? 'bg-gray-700' : 'bg-transparent' }}">
-                        <a href="{{ route('about') }}" class="w-full h-full">About</a>
-                    </button>
+                    <a href="{{ route('about') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('about') ? 'bg-gray-700' : '' }}">
+                        About
+                    </a>
                 </li>
 
-                <!-- Products Dropdown -->
-                <li class="relative inline-block text-left">
-                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 bg-transparent rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" id="menu-button" aria-expanded="false" aria-haspopup="true">
-                        Products
-                        <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="product-dropdown" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                        <div class="py-1" role="none">
-                            <a href="{{ route('products.sunward.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Sunward</a>
-
-                        </div>
-                    </div>
+                <!-- Products -->
+                <li>
+                    <a href="{{ route('sunward.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('products.sunward.index') ? 'bg-gray-700' : '' }}">
+                        Sunward
+                    </a>
                 </li>
 
-                <!-- Services Dropdown -->
-                <li class="relative inline-block text-left">
-                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 bg-transparent rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" id="service-button" aria-expanded="false" aria-haspopup="true">
-                        Services
-                        <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="service-dropdown" role="menu" aria-orientation="vertical" aria-labelledby="service-button" tabindex="-1">
-                        <div class="py-1" role="none">
-                            <a href="{{ route('rental.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Machinery Rentals</a>
-
-                            <a href="{{ route('service.repair') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Repair & Maintenance</a>
-                            <a href="{{ route('parts.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Parts & Accessories</a>
-
-                        </div>
-                    </div>
+                <!-- Machinery Rental -->
+                <li>
+                    <a href="{{ route('rental.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('rental.index') ? 'bg-gray-700' : '' }}">
+                        Machinery Rental
+                    </a>
                 </li>
 
                 <!-- Career -->
                 <li>
-                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                        <a href="{{ route('career.index') }}" class="w-full h-full">Career</a>
-                    </button>
+                    <a href="{{ route('career.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('career.index') ? 'bg-gray-700' : '' }}">
+                        Career
+                    </a>
                 </li>
 
                 <!-- Contact -->
                 <li>
-                    <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->is('contact') ? 'bg-gray-700' : 'bg-transparent' }}">
-                        <a href="{{ route('contact') }}" class="w-full h-full">Contact</a>
-                    </button>
+                    <a href="{{ route('contact') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->is('contact') ? 'bg-gray-700' : '' }}">
+                        Contact
+                    </a>
                 </li>
+
             </ul>
         </nav>
 
@@ -97,88 +77,67 @@
                 </button>
 
                 <!-- Mobile Home -->
-                <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                    <a href="{{ route('home') }}" class="w-full h-full">Home</a>
-                </button>
+                <a href="{{ route('home') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    Home
+                </a>
 
                 <!-- Mobile About -->
-                <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                    <a href="{{ route('about') }}" class="w-full h-full">About</a>
-                </button>
+                <a href="{{ route('about') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    About
+                </a>
 
-                <!-- Mobile Products Dropdown -->
-                <div class="relative">
-                    <div class="flex justify-center items-center">
-                        <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 bg-transparent rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" id="mobile-product-button" aria-expanded="false" aria-haspopup="true">
-                            Products
-                            <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Dropdown Menu -->
-                    <div class="absolute z-50 left-0 mt-2 w-full bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="mobile-product-dropdown" role="menu" aria-orientation="vertical" aria-labelledby="mobile-product-button" tabindex="-1">
-                        <div class="py-1" role="none">
-                            <a href="{{ route('products.sunward.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Sunward</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Mobile Services Dropdown -->
-                <div class="relative">
-                    <div class="flex justify-center items-center">
-                        <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 bg-transparent rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" id="mobile-service-button" aria-expanded="false" aria-haspopup="true">
-                            Services
-                            <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Dropdown Menu -->
-                    <div class="absolute left-0 mt-2 w-full bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden" id="mobile-service-dropdown" role="menu" aria-orientation="vertical" aria-labelledby="mobile-service-button" tabindex="-1">
-                        <div class="py-1" role="none">
-                            <a href="{{ route('rental.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Machinery Rentals</a>
-                            <a href="{{ route('service.repair') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Repair & Maintenance</a>
-                            <a href="{{ route('parts.index') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700" role="menuitem" tabindex="-1">Parts & Accessories</a>
-                        </div>
-                    </div>
+                <!-- Mobile Products -->
+                <a href="{{ route('sunward.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    Sunward
+                </a>
 
-                </div>
+                <!-- Mobile Machinery Rental -->
+                <a href="{{ route('rental.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    Machinery Rental
+                </a>
+
                 <!-- Mobile Career -->
-                <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                    <a href="{{ route('career.index') }}" class="w-full h-full">Career</a>
-                </button>
+                <a href="{{ route('career.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    Career
+                </a>
 
                 <!-- Mobile Contact -->
-                <button type="button" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                    <a href="{{ route('contact') }}" class="w-full h-full">Contact</a>
-                </button>
+                <a href="{{ route('contact') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    Contact
+                </a>
             </div>
         </div>
-
 </header>
-<nav class="absolute w-full z-10 top-20 text-gray-500 px-4" aria-label="breadcrumb">
-    <div class="max-w-[1440px] mx-auto">
-        <ol class="breadcrumb flex space-x-2 items-center text-sm">
-            <!-- Home Link -->
-            <li class="breadcrumb-item">
-                <a href="{{ url('/') }}" class="text-teal-500 hover:text-teal-400 transition-colors duration-200">Beranda</a>
-            </li>
+<script>
+    // Get elements
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuCloseButton = document.getElementById('mobile-menu-close');
 
-            @if (Request::segment(1))
-            <span class="text-gray-500">›</span>
-            <li class="breadcrumb-item">
-                <a href="{{ url(Request::segment(1)) }}" class="text-teal-500 hover:text-teal-400 transition-colors duration-200">
-                    {{ ucfirst(Request::segment(1)) }}
-                </a>
-            </li>
-            @endif
+    // Function to open the mobile menu
+    function openMobileMenu() {
+        mobileMenu.classList.remove('hidden');
+    }
 
-            @if (Request::segment(2))
-            <span class="text-gray-500">›</span>
-            <li class="breadcrumb-item text-gray-300" aria-current="page">
-                {{ ucfirst(Request::segment(2)) }}
-            </li>
-            @endif
-        </ol>
-    </div>
-</nav>
+    // Function to close the mobile menu
+    function closeMobileMenu() {
+        mobileMenu.classList.add('hidden');
+    }
+
+    // Event listener for the mobile menu button
+    mobileMenuButton.addEventListener('click', openMobileMenu);
+
+    // Event listener for the close button
+    mobileMenuCloseButton.addEventListener('click', closeMobileMenu);
+
+    // Event listener to close the menu when clicking outside of it
+    document.addEventListener('click', (event) => {
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickOnButton = mobileMenuButton.contains(event.target);
+
+        // Close the menu if the click is outside the menu and the button
+        if (!isClickInsideMenu && !isClickOnButton) {
+            closeMobileMenu();
+        }
+    });
+</script>

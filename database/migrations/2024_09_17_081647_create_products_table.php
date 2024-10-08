@@ -15,9 +15,9 @@ class CreateProductsTable extends Migration
             $table->string('image_url');
             $table->integer('stock');
             $table->decimal('price', 12, 2);
-            $table->string('category')->nullable(); // Optional
             $table->string('model_number')->nullable(); // Optional
-            $table->text('specifications')->nullable(); // Optional
+
+
             $table->timestamps();
         });
     }
