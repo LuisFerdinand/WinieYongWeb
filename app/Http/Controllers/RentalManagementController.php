@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
 use App\Models\Rental;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -16,7 +17,7 @@ class RentalManagementController extends Controller
         $search = $request->input('search'); // Get the search query
 
         // Fetch rentals with search functionality
-        $query = Rental::query();
+        $query = Type::query();
 
         if ($search) {
             $query->where('name', 'like', "%$search%")

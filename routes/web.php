@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Type;
 use App\Mail\JobApplicationMail;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Mail;
@@ -12,8 +13,8 @@ use App\Http\Controllers\RentalController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Auth\LoginController;
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\JobManagementController;
 use App\Http\Controllers\PartManagementController;
@@ -21,8 +22,9 @@ use App\Http\Controllers\RentalManagementController;
 use App\Http\Controllers\ProductManagementController;
 use App\Http\Controllers\ProjectManagementController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-
-
+use App\Http\Controllers\TypeController;
+use App\Models\Category;
+use App\Models\Brand;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/projects/{id}', [PageController::class, 'show'])->name('project.show');
@@ -33,18 +35,69 @@ Route::get('/contact', function () {
 Route::post('/contact-submit', [PageController::class, 'submit'])->name('contact.submit');
 
 // Rental routes
-Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index');
-Route::get('/rentals/{id}', [RentalController::class, 'show'])->name('rental.show');
+Route::get('services/rentals', [RentalController::class, 'index'])->name('rentals.index');
+Route::get('services/rental/{type:type_slug}', [RentalController::class, 'show'])->name('rental.show');
 Route::get('/search', [RentalController::class, 'search'])->name('rentals.search');
-Route::resource('rental', RentalController::class)->only(['index', 'show']);
+Route::resource('services/rental', RentalController::class)->only(['index', 'show']);
 Route::get('/rentals/search', [RentalController::class, 'search'])->name('rental.search');
+Route::get('services/c/{category:category_slug}', function(Category $category){
+    return view('services.rental.index', [
+        'rentals'=>$category->types->load('category', 'brand'),
+        'title'=>"Types by Category: $category->category_name"
+    ]);
+});
+Route::get('/2/categories', function(Category $category){
+    return view('2/categories', [
+        'title'=>'Type Categories',
+        'categories'=>Category::all()
+    ]);
+});
+Route::get('/2/brands/{brand:brand_slug}', function(Brand $brand){
+    return view('2/posts', [
+        'title'=>"Types by Brand: $brand->brand_name",
+        'types'=>$brand->types->load('category', 'brand')
+    ]);
+});
+
+
+Route::get('/2/categories/{category:category_slug}', function(Category $category){
+    return view('2/posts', [
+        'types'=>$category->types,
+        'title'=>"Types by Category: $category->category_name"
+    ]);
+});
+Route::get('/2/categories', function(Category $category){
+    return view('2/categories', [
+        'title'=>'Type Categories',
+        'categories'=>Category::all()
+    ]);
+});
+Route::get('/2/brands/{brand:brand_slug}', function(Brand $brand){
+    return view('2/posts', [
+        'title'=>"Types by Brand: $brand->brand_name",
+        'types'=>$brand->types
+    ]);
+});
+
+
+Route::get('/2/posts', [TypeController::class, 'index']);
+Route::get('/2/posts/{type:type_slug}', [TypeController::class, 'show']);
+
+
+
+
+
+
+
+
+
 
 // Route to repair page
-Route::get('/repair', [ServiceController::class, 'repair'])->name('service.repair');
+Route::get('services/repair', [ServiceController::class, 'repair'])->name('service.repair');
 
 
 // Route to parts page
-Route::get('/parts', [PartController::class, 'index'])->name('parts.index');
+Route::get('services/parts', [PartController::class, 'index'])->name('parts.index');
 Route::get('/parts/{id}', [PartController::class, 'show'])->name('parts.show');
 
 
