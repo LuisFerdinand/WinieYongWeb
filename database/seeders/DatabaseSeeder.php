@@ -19,5 +19,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+<<<<<<< Updated upstream
+=======
+
+        $this->call(JobSeeder::class);
+        $this->call(ProductsTableSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(ProjectsTableSeeder::class,);
+>>>>>>> Stashed changes
     }
 }
