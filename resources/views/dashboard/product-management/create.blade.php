@@ -9,22 +9,47 @@
         <div class="bg-white shadow-md rounded-lg p-6">
             <div class="mb-4">
                 <label for="name" class="block text-gray-700">Product Name</label>
+<<<<<<< HEAD
                 <input type="text" name="name" id="name" class="w-full px-4 py-2 border rounded-lg" required oninput="generateSlug()">
             </div>
 
             <input type="hidden" name="slug" id="slug">
 
+=======
+                <input type="text" name="name" id="name" class="w-full px-4 py-2 border rounded-lg" required>
+            </div>
+
+>>>>>>> origin/Rental
             <div class="mb-4">
                 <label for="description" class="block text-gray-700">Description</label>
                 <textarea name="description" id="description" class="w-full px-4 py-2 border rounded-lg" rows="4" required></textarea>
             </div>
 
             <div class="mb-4">
+<<<<<<< HEAD
+=======
+                <label for="price" class="block text-gray-700">Price</label>
+                <input type="number" name="price" id="price" class="w-full px-4 py-2 border rounded-lg" step="0.01" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="stock" class="block text-gray-700">Stock</label>
+                <input type="number" name="stock" id="stock" class="w-full px-4 py-2 border rounded-lg" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="category" class="block text-gray-700">Category</label>
+                <input type="text" name="category" id="category" class="w-full px-4 py-2 border rounded-lg">
+            </div>
+
+            <div class="mb-4">
+>>>>>>> origin/Rental
                 <label for="model_number" class="block text-gray-700">Model Number</label>
                 <input type="text" name="model_number" id="model_number" class="w-full px-4 py-2 border rounded-lg">
             </div>
 
             <div class="mb-4">
+<<<<<<< HEAD
                 <label for="power_output" class="block text-gray-700">Power Output</label>
                 <input type="number" name="power_output" id="power_output" class="w-full px-4 py-2 border rounded-lg" step="0.01">
             </div>
@@ -42,15 +67,23 @@
             <div class="mb-4">
                 <label for="usage_instructions" class="block text-gray-700">Usage Instructions</label>
                 <textarea name="usage_instructions" id="usage_instructions" class="w-full px-4 py-2 border rounded-lg" rows="4"></textarea>
+=======
+                <label for="specifications" class="block text-gray-700">Specifications</label>
+                <textarea name="specifications" id="specifications" class="w-full px-4 py-2 border rounded-lg" rows="4"></textarea>
+>>>>>>> origin/Rental
             </div>
 
             <div class="mb-4">
                 <label for="image_url" class="block text-gray-700">Image URL</label>
+<<<<<<< HEAD
                 <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg" required accept="image/*" onchange="previewImage(event)">
             </div>
 
             <div class="mb-4">
                 <img id="image-preview" class="mt-4 hidden" src="" alt="Image Preview" style="max-width: 200px; border-radius: 8px;">
+=======
+                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg">
+>>>>>>> origin/Rental
             </div>
 
             <div class="mt-4">
@@ -60,6 +93,7 @@
         </div>
     </form>
 </div>
+<<<<<<< HEAD
 
 <script>
     function previewImage(event) {
@@ -91,4 +125,6 @@
         slugInput.value = slug;
     }
 </script>
+=======
+>>>>>>> origin/Rental
 @endsection

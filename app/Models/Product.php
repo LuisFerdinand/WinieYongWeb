@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
     protected $fillable = [
         'name',
         'slug',
@@ -19,4 +20,9 @@ class Product extends Model
         'fuel_type',
         'usage_instructions',
     ];
+=======
+
+
+    protected $fillable = ['name', 'description', 'image_url', 'stock', 'price', 'category', 'model_number', 'specifications'];
+>>>>>>> origin/Rental
 }

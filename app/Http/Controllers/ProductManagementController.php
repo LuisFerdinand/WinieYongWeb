@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+<<<<<<< HEAD
 use Illuminate\Support\Str; // Import Str facade for slug generation
+=======
+>>>>>>> origin/Rental
 
 class ProductManagementController extends Controller
 {
@@ -21,7 +24,13 @@ class ProductManagementController extends Controller
         if ($search) {
             $query->where('name', 'like', "%{$search}%")
                 ->orWhere('description', 'like', "%{$search}%")
+<<<<<<< HEAD
                 ->orWhere('model_number', 'like', "%{$search}%");
+=======
+                ->orWhere('category', 'like', "%{$search}%")
+                ->orWhere('model_number', 'like', "%{$search}%")
+                ->orWhere('specifications', 'like', "%{$search}%");
+>>>>>>> origin/Rental
         }
 
         $totalProducts = $query->count(); // Get total number of products based on search
@@ -36,6 +45,10 @@ class ProductManagementController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Rental
     public function create()
     {
         return view('dashboard.product-management.create');
@@ -46,6 +59,7 @@ class ProductManagementController extends Controller
         // Validate incoming request data
         $request->validate([
             'name' => 'required',
+<<<<<<< HEAD
             'slug' => 'required|string|max:255|unique:products,slug',
             'description' => 'required|string',
             'model_number' => 'nullable|string',
@@ -61,6 +75,19 @@ class ProductManagementController extends Controller
 
         // Generate slug from the name
         $data['slug'] = Str::slug($request->input('name'));
+=======
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'category' => 'nullable|string',
+            'model_number' => 'nullable|string',
+            'specifications' => 'nullable|string',
+            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+        ]);
+
+        // Initialize the data array for the product
+        $data = $request->only(['name', 'description', 'price', 'stock', 'category', 'model_number', 'specifications']);
+>>>>>>> origin/Rental
 
         // Handle file upload
         if ($request->hasFile('image_url')) {
@@ -75,7 +102,10 @@ class ProductManagementController extends Controller
         return redirect()->route('product-management.index')->with('success', 'Product created successfully.');
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/Rental
     public function edit($id)
     {
         $product = Product::findOrFail($id);
@@ -86,6 +116,7 @@ class ProductManagementController extends Controller
     {
         // Validate incoming request data
         $request->validate([
+<<<<<<< HEAD
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'model_number' => 'nullable|string|max:255',
@@ -94,16 +125,30 @@ class ProductManagementController extends Controller
             'fuel_type' => 'nullable|string|max:255',
             'usage_instructions' => 'nullable|string',
             'image_url' => 'nullable|file|image|max:5048', // Validate image upload
+=======
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'category' => 'nullable|string',
+            'model_number' => 'nullable|string',
+            'specifications' => 'nullable|string',
+            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+>>>>>>> origin/Rental
         ]);
 
         // Find the product by ID
         $product = Product::findOrFail($id);
 
         // Initialize the data array for the product
+<<<<<<< HEAD
         $data = $request->only(['name', 'description', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions']);
 
         // Generate slug from the name
         $data['slug'] = Str::slug($request->input('name'));
+=======
+        $data = $request->only(['name', 'description', 'price', 'stock', 'category', 'model_number', 'specifications']);
+>>>>>>> origin/Rental
 
         // Handle file upload
         if ($request->hasFile('image_url')) {
@@ -124,6 +169,10 @@ class ProductManagementController extends Controller
         return redirect()->route('product-management.index')->with('success', 'Product updated successfully.');
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Rental
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
@@ -136,6 +185,10 @@ class ProductManagementController extends Controller
         // Delete the product record from the database
         $product->delete();
 
+<<<<<<< HEAD
         return redirect()->route('product-management.index')->with('success', 'Product deleted successfully.');
+=======
+        return redirect()->route('part-management.index')->with('success', 'Part deleted successfully.');
+>>>>>>> origin/Rental
     }
 }

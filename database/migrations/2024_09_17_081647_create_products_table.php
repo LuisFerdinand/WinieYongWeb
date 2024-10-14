@@ -10,6 +10,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->string('slug');                            // Add slug field
             $table->string('name');
             $table->text('description');
@@ -19,6 +20,16 @@ class CreateProductsTable extends Migration
             $table->string('dimensions')->nullable();          // Add dimensions
             $table->string('fuel_type')->nullable();           // Add fuel type
             $table->text('usage_instructions')->nullable();    // Add usage instructions
+=======
+            $table->string('name');
+            $table->text('description');
+            $table->string('image_url');
+            $table->integer('stock');
+            $table->decimal('price', 12, 2);
+            $table->string('category')->nullable(); // Optional
+            $table->string('model_number')->nullable(); // Optional
+            $table->text('specifications')->nullable(); // Optional
+>>>>>>> origin/Rental
             $table->timestamps();
         });
     }

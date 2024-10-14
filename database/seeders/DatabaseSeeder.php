@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 
@@ -27,5 +28,14 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(ProjectsTableSeeder::class,);
 >>>>>>> Stashed changes
+=======
+
+        $this->call(RentalSeeder::class);
+        $this->call(PartSeeder::class);
+        $this->call(JobSeeder::class);
+        $this->call(ProductSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(ProjectsTableSeeder::class,);
+>>>>>>> origin/Rental
     }
 }

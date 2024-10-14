@@ -13,6 +13,7 @@ class ProductController extends Controller
     {
         $products = Product::all();  // Assuming you want all products to be part of the carousel
 
+<<<<<<< HEAD
         return view('sunward.index', compact('products'));
     }
 
@@ -31,6 +32,26 @@ class ProductController extends Controller
 
         // Check if the product already has a click entry
         $productClick = ProductClick::where('product_id', $product->id)->first();
+=======
+        return view('products.sunward.index', compact('products'));
+    }
+
+
+    // Show single product details
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.sunward.show', compact('product'));
+    }
+
+    public function trackClick($id)
+    {
+        // Find the product
+        $product = Product::findOrFail($id);
+
+        // Check if the product already has a click entry
+        $productClick = ProductClick::where('product_id', $id)->first();
+>>>>>>> origin/Rental
 
         if ($productClick) {
             // If exists, increment the click count

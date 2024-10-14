@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------- Navbar Menu ------------------- */
+/* -------------------- Swiper Styling ------------------- */
+/* Change the navigation button color */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ff5722;
+    /* Change this to any color you like */
+}
+
+/* Change button hover color */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #ff8a50;
+    /* Hover color */
+}
+
+.accordion-button[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+}

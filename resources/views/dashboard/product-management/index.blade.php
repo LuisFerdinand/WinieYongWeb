@@ -43,11 +43,20 @@
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Name</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Description</th>
+<<<<<<< HEAD
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Image</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Model Number</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Power Output</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Dimensions</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Fuel Type</th>
+=======
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Price</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Stock</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Category</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Model Number</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Specifications</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Image</th>
+>>>>>>> origin/Rental
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
@@ -56,6 +65,14 @@
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $product->name }}</td>
                     <td class="px-6 py-4">{{ Str::limit($product->description, 100) }}</td>
+<<<<<<< HEAD
+=======
+                    <td class="px-6 py-4 whitespace-nowrap">{{ number_format($product->price, 2) }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $product->stock }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $product->category ?? 'N/A' }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $product->model_number ?? 'N/A' }}</td>
+                    <td class="px-6 py-4">{{ Str::limit($product->specifications, 100) ?? 'N/A' }}</td>
+>>>>>>> origin/Rental
                     <td class="px-6 py-4 whitespace-nowrap">
                         @if($product->image_url)
                         <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="w-16 h-16 object-cover rounded-md">
@@ -63,10 +80,13 @@
                         <span class="text-gray-500">No image</span>
                         @endif
                     </td>
+<<<<<<< HEAD
                     <td class="px-6 py-4 whitespace-nowrap">{{ $product->model_number ?? 'N/A' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $product->power_output ?? 'N/A' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $product->dimensions ?? 'N/A' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $product->fuel_type ?? 'N/A' }}</td>
+=======
+>>>>>>> origin/Rental
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <a href="{{ route('product-management.edit', $product->id) }}" class="font-bold text-yellow-600 hover:text-yellow-900 mr-3">Edit</a>
                         <form action="{{ route('product-management.destroy', $product->id) }}" method="POST" class="inline-block">
@@ -78,7 +98,11 @@
                 </tr>
                 @empty
                 <tr>
+<<<<<<< HEAD
                     <td colspan="10" class="px-6 py-4 text-center text-gray-500">No products found.</td>
+=======
+                    <td colspan="9" class="px-6 py-4 text-center text-gray-500">No products found.</td>
+>>>>>>> origin/Rental
                 </tr>
                 @endforelse
             </tbody>
