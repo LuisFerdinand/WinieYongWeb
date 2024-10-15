@@ -2,7 +2,7 @@
     <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
         <!-- Company Information Section -->
         <div class="flex flex-col items-center md:items-start mb-4">
-            <img src="{{ asset('img/logo.png') }}" alt="Sambas Karya Perkasa" class="h-24 lg:h-48 mb-4">
+            <img src="img/logo.png" alt="Sambas Karya Perkasa" class="h-24 lg:h-48 mb-4">
             <div class="text-center md:text-left">
                 <h2 class="text-xl font-bold">Sambas Karya Perkasa</h2>
                 <p class="text-gray-600 mt-1">

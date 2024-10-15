@@ -16,6 +16,7 @@
     <!-- Mobile Hamburger Button -->
     <div class="md:hidden p-4 bg-gray-800 text-white flex justify-between items-center">
         <button id="hamburger-btn" class="focus:outline-none">
+            button
             <i class="fas fa-bars text-2xl"></i>
         </button>
         <h1 class="text-xl font-bold">Admin Dashboard</h1>

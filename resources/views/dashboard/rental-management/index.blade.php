@@ -32,11 +32,13 @@
                 <tr>
                     <th class="px-4 py-2">Name</th>
                     <th class="px-4 py-2">Description</th>
-                    <th class="px-4 py-2">Price (Rp)</th>
+                    {{-- <th class="px-4 py-2">Price (Rp)</th> --}}
                     <th class="px-4 py-2">Category</th>
-                    <th class="px-4 py-2">Available From</th>
-                    <th class="px-4 py-2">Available To</th>
-                    <th class="px-4 py-2">Status</th>
+                    <th class="px-4 py-2">Brand</th>
+                    <th class="px-4 py-2">Availability</th>
+                    {{-- <th class="px-4 py-2">Available From</th> --}}
+                    {{-- <th class="px-4 py-2">Available To</th> --}}
+                    {{-- <th class="px-4 py-2">Status</th> --}}
                     <th class="px-4 py-2">Image</th>
                     <th class="px-4 py-2">Actions</th>
                 </tr>
@@ -44,30 +46,33 @@
             <tbody>
                 @forelse($rentals as $rental)
                 <tr>
-                    <td class="border px-4 py-2">{{ $rental->name }}</td>
-                    <td class="border px-4 py-2">{{ Str::limit($rental->description, 100) }}</td>
-                    <td class="border px-4 py-2">{{ number_format($rental->price, 2) }}</td>
-                    <td class="border px-4 py-2">{{ $rental->category }}</td>
-                    <td class="border px-4 py-2">{{ $rental->available_from ? $rental->available_from->format('Y-m-d') : 'N/A' }}</td>
-                    <td class="border px-4 py-2">{{ $rental->available_to ? $rental->available_to->format('Y-m-d') : 'N/A' }}</td>
+                    <td class="border px-4 py-2">{{ $rental->type_name }}</td>
+                    <td class="border px-4 py-2">{{ Str::limit($rental->type_description, 100) }}</td>
+                    {{-- <td class="border px-4 py-2">{{ number_format($rental->price, 2) }}</td> --}}
+                    <td class="border px-4 py-2">{{ $rental->category->category_name }}</td>
+                    <td class="border px-4 py-2">{{ $rental->brand->brand_name }}</td>
+                    {{-- <td class="border px-4 py-2">{{ $rental->available_from ? $rental->available_from->format('Y-m-d') : 'N/A' }}</td>
+                    <td class="border px-4 py-2">{{ $rental->available_to ? $rental->available_to->format('Y-m-d') : 'N/A' }}</td> --}}
                     <td class="border px-4 py-2">
-                        @if($rental->availability_status)
+                        @if($rental->type_availability)
                         <span class="bg-green-500 text-white px-2 py-1 rounded">Available</span>
                         @else
                         <span class="bg-red-500 text-white px-2 py-1 rounded">Unavailable</span>
                         @endif
                     </td>
-                    <td class="border px-4 py-2">
-                        @if($rental->image_url)
-                        <img src="{{ asset('storage/' . $rental->image_url) }}" alt="{{ $rental->name }}" class="w-16 h-16 object-cover">
+                    <td class="border px-0.5 py-2">
+
+                        @if($rental->type_image)
+                        {{-- <img src="{{ asset('storage/' . $rental->image_url) }}" alt="{{ $rental->name }}" class="w-16 h-16 object-cover"> --}}
+                        <img src={{ $rental->type_image }} alt="{{ $rental->type_name }}" class="w-20 h-20 object-contain rounded border-gray-500 border">
                         @else
                         <span class="text-gray-500">No image</span>
                         @endif
                     </td>
 
                     <td class="border px-4 py-2">
-                        <a href="{{ route('rental-management.edit', $rental->id) }}" class="text-yellow-500 font-bold hover:text-yellow-300">Edit</a>
-                        <form action="{{ route('rental-management.destroy', $rental->id) }}" method="POST" class="inline-block">
+                        <a href="{{ route('rental-management.edit', $rental->type_id) }}" class="text-yellow-500 font-bold hover:text-yellow-300">Edit</a>
+                        <form action="{{ route('rental-management.destroy', $rental->type_id) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 font-bold hover:text-red-300">Delete</button>
