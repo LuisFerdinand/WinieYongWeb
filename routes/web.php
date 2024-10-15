@@ -85,15 +85,6 @@ Route::get('/2/brands/{brand:brand_slug}', function (Brand $brand) {
 Route::get('/2/posts', [TypeController::class, 'index']);
 Route::get('/2/posts/{type:type_slug}', [TypeController::class, 'show']);
 
-
-
-
-
-
-
-
-
-
 // Route to repair page
 Route::get('services/repair', [ServiceController::class, 'repair'])->name('service.repair');
 
