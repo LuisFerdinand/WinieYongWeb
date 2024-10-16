@@ -103,7 +103,7 @@ Route::post('/career/{id}/apply', [JobController::class, 'apply'])->name('career
 
 // Product Route
 Route::get('/sunward', [ProductController::class, 'index'])->name('sunward.index');
-Route::get('/sunward/{id}', [ProductController::class, 'show'])->name('sunward.show');
+Route::get('/sunward/{slug}', [ProductController::class, 'show'])->name('sunward.show');
 
 
 
@@ -138,7 +138,7 @@ Route::middleware(['auth', 'check.role:admin'])->group(function () {
 
 
 // trancking click route
-Route::get('/products/{id}/track-click', [ProductController::class, 'trackClick'])->name('products.trackClick');
+Route::get('/products/{slug}/track-click', [ProductController::class, 'trackClick'])->name('products.trackClick');
 Route::get('dashboard/clicks', [DashboardController::class, 'showClickData'])->name('dashboard.clicks');
 Route::get('/rentals/{id}/track-click', [RentalController::class, 'trackClick'])->name('rentals.trackClick');
 

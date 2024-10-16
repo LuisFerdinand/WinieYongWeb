@@ -4,90 +4,52 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ProductsTableSeeder extends Seeder
 {
     public function run()
     {
-        $products = [
+        DB::table('products')->insert([
             [
-                'name' => 'Sunward SW240P',
-                'description' => 'The Sunward SW240P is a powerful compact excavator designed for optimal performance in tight spaces.',
-                'image_url' => 'https://example.com/images/sw240p.jpg',
-                'stock' => 10,
-                'price' => 65000.00,
-                'model_number' => 'SW240P',
-                'weight' => '2400 kg',
-                'power_output' => 30.5,
-                'dimensions' => '2250 x 1200 x 2500 mm',
+                'name' => 'Sunward Excavator SWL2830',
+                'slug' => Str::slug('Sunward Excavator SWL2830'),  // Slug generated from name
+                'description' => 'High-performance Sunward excavator, suitable for construction and heavy-duty digging.',
+                'image_url' => 'images/excavator_swl2830.jpg',
+                'model_number' => 'SWL2830',
+                'power_output' => 350.00,  // Example value in kW
+                'dimensions' => '800x300x300 cm',
                 'fuel_type' => 'Diesel',
-                'usage_instructions' => 'Ensure all safety protocols are followed during operation.',
-                'rating' => 4.5,
-                'reviews_count' => 20,
+                'usage_instructions' => 'Ensure regular maintenance for optimal performance.',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
-                'name' => 'Sunward SWD25D',
-                'description' => 'A versatile wheel loader known for its efficient operation and robust design.',
-                'image_url' => 'https://example.com/images/swd25d.jpg',
-                'stock' => 15,
-                'price' => 85000.00,
-                'model_number' => 'SWD25D',
-                'weight' => '2500 kg',
-                'power_output' => 40.0,
-                'dimensions' => '3600 x 1800 x 2400 mm',
+                'name' => 'Sunward Hydraulic Hammer SWH500',
+                'slug' => Str::slug('Sunward Hydraulic Hammer SWH500'),
+                'description' => 'Hydraulic hammer attachment, ideal for breaking rocks and concrete.',
+                'image_url' => 'images/hydraulic_hammer_swh500.jpg',
+                'model_number' => 'SWH500',
+                'power_output' => 120.00,  // Example value in kW
+                'dimensions' => '250x70x50 cm',
+                'fuel_type' => 'Hydraulic',
+                'usage_instructions' => 'Only use with compatible Sunward excavators.',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Sunward Mini Excavator SWE18UF',
+                'slug' => Str::slug('Sunward Mini Excavator SWE18UF'),
+                'description' => 'Compact excavator for small construction sites or landscaping projects.',
+                'image_url' => 'images/mini_excavator_swe18uf.jpg',
+                'model_number' => 'SWE18UF',
+                'power_output' => 50.00,  // Example value in kW
+                'dimensions' => '220x120x150 cm',
                 'fuel_type' => 'Diesel',
-                'usage_instructions' => 'Check hydraulic oil levels before operation.',
-                'rating' => 4.7,
-                'reviews_count' => 35,
-            ],
-            [
-                'name' => 'Sunward SWF75',
-                'description' => 'A heavy-duty crawler excavator with enhanced digging capabilities.',
-                'image_url' => 'https://example.com/images/swf75.jpg',
-                'stock' => 8,
-                'price' => 125000.00,
-                'model_number' => 'SWF75',
-                'weight' => '7500 kg',
-                'power_output' => 70.0,
-                'dimensions' => '4000 x 2000 x 3000 mm',
-                'fuel_type' => 'Diesel',
-                'usage_instructions' => 'Always check for overhead power lines before operation.',
-                'rating' => 4.8,
-                'reviews_count' => 40,
-            ],
-            [
-                'name' => 'Sunward SWM500',
-                'description' => 'A powerful mini excavator designed for high-efficiency operation in construction sites.',
-                'image_url' => 'https://example.com/images/swm500.jpg',
-                'stock' => 5,
-                'price' => 55000.00,
-                'model_number' => 'SWM500',
-                'weight' => '500 kg',
-                'power_output' => 22.0,
-                'dimensions' => '1600 x 800 x 1800 mm',
-                'fuel_type' => 'Gasoline',
-                'usage_instructions' => 'Avoid operating on steep slopes.',
-                'rating' => 4.3,
-                'reviews_count' => 15,
-            ],
-            [
-                'name' => 'Sunward SWD35',
-                'description' => 'A robust backhoe loader suitable for various construction and landscaping tasks.',
-                'image_url' => 'https://example.com/images/swd35.jpg',
-                'stock' => 12,
-                'price' => 95000.00,
-                'model_number' => 'SWD35',
-                'weight' => '3500 kg',
-                'power_output' => 50.0,
-                'dimensions' => '3000 x 1500 x 2300 mm',
-                'fuel_type' => 'Diesel',
-                'usage_instructions' => 'Perform regular maintenance checks to ensure optimal performance.',
-                'rating' => 4.6,
-                'reviews_count' => 30,
-            ],
-        ];
-
-        // Insert data into the products table
-        DB::table('products')->insert($products);
+                'usage_instructions' => 'Ideal for tight spaces and light digging work.',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        ]);
     }
 }

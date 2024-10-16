@@ -10,14 +10,15 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
             $table->string('name');
             $table->text('description');
             $table->string('image_url');
-            $table->integer('stock');
-            $table->decimal('price', 12, 2);
-            $table->string('model_number')->nullable(); // Optional
-
-
+            $table->string('model_number')->nullable();
+            $table->decimal('power_output', 8, 2)->nullable();
+            $table->string('dimensions')->nullable();
+            $table->string('fuel_type')->nullable();
+            $table->text('usage_instructions')->nullable();
             $table->timestamps();
         });
     }

@@ -16,21 +16,21 @@ class ProductController extends Controller
         return view('sunward.index', compact('products'));
     }
 
-
     // Show single product details
-    public function show($id)
+    public function show($slug)
     {
-        $product = Product::findOrFail($id);
+        // Use slug to find the product
+        $product = Product::where('slug', $slug)->firstOrFail();
         return view('sunward.show', compact('product'));
     }
 
-    public function trackClick($id)
+    public function trackClick($slug)
     {
-        // Find the product
-        $product = Product::findOrFail($id);
+        // Find the product using the slug
+        $product = Product::where('slug', $slug)->firstOrFail();
 
         // Check if the product already has a click entry
-        $productClick = ProductClick::where('product_id', $id)->first();
+        $productClick = ProductClick::where('product_id', $product->id)->first();
 
         if ($productClick) {
             // If exists, increment the click count

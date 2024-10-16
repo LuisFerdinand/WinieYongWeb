@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str; // Import Str facade for slug generation
 
 class ProductManagementController extends Controller
 {
@@ -20,9 +21,7 @@ class ProductManagementController extends Controller
         if ($search) {
             $query->where('name', 'like', "%{$search}%")
                 ->orWhere('description', 'like', "%{$search}%")
-                ->orWhere('category', 'like', "%{$search}%")
-                ->orWhere('model_number', 'like', "%{$search}%")
-                ->orWhere('specifications', 'like', "%{$search}%");
+                ->orWhere('model_number', 'like', "%{$search}%");
         }
 
         $totalProducts = $query->count(); // Get total number of products based on search
@@ -37,7 +36,6 @@ class ProductManagementController extends Controller
         ]);
     }
 
-
     public function create()
     {
         return view('dashboard.product-management.create');
@@ -49,22 +47,19 @@ class ProductManagementController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'price' => 'required|numeric',
-            'stock' => 'required|integer',
-            'category' => 'nullable|string',
-            'model_number' => 'nullable|string',
-            'specifications' => 'nullable|string',
-            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+            'image_url' => 'required|file|image|max:2048', // Validate image upload
+            'model_number' => 'nullable|string|max:255',
             'power_output' => 'nullable|numeric',
             'dimensions' => 'nullable|string|max:255',
             'fuel_type' => 'nullable|string|max:255',
             'usage_instructions' => 'nullable|string',
-            'rating' => 'nullable|numeric|min:0|max:5',
-            'reviews_count' => 'nullable|integer|min:0',
         ]);
 
         // Initialize the data array for the product
-        $data = $request->only(['name', 'description', 'price', 'stock', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions', 'rating', 'reviews_count']);
+        $data = $request->only(['name', 'description', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions']);
+
+        // Generate the slug from the name
+        $data['slug'] = Str::slug($request->input('name'));
 
         // Handle file upload
         if ($request->hasFile('image_url')) {
@@ -91,23 +86,22 @@ class ProductManagementController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric',
-            'stock' => 'required|integer',
-            'model_number' => 'nullable|string|max:255',
             'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+            'model_number' => 'nullable|string|max:255',
             'power_output' => 'nullable|numeric',
             'dimensions' => 'nullable|string|max:255',
             'fuel_type' => 'nullable|string|max:255',
             'usage_instructions' => 'nullable|string',
-            'rating' => 'nullable|numeric|min:0|max:5',
-            'reviews_count' => 'nullable|integer|min:0',
         ]);
 
         // Find the product by ID
         $product = Product::findOrFail($id);
 
         // Initialize the data array for the product
-        $data = $request->only(['name', 'description', 'price', 'stock', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions', 'rating', 'reviews_count']);
+        $data = $request->only(['name', 'description', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions']);
+
+        // Generate the slug from the name
+        $data['slug'] = Str::slug($request->input('name'));
 
         // Handle file upload
         if ($request->hasFile('image_url')) {
@@ -120,6 +114,9 @@ class ProductManagementController extends Controller
             $file = $request->file('image_url');
             $path = $file->store('sunwards', 'public'); // Save to public storage
             $data['image_url'] = $path; // Add the path to the data array
+        } else {
+            // If no new image is uploaded, retain the old image URL
+            $data['image_url'] = $product->image_url;
         }
 
         // Update the product with the gathered data
@@ -127,7 +124,6 @@ class ProductManagementController extends Controller
 
         return redirect()->route('product-management.index')->with('success', 'Product updated successfully.');
     }
-
 
     public function destroy($id)
     {
@@ -141,6 +137,6 @@ class ProductManagementController extends Controller
         // Delete the product record from the database
         $product->delete();
 
-        return redirect()->route('product-management.index')->with('success', 'Part deleted successfully.');
+        return redirect()->route('product-management.index')->with('success', 'Product deleted successfully.');
     }
 }
