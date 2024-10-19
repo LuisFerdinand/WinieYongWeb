@@ -15,14 +15,14 @@ class RentalController extends Controller
     {
         $query = Type::filter(request(['search', 'brand', 'category']))->with('brand', 'category');
         $title = "";
-       if(request('category')){
-        $category = Category::firstWhere('category_slug', request('category'));
-        $title = ' in '.$category->category_name;
-       }
-       if(request('brand')){
-        $brand = Brand::firstWhere('brand_slug', request('brand'));
-        $title = ' by '.$brand->brand_name;
-       }
+        if (request('category')) {
+            $category = Category::firstWhere('category_slug', request('category'));
+            $title = ' in ' . $category->category_name;
+        }
+        if (request('brand')) {
+            $brand = Brand::firstWhere('brand_slug', request('brand'));
+            $title = ' by ' . $brand->brand_name;
+        }
 
         $rentals = $query->paginate(5);
 
@@ -43,7 +43,7 @@ class RentalController extends Controller
 
         // Sort the grouped brands by the first letter
         ksort($groupedBrands);
-        
+
         // Group categories by the first letter
         $groupedCategories = [];
         foreach ($categories as $category) {
@@ -124,7 +124,7 @@ class RentalController extends Controller
 
     //     // Sort the grouped brands by the first letter
     //     ksort($groupedBrands);
-        
+
     //     // Group categories by the first letter
     //     $groupedCategories = [];
     //     foreach ($categories as $category) {
@@ -155,19 +155,19 @@ class RentalController extends Controller
     public function show(Type $type)
     {
         return view('services.rental.show', [
-            "title"=>$type->type_name,
-            "rental"=>$type,
+            "title" => $type->type_name,
+            "rental" => $type,
         ]);
     }
 
     // Track clicks on rentals
-    public function trackClick($id)
+    public function trackClick($slug)
     {
-        // Find the rental
-        $rental = Type::findOrFail($id);
+        // Find the rental by slug
+        $rental = Type::where('slug', $slug)->firstOrFail();
 
         // Check if the rental already has a click entry
-        $rentalClick = RentalClick::where('rental_id', $id)->first();
+        $rentalClick = RentalClick::where('rental_id', $rental->id)->first();
 
         if ($rentalClick) {
             // If exists, increment the click count
@@ -182,10 +182,9 @@ class RentalController extends Controller
             ]);
         }
 
-        // Redirect user to WhatsApp
+        // Redirect user to WhatsApp with rental name
         return redirect('https://wa.me/+6285248209388?text=I%20am%20interested%20in%20' . urlencode($rental->name));
     }
-
 
     // New method to get click data for the dashboard
     public function getClickData()

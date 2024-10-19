@@ -140,7 +140,7 @@ Route::middleware(['auth', 'check.role:admin'])->group(function () {
 // trancking click route
 Route::get('/products/{slug}/track-click', [ProductController::class, 'trackClick'])->name('products.trackClick');
 Route::get('dashboard/clicks', [DashboardController::class, 'showClickData'])->name('dashboard.clicks');
-Route::get('/rentals/{id}/track-click', [RentalController::class, 'trackClick'])->name('rentals.trackClick');
+Route::get('/rentals/track-click/{slug}', [RentalController::class, 'trackClick'])->name('rentals.trackClick');
 
 
 // user controller

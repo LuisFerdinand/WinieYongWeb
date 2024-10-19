@@ -72,7 +72,7 @@
                         <h3 class="text-3xl font-semibold text-gray-800 uppercase mb-0">{{ $product->name }}</h3>
                         <p class="text-teal-500 font-bold tracking-wide mb-2">{{$product->model_number}}</p>
                         <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 200) }}</p>
-                        <p class="text-xl font-bold mb-4">Rp. {{ number_format($product->price, 2) }}</p>
+                        <p class="text-xl font-bold mb-4">{{ $product->power_output}} HP</p>
                         <a href="{{ route('sunward.show', $product->slug) }}" class="text-teal-600 hover:underline">View Details</a>
                     </div>
                     @endforeach

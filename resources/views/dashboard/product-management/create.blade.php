@@ -9,8 +9,10 @@
         <div class="bg-white shadow-md rounded-lg p-6">
             <div class="mb-4">
                 <label for="name" class="block text-gray-700">Product Name</label>
-                <input type="text" name="name" id="name" class="w-full px-4 py-2 border rounded-lg" required>
+                <input type="text" name="name" id="name" class="w-full px-4 py-2 border rounded-lg" required oninput="generateSlug()">
             </div>
+
+            <input type="hidden" name="slug" id="slug">
 
             <div class="mb-4">
                 <label for="description" class="block text-gray-700">Description</label>
@@ -18,33 +20,8 @@
             </div>
 
             <div class="mb-4">
-                <label for="price" class="block text-gray-700">Price</label>
-                <input type="number" name="price" id="price" class="w-full px-4 py-2 border rounded-lg" step="0.01" required>
-            </div>
-
-            <div class="mb-4">
-                <label for="stock" class="block text-gray-700">Stock</label>
-                <input type="number" name="stock" id="stock" class="w-full px-4 py-2 border rounded-lg" required>
-            </div>
-
-            <div class="mb-4">
-                <label for="category" class="block text-gray-700">Category</label>
-                <input type="text" name="category" id="category" class="w-full px-4 py-2 border rounded-lg">
-            </div>
-
-            <div class="mb-4">
                 <label for="model_number" class="block text-gray-700">Model Number</label>
                 <input type="text" name="model_number" id="model_number" class="w-full px-4 py-2 border rounded-lg">
-            </div>
-
-            <div class="mb-4">
-                <label for="specifications" class="block text-gray-700">Specifications</label>
-                <textarea name="specifications" id="specifications" class="w-full px-4 py-2 border rounded-lg" rows="4"></textarea>
-            </div>
-
-            <div class="mb-4">
-                <label for="image_url" class="block text-gray-700">Image URL</label>
-                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg">
             </div>
 
             <div class="mb-4">
@@ -68,13 +45,12 @@
             </div>
 
             <div class="mb-4">
-                <label for="rating" class="block text-gray-700">Rating (0-5)</label>
-                <input type="number" name="rating" id="rating" class="w-full px-4 py-2 border rounded-lg" step="0.1" min="0" max="5">
+                <label for="image_url" class="block text-gray-700">Image URL</label>
+                <input type="file" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg" required accept="image/*" onchange="previewImage(event)">
             </div>
 
             <div class="mb-4">
-                <label for="reviews_count" class="block text-gray-700">Reviews Count</label>
-                <input type="number" name="reviews_count" id="reviews_count" class="w-full px-4 py-2 border rounded-lg" min="0">
+                <img id="image-preview" class="mt-4 hidden" src="" alt="Image Preview" style="max-width: 200px; border-radius: 8px;">
             </div>
 
             <div class="mt-4">
@@ -84,4 +60,35 @@
         </div>
     </form>
 </div>
+
+<script>
+    function previewImage(event) {
+        const preview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.classList.add('hidden');
+        }
+    }
+
+    function generateSlug() {
+        const nameInput = document.getElementById('name');
+        const slugInput = document.getElementById('slug');
+        const slug = nameInput.value
+            .toLowerCase()
+            .replace(/\s+/g, '-') // Replace spaces with -
+            .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+            .replace(/\-\-+/g, '-') // Replace multiple - with single -
+            .replace(/^-+/, '') // Trim - from start
+            .replace(/-+$/, ''); // Trim - from end
+        slugInput.value = slug;
+    }
+</script>
 @endsection

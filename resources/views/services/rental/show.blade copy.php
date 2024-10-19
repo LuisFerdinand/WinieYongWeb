@@ -41,9 +41,10 @@
             <!-- Action Buttons -->
             <div class="flex flex-col md:flex-row gap-4">
                 <!-- WhatsApp Contact Button -->
-                <a href="{{ route('rentals.trackClick', $rental->id) }}" target="_blank" class="bg-teal-600 text-white px-4 py-3 lg:px-6 lg:py-3 rounded-md shadow-md hover:bg-teal-700 transition duration-300 inline-block text-center">
+                <a href="{{ route('rentals.trackClick', $rental->slug) }}" target="_blank" class="bg-teal-600 text-white px-4 py-3 lg:px-6 lg:py-3 rounded-md shadow-md hover:bg-teal-700 transition duration-300 inline-block text-center">
                     Contact via WhatsApp
                 </a>
+
                 <!-- Back to Rentals Button -->
                 <a href="{{ route('rental.index') }}" class="bg-white text-teal-600 px-4 py-3 lg:px-6 lg:py-3 border border-teal-600 rounded-md shadow-md hover:bg-teal-100 transition duration-300 inline-block text-center">
                     Back to Rental List
