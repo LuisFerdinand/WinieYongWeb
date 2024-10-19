@@ -23,8 +23,6 @@ return new class extends Migration
             $table->string('type_availability', 255)->default(1);
             $table->integer('type_engine_power')->nullable(); // in HP
             $table->integer('type_operating_weight')->nullable(); // in tons
-            $table->integer('type_bucket_capacity')->nullable(); // in cubic meters
-            $table->integer('type_max_digging_depth')->nullable(); // in meters
             $table->integer('type_fuel_capacity')->nullable(); // in liters
             $table->integer('type_max_speed')->nullable(); // in km/h
             $table->timestamps();

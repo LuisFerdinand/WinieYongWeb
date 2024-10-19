@@ -322,21 +322,21 @@
                   </div> --}}
                   <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 text-start">
                     <div class="col-span-1">
-                        <p class="font-medium">Operating Weight:</p>
-                        <p class="">21,300 kg</p>
-                    </div>
-                    <div class="col-span-1">
-                        <p class="font-medium">Engine Power:</p>
-                        <p>158 HP</p>
-                    </div>
-                    <div class="col-span-1">
-                        <p class="font-medium">Bucket Capacity:</p>
-                        <p>1.2 m³</p>
-                    </div>
-                    <div class="col-span-1">
-                        <p class="font-medium">Max Digging Depth:</p>
-                        <p>6.67 m</p>
-                    </div>
+                      <p class="font-semibold text-gray-800">Operating Weight:</p>
+                      <p class="">{{ $rental->type_operating_weight }} kg</p>
+                  </div>
+                  <div class="col-span-1">
+                      <p class="font-semibold text-gray-800">Engine Power:</p>
+                      <p>{{ $rental->type_engine_power }} HP</p>
+                  </div>
+                  <div class="col-span-1">
+                      <p class="font-semibold text-gray-800">Fuel Capacity:</p>
+                      <p>{{ $rental->type_fuel_capacity }} liters</p>
+                  </div>
+                  <div class="col-span-1">
+                      <p class="font-semibold text-gray-800">Max Speed:</p>
+                      <p>{{ $rental->type_max_speed }} km/h</p>
+                  </div>
                 </div>
 
                 <hr class="border-black my-2">
