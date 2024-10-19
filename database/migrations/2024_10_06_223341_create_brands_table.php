@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('brand_slug', 100)->unique();
             $table->text('brand_description')->nullable();
             $table->string('brand_image', 255)->nullable();
-            $table->string('brand_color')->default('rental');
+            $table->string('brand_image_url', 255)->nullable();
+            $table->string('brand_color')->default('blue');
             $table->timestamps();
         });
     }

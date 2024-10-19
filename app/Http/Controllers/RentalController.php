@@ -24,7 +24,7 @@ class RentalController extends Controller
         $title = ' by '.$brand->brand_name;
        }
 
-        $rentals = $query->paginate(5);
+        $rentals = $query->paginate(6);
 
         // Retrieve all categories
         $categories = Category::withCount('types')->get(); // Retrieve all categories for filtering
