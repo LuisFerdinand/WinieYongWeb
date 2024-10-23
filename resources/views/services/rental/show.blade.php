@@ -97,73 +97,75 @@
                   <div class="text-start">
                     <a href="#" class="text-5xl font-extrabold leading-tight text-gray-900 hover:underline dark:text-white justify-start ">{{ $rental->type_name }}</a>
                   </div>
-
-                  <hr class="border-gray-400 my-2">
-                  <p class="mb-6 text-gray-500 dark:text-gray-400">
-                    {{ $rental->type_description }}
-                    Studio quality three mic array for crystal clear calls and voice
-                    recordings. Six-speaker sound system for a remarkably robust and
-                    high-quality audio experience. Up to 256GB of ultrafast SSD storage.
-                  </p>
-
-
-                  <hr class="border-gray-400 my-2">
-
-                  <div class="grid grid-cols-2 gap-2 text-lg text-gray-600 text-start">
-                    <div class="col-span-1">
-                      <p class="font-semibold text-gray-800">Size:</p>
-                      <p class="">
-                        {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }} m<sup>3</sup>
-                      </p>
-                    </div>
-                    <div class="col-span-1">
-                      <p class="font-semibold text-gray-800">Operating Weight:</p>
-                      <p class="">{{ $rental->type_operating_weight }} kg</p>
-                    </div>
-                    <div class="col-span-1">
-                      <p class="font-semibold text-gray-800">Engine Power:</p>
-                      <p>{{ $rental->type_engine_power }} HP</p>
-                    </div>
-                    <div class="col-span-1">
-                      <p class="font-semibold text-gray-800">Fuel Capacity:</p>
-                      <p>{{ $rental->type_fuel_capacity }} liters</p>
-                    </div>
-                    <div class="col-span-1">
-                      <p class="font-semibold text-gray-800">Max Speed:</p>
-                      <p>{{ $rental->type_max_speed }} km/h</p>
-                    </div>
-                  </div>
-
-
-                  <div class="flex items-center justify-center gap-1 text-slate-400 font-medium">
-                    <a href="#" target="_blank" class="inline-flex items-center rounded-lg bg-green-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd" />
-                        <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
-                      </svg>
-                    </a>
-
-
-
+                  <div class="text-start mt-[-8px]">
+                    <a href="/services/rentals?category={{ $rental->category->category_slug }}" class="text-2xl font-bold leading-tight text-gray-500 hover:underline dark:text-white justify-start ">{{ $rental->category->category_name }}</a>
                   </div>
                 </div>
 
-                <hr class="border-gray-400 my-2">
-                <div class="items-center justify-start gap-1 text-slate-400 font-medium">
-                  <h1 class="text-gray-600 font-medium">Availability:</h1>
-                  <div class="flex">
-                    <svg class="w-6 h-6 text-green-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z" clip-rule="evenodd" />
+
+                <div class="flex items-center justify-center gap-1 text-slate-400 font-medium">
+                  <button type="button" class="inline-flex items-center rounded-lg bg-green-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                    <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd" />
+                      <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
                     </svg>
-                    <p>Available</p>
-                  </div>
+                  </button>
+
 
                 </div>
+              </div>
+
+              <hr class="border-gray-400 my-2">
+              <p class="mb-6 text-gray-500 dark:text-gray-400">
+                {{ $rental->type_description }}
+                Studio quality three mic array for crystal clear calls and voice
+                recordings. Six-speaker sound system for a remarkably robust and
+                high-quality audio experience. Up to 256GB of ultrafast SSD storage.
+              </p>
 
 
+              <hr class="border-gray-400 my-2">
+
+              <div class="grid grid-cols-2 gap-2 text-lg text-gray-600 text-start">
+                <div class="col-span-1">
+                  <p class="font-semibold text-gray-800">Size:</p>
+                  <p class="">
+                    {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }} m<sup>3</sup>
+                  </p>
+                </div>
+                <div class="col-span-1">
+                  <p class="font-semibold text-gray-800">Operating Weight:</p>
+                  <p class="">{{ $rental->type_operating_weight }} kg</p>
+                </div>
+                <div class="col-span-1">
+                  <p class="font-semibold text-gray-800">Engine Power:</p>
+                  <p>{{ $rental->type_engine_power }} HP</p>
+                </div>
+                <div class="col-span-1">
+                  <p class="font-semibold text-gray-800">Fuel Capacity:</p>
+                  <p>{{ $rental->type_fuel_capacity }} liters</p>
+                </div>
+                <div class="col-span-1">
+                  <p class="font-semibold text-gray-800">Max Speed:</p>
+                  <p>{{ $rental->type_max_speed }} km/h</p>
+                </div>
+              </div>
+              <hr class="border-gray-400 my-2">
+              <div class="items-center justify-start gap-1 text-slate-400 font-medium">
+                <h1 class="text-gray-600 font-medium">Availability:</h1>
+                <div class="flex">
+                  <svg class="w-6 h-6 text-green-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z" clip-rule="evenodd" />
+                  </svg>
+                  <p>Available</p>
+                </div>
 
               </div>
+
+
+
             </div>
+          </div>
       </section>
       <section class="mt-0">
         <div class="bg-gray-100 p-4 rounded-lg mb-6">
