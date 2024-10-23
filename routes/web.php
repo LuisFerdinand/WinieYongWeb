@@ -21,6 +21,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\JobManagementController;
 use App\Http\Controllers\PartManagementController;
 use App\Http\Controllers\RentalManagementController;
+use App\Http\Controllers\CategoryManagementController;
+use App\Http\Controllers\BrandManagementController;
 use App\Http\Controllers\ProductManagementController;
 use App\Http\Controllers\ProjectManagementController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -129,12 +131,28 @@ Route::middleware(['auth', 'check.role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'check.role:admin'])->group(function () {
-    Route::resource('rental-management', RentalManagementController::class);
     Route::resource('part-management', PartManagementController::class);
     Route::resource('job-management', JobManagementController::class);
     Route::resource('product-management', ProductManagementController::class);
     Route::resource('project-management', ProjectManagementController::class);
 });
+
+// Route Create Slug
+Route::get('dashboard/services/machinery-rentals/rentals-management/checkSlug', [RentalManagementController::class, 'checkSlug']);
+Route::get('dashboard/services/machinery-rentals/categories-management/checkSlug', [RentalManagementController::class, 'checkSlug']);
+Route::get('dashboard/services/machinery-rentals/brands-management/checkSlug', [RentalManagementController::class, 'checkSlug']);
+
+// Route Rental Management
+Route::middleware(['auth', 'check.role:admin'])->prefix('dashboard/services/machinery-rentals')->group(function () {
+    Route::resource('rentals-management', RentalManagementController::class)
+        ->parameters(['rentals-management' => 'type:type_slug']);
+    Route::resource('categories-management', CategoryManagementController::class)
+    ->parameters(['categories-management' => 'category:category_slug']);
+    Route::resource('brands-management', BrandManagementController::class)
+        ->parameters(['brands-management' => 'brand:brand_slug']);
+});
+
+
 
 
 // trancking click route

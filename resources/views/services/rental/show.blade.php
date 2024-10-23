@@ -64,34 +64,80 @@
         <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
           <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
             <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
-              <div class=" w-full shadow-lg rounded-md border-2 overflow-hidden md:pt-">
+              <<<<<<< HEAD
+                <div class=" w-full shadow-lg rounded-md border-2 overflow-hidden md:pt-">
                 <img class="w-full dark:hidden rounded-md object-cover" src={{ $rental->type_image }} alt="" />
                 <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="" />
-              </div>
             </div>
-            <div class="pt-6 lg:pt-0 mx-8">
-              <div class="mb-0 flex items-end  justify-between  gap-4">
+            =======
+            <div class=" w-full shadow-lg rounded-md border-2 overflow-hidden md:pt-">
+              @if ($rental->type_image)
+              <img class="w-full dark:hidden rounded-md object-cover" src={{ asset('storage/'.$rental->type_image) }} alt="" />
+              @elseif ($rental->type_image_url)
+              <img class="w-full dark:hidden rounded-md object-cover" src={{ $rental->type_image_url }} alt="" />
+              @else
+              <img class="w-full dark:hidden rounded-md object-cover" src="data:image/png;base64,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" alt="" />
+              @endif
 
-                <div>
-                  <a href="/services/rentals?brand={{ $rental->brand->brand_slug }}">
-                    <span class=" 
+              <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="" />
+            </div>
+            >>>>>>> origin/Rental
+          </div>
+          <div class="pt-6 lg:pt-0 mx-8">
+            <div class="mb-0 flex items-end  justify-between  gap-4">
+
+              <div>
+                <a href="/services/rentals?brand={{ $rental->brand->brand_slug }}">
+                  <span class=" 
                         bg-{{ $rental->brand->brand_color }}-100 text-{{ $rental->brand->brand_color }}-600 text-xl font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-rental-200 dark:text-rental-800">
-                      <svg class="mr-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
-                      </svg>
-                      {{ $rental->brand->brand_name }}
-                    </span>
-                  </a>
-                  {{-- <span class="me-2 rounded bg-primary-100 px-0.5 py-0.5 text-md font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300"> 
+                    <svg class="mr-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                    </svg>
+                    {{ $rental->brand->brand_name }}
+                  </span>
+                </a>
+                {{-- <span class="me-2 rounded bg-primary-100 px-0.5 py-0.5 text-md font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300"> 
                             <a href="#" class="text-xl font-medium leading-tight text-rental-600 hover:underline dark:text-white">
                               {{ $rental->brand->brand_name }}
-                  </a>
-                  </span> --}}
-                  <div class="text-start">
-                    <a href="#" class="text-5xl font-extrabold leading-tight text-gray-900 hover:underline dark:text-white justify-start ">{{ $rental->type_name }}</a>
+                </a>
+                </span> --}}
+                <div class="text-start">
+                  <a href="#" class="text-5xl font-extrabold leading-tight text-gray-900 hover:underline dark:text-white justify-start ">{{ $rental->type_name }}</a>
+                </div>
+
+                <hr class="border-gray-400 my-2">
+                <p class="mb-6 text-gray-500 dark:text-gray-400">
+                  {{ $rental->type_description }}
+                  Studio quality three mic array for crystal clear calls and voice
+                  recordings. Six-speaker sound system for a remarkably robust and
+                  high-quality audio experience. Up to 256GB of ultrafast SSD storage.
+                </p>
+
+
+                <hr class="border-gray-400 my-2">
+
+                <div class="grid grid-cols-2 gap-2 text-lg text-gray-600 text-start">
+                  <div class="col-span-1">
+                    <p class="font-semibold text-gray-800">Size:</p>
+                    <p class="">
+                      {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }} m<sup>3</sup>
+                    </p>
                   </div>
-                  <div class="text-start mt-[-8px]">
-                    <a href="/services/rentals?category={{ $rental->category->category_slug }}" class="text-2xl font-bold leading-tight text-gray-500 hover:underline dark:text-white justify-start ">{{ $rental->category->category_name }}</a>
+                  <div class="col-span-1">
+                    <p class="font-semibold text-gray-800">Operating Weight:</p>
+                    <p class="">{{ $rental->type_operating_weight }} kg</p>
+                  </div>
+                  <div class="col-span-1">
+                    <p class="font-semibold text-gray-800">Engine Power:</p>
+                    <p>{{ $rental->type_engine_power }} HP</p>
+                  </div>
+                  <div class="col-span-1">
+                    <p class="font-semibold text-gray-800">Fuel Capacity:</p>
+                    <p>{{ $rental->type_fuel_capacity }} liters</p>
+                  </div>
+                  <div class="col-span-1">
+                    <p class="font-semibold text-gray-800">Max Speed:</p>
+                    <p>{{ $rental->type_max_speed }} km/h</p>
                   </div>
                 </div>
 

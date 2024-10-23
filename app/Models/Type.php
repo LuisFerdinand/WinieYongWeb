@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\Category;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Type extends Model
 {
     use HasFactory;
+    use Sluggable;
     protected $primaryKey = 'type_id';
     // protected $fillable = ['type_name', 'brand_id', 'type_slug', 'type_description', 'category_id'];
     protected $guarded = ['type_id'];
@@ -46,6 +48,18 @@ class Type extends Model
     }
     public function brand(){
         return $this->belongsTo(Brand::class, 'brand_id', 'brand_id');
+    }
+    public function getRouteKeyName()
+    {
+        return 'type_slug';
+    }
+    public function sluggable(): array
+    {
+        return [
+            'type_slug' => [
+                'source' => 'type_name'
+            ]
+        ];
     }
     
 }

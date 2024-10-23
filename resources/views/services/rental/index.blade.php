@@ -140,7 +140,9 @@
                           <div class="relative w-full">
                               <label for="search" class="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Search</label>
                               <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                </svg>
                               </div>
                               @if(request('category'))
                               <input type="hidden" name="category" value="{{ request('category') }}">
@@ -158,6 +160,15 @@
               </div>
               <div>
                 <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300">
+                  Default
+                  <button type="button" class="inline-flex items-center p-1 ms-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300" data-dismiss-target="#badge-dismiss-default" aria-label="Remove">
+                  <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span class="sr-only">Remove badge</span>
+                  </button>
+                  </span>
+                <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-blue-800 bg-rental-100 rounded dark:bg-blue-900 dark:text-blue-300">
                   Default
                   <button type="button" class="inline-flex items-center p-1 ms-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300" data-dismiss-target="#badge-dismiss-default" aria-label="Remove">
                   <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -250,8 +261,14 @@
             <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 border-bl">
                 <div class="h-56 w-full shadow-lg rounded-md border-2 overflow-hidden">
                   <a href="#">
-                    <img class="mx-auto h-full dark:hidden rounded-md object-cover" src={{ $rental->type_image }} alt=""/>
-                    {{-- <img class="mx-auto hidden h-full dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="" /> --}}
+                    @if ($rental->type_image)
+                    <img class="mx-auto h-full dark:hidden rounded-md object-cover" src="{{ asset('storage/'.$rental->type_image) }}" alt=""/>
+                    @elseif ($rental->type_image_url)
+                    <img class="mx-auto h-full dark:hidden rounded-md object-cover" src="{{ $rental->type_image_url }}" alt=""/>
+                    @else
+                    <img class="mx-auto h-full dark:hidden rounded-md object-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALgAAACUCAMAAAAXgxO4AAAAXVBMVEXy8vJmZmb19fX4+PhgYGBdXV3r6+vGxsbDw8O2trZVVVXJyclRUVH7+/v///90dHTc3Nx7e3uIiIjV1dVsbGyampqPj4/l5eXPz8+pqamvr6+9vb2CgoKhoaFLS0uj4khwAAAFqUlEQVR4nO2biZKqOhCGQ3cI2wkJ+37e/zFvgjqKggM1k8ipm7+mdER0PpteY4YQJycnJycnJycnJycnJycnJycnJycnJycnp18VmJNRbNYGhtQ2aJC7yKlvSDRLjNkcpOdTc/IKU+S88mnCDKkt/doQN+FlXKWmQjON4pIZAkcvjoxFECZ/PFPg3IGvyIGvyIGvyYGvaAv8Vxok++BIGtnAj6+EbXDAsM5EVg/8h1a3DA6s1u0RpX7NfkZuGzz3vYt+2iLZBedD7N3k/yzjWLa48O4q+ZvXAiq9cyar4GqyeNDfZhsMmygfq/BNHFgFx+QR/M/2BINtGasAjuvtz2bX4u3C4pvgKAW9RfDmOVbBm4XFN1/IxlvuibtTgBPM6T2r5FvByTv/66y42Mg9dsFB/r2Db3kKynvO9KjYaGwsp0Mc6MXm1Bs2uKF5zJkerU4Brv7eGMd+HGftZvmpqLdQuEpuvTsE1vZTv72AhoG/5KbrqxD229r3S5bAnrhVMIxrUXyyCQhITp/B17uas4FHr9yqq5GvF+hc4FCsYCs3z19PPRm4WDO4LqAvbn4qcN7Fq9y6Wr3m1fOAL5vHpbOMzx3uicChydYdZTb5cwE9ETjWLyn8kTxcuvl5wHmw5eBXb1k6y0fA1+omyG0/ubr54vwPlHxkUpKX9Mbqb8A9Gj1+XvtNFpkyIcYoXVodo3cOftVjAbXe1spyJnyaJhfDw6bJvYfrZHuQuI3BKr89kAPbKJlLxd397SyPbg+AtL57C3Q7HEUr+Xo/y1P+o2H9+pZdYLtkPjmL+FposQn+XBpv3gJNucdRLh/29oYWwYE9l3S/nlfJ35fMpeJbAbUHvhaAfoWwLxN+6TZUWAOHZlzxh9lbqiPgNGdWweG+rPZsc2T1jiR+f0XPLYIDbLWsfsWR5Uds7ku0Bv4al4/kBMmB8FRurvtEK+DAVhYdHsjhmM3pROyAA77H8qcUN0Jgg7xFG+AqLr+pL4e9xWdgHhy+77SVzY95i+oWjIMD3wN01FvokBoG5ztd4KjNS9maBYe9ZfFgbvFzsxYf9pdzf1I1NNt9OlURbw7c292v3siPZEWT4IfkT+RYJToL+CW3iO/POx2453eQ9vtNbgy8PE5ehftPNra3lk9HIu1Kvr81V+XTELjeP36YfLeo3xrc+Z6bA8+2vuX/DSFpQ0NqmUFujW5MRv8rxcnpf6fr+uxzYJlNEL+hYl4mZk+7mljxGZrdAubpMg2FWIBDa6zr+CUp8EwZ+xmcyP784H13A0fOb99FYao6MtCPkafzElLKLyvn6piuNPq5TxYcBS4zdgGHMBPR9XgzENLLSkz6YIu6xxGVughYCJEMBWBTz48/CE6hirgGx0gUcqwuS4tSEKCilWNZsdYvUHphU9cI0m9ZHQfYiIB04t3mZwvgUoAGT8uCY+NdDsuMQNlyHngppHXEwwp4IZBXXQqEJhhVALx8s/nZAjjhWZBqV5n3FIg5L2pwIiRgIlLCqwgZ01+IIujNiTAGOA0c0zr8XLbX4Mpv9Y8sdXwqqDVwNewXecnZ/OVgHfJ8CsIgiz7nKxqcYNZKza6Y+DisgsOQ113Gm7JRT1YKvO67rjf2D7N7wYequIJjtmpxnpStOobK4upJbfGEI6Yf7AtmcGBjKJB52z6e5j3X4GSuVnmAtbow/OMWJ9CNI/C4UOnunlWW4BHnrcoqtc4qXoK9zireyq5Je+Cxvm2oAp/GhtX3PE5KBR6UF/A+Y3KMG65yOqniREVySyLx0Ray0je879RtJ8R0rYaN+mWSKr9PqugPCZDKy9qp4jz0yr4OAYuszD+YxjXz5Vbf6YH3ehTU40tLMh/XjQuCGocl48jHQDm6uv+HhmMcMpImazuCzy6sqFcm5x+PXsVZg/8iN3mdTp2cnJycnJycnJycnGzoPxWeXsDPwZIOAAAAAElFTkSuQmCC" alt=""/>
+                    @endif
+                    <img class="mx-auto hidden h-full dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="" />
                   </a>
                 </div>
                 <div class="pt-2">
@@ -275,15 +292,29 @@
                       
                     </div>
                   </div>
-                  <div class="flex justify-between items-center mb-[-7px] text-gray-500 bg-yellow">
+                  <div class="flex justify-between items-start mb-[-7px] text-gray-500 bg-yellow relative">
                     <div class="text-start mt-[-8px]">
-                      <a href="/services/rentals?category={{ $rental->category->category_slug }}" class="text-sm font-bold leading-tight text-gray-700 hover:underline dark:text-white justify-start ">{{ $rental->category->category_name }}</a>
+                        <a href="/services/rentals?category={{ $rental->category->category_slug }}" class="text-sm font-bold leading-tight text-gray-700 hover:underline dark:text-white justify-start">
+                            {{ $rental->category->category_name }}
+                        </a>
+                        <div class="text-start mt-[-5px]">
+                            <a href="#" class="text-2xl font-extrabold leading-tight text-gray-900 hover:underline dark:text-white justify-start">
+                                {{ $rental->type_name }}
+                            </a>
+                        </div>
                     </div>
-                  <span class="text-sm">14 days ago</span>
-              </div>
-                  <div class="text-start">
-                    <a href="#" class="text-2xl font-extrabold leading-tight text-gray-900 hover:underline dark:text-white justify-start ">{{ $rental->type_name }}</a>
-                  </div>
+                    
+                    <div class="absolute bottom-0 right-0 mb-2">
+                      <span class="text-sm text-end align-bottom">
+                        <span class="text-lg font-semibold text-teal-600">
+                          {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }}
+                      </span> m<sup>3</sup>
+                    </span>
+                    
+                    </div>
+                </div>
+                
+                  
                   <hr class="border-black my-2">
                   {{-- <div class="mt-2 flex items-center gap-2">
                     <h1 class="font-bold">Operating Wight</h1>
@@ -291,21 +322,21 @@
                   </div> --}}
                   <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 text-start">
                     <div class="col-span-1">
-                        <p class="font-medium">Operating Weight:</p>
-                        <p class="">21,300 kg</p>
-                    </div>
-                    <div class="col-span-1">
-                        <p class="font-medium">Engine Power:</p>
-                        <p>158 HP</p>
-                    </div>
-                    <div class="col-span-1">
-                        <p class="font-medium">Bucket Capacity:</p>
-                        <p>1.2 m³</p>
-                    </div>
-                    <div class="col-span-1">
-                        <p class="font-medium">Max Digging Depth:</p>
-                        <p>6.67 m</p>
-                    </div>
+                      <p class="font-semibold text-gray-800">Operating Weight:</p>
+                      <p class="">{{ $rental->type_operating_weight }} kg</p>
+                  </div>
+                  <div class="col-span-1">
+                      <p class="font-semibold text-gray-800">Engine Power:</p>
+                      <p>{{ $rental->type_engine_power }} HP</p>
+                  </div>
+                  <div class="col-span-1">
+                      <p class="font-semibold text-gray-800">Fuel Capacity:</p>
+                      <p>{{ $rental->type_fuel_capacity }} liters</p>
+                  </div>
+                  <div class="col-span-1">
+                      <p class="font-semibold text-gray-800">Max Speed:</p>
+                      <p>{{ $rental->type_max_speed }} km/h</p>
+                  </div>
                 </div>
 
                 <hr class="border-black my-2">
