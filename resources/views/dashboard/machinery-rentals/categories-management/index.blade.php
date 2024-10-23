@@ -9,16 +9,16 @@
     @if(session('success'))
     <div id="alert-border-3" class="flex items-center p-4 mb-4 text-green-800 border border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" role="alert">
         <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
         </svg>
         <div class="ms-3 text-sm font-medium">
             {{ session('success') }}
         </div>
-        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">
-          <span class="sr-only">Dismiss</span>
-          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-          </svg>
+        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-border-3" aria-label="Close">
+            <span class="sr-only">Dismiss</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
         </button>
     </div>
     @endif
@@ -30,99 +30,99 @@
     @endif
 
     <!-- Search Form -->
-    
+
     <section class="bg-gray-50 dark:bg-gray-900 flex items-center">
         <div class="max-w-screen-xl mx-auto w-full">
-          <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
-            <div class="flex flex-col items-center justify-between px-4 pt-4 pb-2 space-y-3 lg:flex-row lg:space-y-0 lg:space-x-4">
-                <div class="w-full lg:w-1/2">
-                    <form action="{{ route('categories-management.index') }}" method="GET">
-                        <div class="flex items-center w-full mx-auto mb-0 sm:max-w-screen-sm space-x-2 overflow-hidden">
-                            <div class="flex-grow relative flex">
-                                <label for="search" class="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Search</label>
-                                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                                    </svg>
+            <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+                <div class="flex flex-col items-center justify-between px-4 pt-4 pb-2 space-y-3 lg:flex-row lg:space-y-0 lg:space-x-4">
+                    <div class="w-full lg:w-1/2">
+                        <form action="{{ route('categories-management.index') }}" method="GET">
+                            <div class="flex items-center w-full mx-auto mb-0 sm:max-w-screen-sm space-x-2 overflow-hidden">
+                                <div class="flex-grow relative flex">
+                                    <label for="search" class="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Search</label>
+                                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    @if(request('category'))
+                                    <input type="hidden" name="category" value="{{ request('category') }}">
+                                    @endif
+                                    @if(request('brand'))
+                                    <input type="hidden" name="brand" value="{{ request('brand') }}">
+                                    @endif
+                                    <input class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-l-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search..." type="text" id="search" name="search" value="{{ request('search') }}">
+                                    <button type="submit" class="py-2 px-5 text-sm font-medium text-center text-white rounded-r-lg border cursor-pointer bg-teal-700 hover:bg-teal-800 border-rental-600 focus:ring-4 focus:ring-rental-300 dark:bg-rental-600 dark:focus:ring-rental-800">Search</button>
                                 </div>
-                                @if(request('category'))
-                                <input type="hidden" name="category" value="{{ request('category') }}">
-                                @endif
-                                @if(request('brand'))
-                                <input type="hidden" name="brand" value="{{ request('brand') }}">
-                                @endif
-                                <input class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-l-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search..." type="text" id="search" name="search" value="{{ request('search') }}">
-                                <button type="submit" class="py-2 px-5 text-sm font-medium text-center text-white rounded-r-lg border cursor-pointer bg-teal-700 hover:bg-teal-800 border-rental-600 focus:ring-4 focus:ring-rental-300 dark:bg-rental-600 dark:focus:ring-rental-800">Search</button>
+                                <div class="flex-shrink-0">
+                                    <a href="{{ route('categories-management.index') }}" class="bg-gray-300 text-black px-4 py-2 rounded-lg">Reset</a>
+                                </div>
                             </div>
-                            <div class="flex-shrink-0">
-                                <a href="{{ route('categories-management.index') }}" class="bg-gray-300 text-black px-4 py-2 rounded-lg">Reset</a>
+                        </form>
+                    </div>
+
+
+                    <div class="flex items-stretch justify-between flex-shrink-0 w-full space-y-0 lg:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+                        <a href="{{ route('categories-management.create') }}">
+                            <button type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                                <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
+                                </svg>
+                                Add Categories
+                            </button>
+                        </a>
+                        <div class="flex items-center space-x-3 md:w-auto">
+                            <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown" class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-4 mr-2 text-gray-400" viewbox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
+                                </svg>
+                                Filter
+                                <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path clip-rule="evenodd" fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                                </svg>
+                            </button>
+                            <!-- Dropdown menu -->
+                            <div id="filterDropdown" class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
+                                <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
+                                    Category
+                                </h6>
+                                <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                                    <li class="flex items-center">
+                                        <input id="apple" type="checkbox" value=""
+                                            class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                            Apple (56)
+                                        </label>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                            Fitbit (56)
+                                        </label>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <input id="dell" type="checkbox" value=""
+                                            class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        <label for="dell" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                            Dell (56)
+                                        </label>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <input id="asus" type="checkbox" value="" checked
+                                            class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        <label for="asus" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                            Asus (97)
+                                        </label>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </form>
-                </div>
-                
-                
-              <div class="flex items-stretch justify-between flex-shrink-0 w-full space-y-0 lg:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
-                <a href="{{ route('categories-management.create') }}">
-                    <button type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
-                      <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
-                      </svg>
-                      Add Categories
-                    </button>
-                </a>
-                <div class="flex items-center space-x-3 md:w-auto">
-                    <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown" class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-4 mr-2 text-gray-400" viewbox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
-                        </svg>
-                        Filter
-                        <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path clip-rule="evenodd" fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                        </svg>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="filterDropdown" class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
-                        <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-                            Category
-                        </h6>
-                        <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
-                            <li class="flex items-center">
-                                <input id="apple" type="checkbox" value=""
-                                class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-                                    Apple (56)
-                                </label>
-                            </li>
-                            <li class="flex items-center">
-                                <input id="fitbit" type="checkbox" value=""
-                                class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-                                Fitbit (56)
-                                </label>
-                            </li>
-                            <li class="flex items-center">
-                                <input id="dell" type="checkbox" value=""
-                                class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                <label for="dell" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-                                Dell (56)
-                                </label>
-                            </li>
-                            <li class="flex items-center">
-                                <input id="asus" type="checkbox" value="" checked
-                                class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                <label for="asus" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-                                Asus (97)
-                                </label>
-                            </li>
-                        </ul>
                     </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
     <div class="overflow-x-scroll">
         <table class="w-full bg-white text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
             <thead class="bg-gray-800 text-white text-xs uppercase dark:bg-gray-700 dark:text-gray-400">
@@ -136,7 +136,7 @@
             </thead>
             <tbody>
                 @forelse ($categories as $rental)
-                    
+
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="border-x px-0">
                         <div class="flex items-center justify-center">
@@ -155,7 +155,7 @@
                         <div class="ps-3 w-44">
                             <div class="text-md font- font-semibold">{{ $rental->category_name }}</div>
                             {{-- <div class="font-semibold text-md text-gray-500">a</div> --}}
-                        </div>  
+                        </div>
                     </th>
                     <td class="border-x px-6 py-4">
                         <div class="">
@@ -167,48 +167,48 @@
                             {{ $rental->types_count }}
                         </div>
                     </td>
-    
+
                     <td class="border-x px-2 py-4">
                         <div class="flex items-center justify-center gap-2">
                             <a href="{{ route('categories-management.show', $rental->category_slug) }}"
-                            class="text-rental-500 font-bold hover:text-rental-300">
+                                class="text-rental-500 font-bold hover:text-rental-300">
                                 <span class="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold text-blue-800 bg-blue-200 rounded dark:bg-blue-700 dark:text-blue-300 hover:bg-blue-800 hover:text-blue-200">
                                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
-                                        <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                        <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                                        <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
                                 </span>
                             </a>
-                            
-                            
-                            
+
+
+
                             <a href="{{ route('categories-management.edit', $rental->category_slug) }}" class="text-yellow-500 font-bold">
                                 <span class="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold text-yellow-800 bg-yellow-200 rounded dark:bg-yellow-700 dark:text-yellow-300 hover:bg-yellow-800 hover:text-yellow-200">
                                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
-                                      </svg>
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                                    </svg>
                                 </span>
                             </a>
-                            
-                    
+
+
                             <form action="{{ route('categories-management.destroy', $rental->category_slug) }}" method="POST" class="inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-500 font-bold hover:text-red-300" onclick="return confirm('Are you sure?')">
                                     <span class="inline-flex items-center justify-center w-6 h-6 text-sm font-semibold text-red-800 bg-red-200 rounded dark:bg-red-700 dark:text-red-300 hover:bg-red-800 hover:text-red-200">
                                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
-                                          </svg>
-                                          
-                                          
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+                                        </svg>
+
+
                                     </span>
                                 </button>
                             </form>
-                    
-                            
+
+
                         </div>
                     </td>
-                    
+
                 </tr>
                 @empty
                 <tr>
@@ -220,7 +220,7 @@
 
     </div>
 
-        
+
     <div id="editUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -230,7 +230,7 @@
                     </h3>
                     <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="editUserModal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                         <span class="sr-only">Close modal</span>
                     </button>
@@ -241,7 +241,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- <div id="editUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
             <!-- Modal content -->
@@ -320,7 +320,7 @@
             @if ($currentPage < $totalPages)
                 <a href="{{ url()->current() }}?page={{ $currentPage + 1 }}&search={{ $search }}" class="px-3 py-1 bg-gray-200 rounded">Next</a>
                 @endif
-    </div>    
+    </div>
 </div>
 
 @endsection
