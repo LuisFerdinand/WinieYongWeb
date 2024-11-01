@@ -30,7 +30,7 @@
 
                 <!-- Products -->
                 <li>
-                    <a href="{{ route('sunward.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('products.sunward.index') ? 'bg-gray-700' : '' }}">
+                    <a href="{{ route('sunward.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('sunward.index') ? 'bg-gray-700' : '' }}">
                         Sunward
                     </a>
                 </li>

@@ -18,6 +18,17 @@
         <p class="text-lg text-gray-700 leading-relaxed mb-4">
             Discover more about our cutting-edge products below and take your projects to the next level with Sunward.
         </p>
+        <div class="flex items-center space-x-6 mb-4 px-10">
+            <a href="https://wa.me/628115628833" target="_blank" class="text-gray-600 hover:text-teal-600 transition-colors duration-300 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+                <i class="fab fa-whatsapp text-4xl"></i>
+            </a>
+            <a href="https://www.instagram.com/skp_sunward/" target="_blank" class="text-gray-600 hover:text-teal-600 transition-colors duration-300 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+                <i class="fab fa-instagram text-4xl"></i>
+            </a>
+            <a href="mailto:pt.sambaskaryaperkasa.sunward@gmail.com" class="text-gray-600 hover:text-teal-600 transition-colors duration-300 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+                <i class="far fa-envelope text-4xl"></i>
+            </a>
+        </div>
         <!-- Link to Sunward Official Website with Teal Button Styling -->
         <a href="https://id.sunwardmachine.com/" target="_blank" class="inline-block bg-teal-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-teal-700 transition duration-300">
             Visit Sunward Official Website

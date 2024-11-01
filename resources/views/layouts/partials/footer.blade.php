@@ -7,8 +7,8 @@
                 <h2 class="text-xl font-bold">Sambas Karya Perkasa</h2>
                 <p class="text-gray-600 mt-1">
                     Jl. Raya Sambas No. 123, Sambas, Kalimantan Barat, Indonesia <br>
-                    Phone: +62 123 456 789 <br>
-                    Email: info@sambaskaryaperkasa.com
+                    Phone: +62 822-5683-1863 <br>
+                    Email: pt.sambaskaryaperkasa@gmail.com
                 </p>
             </div>
         </div>
@@ -18,19 +18,19 @@
             <h2 class="text-xl font-bold mb-6">Navigation</h2>
             <ul class="text-center md:text-left space-y-2">
                 <li>
-                    <a href="/" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Home</a>
+                    <a href="{{ route('home') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Home</a>
                 </li>
                 <li>
-                    <a href="/about" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">About Us</a>
+                    <a href="{{ route('about') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">About Us</a>
                 </li>
                 <li>
-                    <a href="/services" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Services</a>
+                    <a href="{{ route('sunward.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Sunward</a>
                 </li>
                 <li>
-                    <a href="/contact" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Contact</a>
+                    <a href="{{ route('rental.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Machinery Rental</a>
                 </li>
                 <li>
-                    <a href="/products" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Products</a>
+                    <a href="{{ route('career.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -39,13 +39,13 @@
         <div class="flex flex-col items-center md:items-start">
             <h2 class="text-xl font-bold mb-6">Follow Us</h2>
             <div class="flex space-x-4">
-                <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-teal-500">
+                <a href="https://www.instagram.com/skp_sunward/" target="_blank" class="text-gray-300 hover:text-teal-500">
                     <i class="fab fa-instagram fa-2x"></i>
                 </a>
-                <a href="https://www.facebook.com" target="_blank" class="text-gray-300 hover:text-teal-500">
+                <a href="https://www.facebook.com/profile.php?id=61551899050491" target="_blank" class="text-gray-300 hover:text-teal-500">
                     <i class="fab fa-facebook fa-2x"></i>
                 </a>
-                <a href="https://wa.me/123456789" target="_blank" class="text-gray-300 hover:text-teal-500">
+                <a href="https://wa.me/6282256831863" target="_blank" class="text-gray-300 hover:text-teal-500">
                     <i class="fab fa-whatsapp fa-2x"></i>
                 </a>
             </div>
