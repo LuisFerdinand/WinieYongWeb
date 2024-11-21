@@ -85,6 +85,8 @@ class BrandManagementController extends Controller
             'brand_slug' => 'required',
             'brand_image' => 'image|file|max:1024',
             'brand_description' => 'required|string',
+            'brand_bg_color' => 'required|string',
+            'brand_tx_color' => 'required|string',
         ];
         if($request->brand_name!=$brand->brand_name){
             $rules['brand_name'] = 'required|max:255|unique:brands';
