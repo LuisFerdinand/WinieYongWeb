@@ -13,147 +13,51 @@ class RentalController extends Controller
     // Display a list of all rentals with filtering and search capabilities
     public function index(Request $request)
     {
-        $query = Type::filter(request(['search', 'brand', 'category']))->with('brand', 'category');
-        $title = "";
-        if (request('category')) {
-            $category = Category::firstWhere('category_slug', request('category'));
-            $title = ' in ' . $category->category_name;
-        }
-        if (request('brand')) {
-            $brand = Brand::firstWhere('brand_slug', request('brand'));
-            $title = ' by ' . $brand->brand_name;
-        }
+        $query = Type::with(['brand', 'category'])
+        ->filter(request(['search', 'brand', 'category']))
+        ->sort($request->sort);
 
-        $rentals = $query->paginate(6);
+        $selectedBrands = is_array($request->brand) ? $request->brand : ($request->brand ? [$request->brand] : []);
+        $selectedCategories = is_array($request->category) ? $request->category : ($request->category ? [$request->category] : []);
 
-        // Retrieve all categories
-        $categories = Category::withCount('types')->get(); // Retrieve all categories for filtering
-        // Retrieve all brands and count their types
-        $brands = Brand::withCount('types')->get(); // Retrieve all brands for filtering
+        // Build dynamic title
+        $title = $this->buildDynamicTitle($request->search, $selectedBrands, $selectedCategories);
+
+
+        $rentals = $query->paginate(6)->withQueryString();;
+
+        $categories = Category::withCount('types')->get();
+        $brands = Brand::withCount('types')->get(); 
 
         // Group brands by the first letter
-        $groupedBrands = [];
-        foreach ($brands as $brand) {
-            $firstLetter = strtoupper($brand->brand_name[0]); // Get the first letter and convert it to uppercase
-            if (!isset($groupedBrands[$firstLetter])) {
-                $groupedBrands[$firstLetter] = []; // Initialize the array for this letter
-            }
-            $groupedBrands[$firstLetter][] = $brand; // Add the brand to the corresponding letter
-        }
+        $groupedBrands = $brands->groupBy(function($brand) {
+            return strtoupper(substr($brand->brand_name, 0, 1));
+        })->sortKeys();
 
-        // Sort the grouped brands by the first letter
-        ksort($groupedBrands);
+        $groupedCategories = $categories->groupBy(function($category) {
+            return strtoupper(substr($category->category_name, 0, 1));
+        })->sortKeys();
 
-        // Group categories by the first letter
-        $groupedCategories = [];
-        foreach ($categories as $category) {
-            $firstLetter = strtoupper($category->category_name[0]); // Get the first letter and convert it to uppercase
-            if (!isset($groupedCategories[$firstLetter])) {
-                $groupedCategories[$firstLetter] = []; // Initialize the array for this letter
-            }
-            $groupedCategories[$firstLetter][] = $category; // Add the brand to the corresponding letter
-        }
-
-        // Sort the grouped categories by the first letter
-        ksort($groupedCategories);
-        // dd($query->toSql());
+        $selectedBrandNames = Brand::whereIn('brand_slug', $selectedBrands)->pluck('brand_name')->toArray();
+        $selectedCategoryNames = Category::whereIn('category_slug', $selectedCategories)->pluck('category_name')->toArray();
 
 
         return view('services.rental.index', [
             "rentals" => $rentals,
-            "title" => 'All Rentals' . $title,
-            "categories" => $categories,
+            "title" => $title,
             "groupedBrands" => $groupedBrands, // Pass grouped brands to the view
-            "groupedCategories" => $groupedCategories // Pass grouped brands to the view
+            "groupedCategories" => $groupedCategories, // Pass grouped brands to the view
+            'selectedBrands' => $selectedBrands,
+            'selectedCategories' => $selectedCategories,'selectedBrandNames' => $selectedBrandNames,
+            'selectedCategoryNames' => $selectedCategoryNames
         ]);
     }
-    // public function index(Request $request)
-    // {
-    //     $query = Type::with('brand', 'category');
-    //     $title = "All Rentals";
-
-    //     // Search functionality
-    //     if ($request->has('search') && $request->search != '') {
-    //         $searchTerm = $request->search;
-
-    //         $query->where(function ($q) use ($searchTerm) {
-    //             $q->where('type_name', 'like', "%{$searchTerm}%")
-    //                 ->orWhere('type_description', 'like', "%{$searchTerm}%")
-    //                 ->orWhereHas('category', function ($query) use ($searchTerm) {
-    //                     $query->where('category_name', 'like', "%{$searchTerm}%");
-    //                 })
-    //                 ->orWhereHas('brand', function ($query) use ($searchTerm) {
-    //                     $query->where('brand_name', 'like', "%{$searchTerm}%");
-    //                 });
-    //         });
-    //     }
-
-    //     // Filter by category
-    //     if ($request->has('category') && $request->category != '') {
-    //         $query->where('category_id', $request->category); // assuming category_id is the foreign key
-    //     }
-
-    //     // Filter by brand
-    //     if ($request->has('brand') && $request->brand != '') {
-    //         $query->where('brand_id', $request->brand); // assuming brand_id is the foreign key
-    //     }
-
-    //     // Filter by price range
-    //     if ($request->has('price_range') && $request->price_range != '') {
-    //         list($minPrice, $maxPrice) = explode('-', $request->price_range);
-    //         $query->whereBetween('price', [(float)$minPrice, (float)$maxPrice]);
-    //     }
-
-    //     // Retrieve paginated rentals
-    //     $rentals = $query->paginate(10);
-
-    //     // Retrieve all categories
-    //     $categories = Category::withCount('types')->get(); // Retrieve all categories for filtering
-    //     // Retrieve all brands and count their types
-    //     $brands = Brand::withCount('types')->get(); // Retrieve all brands for filtering
-
-    //     // Group brands by the first letter
-    //     $groupedBrands = [];
-    //     foreach ($brands as $brand) {
-    //         $firstLetter = strtoupper($brand->brand_name[0]); // Get the first letter and convert it to uppercase
-    //         if (!isset($groupedBrands[$firstLetter])) {
-    //             $groupedBrands[$firstLetter] = []; // Initialize the array for this letter
-    //         }
-    //         $groupedBrands[$firstLetter][] = $brand; // Add the brand to the corresponding letter
-    //     }
-
-    //     // Sort the grouped brands by the first letter
-    //     ksort($groupedBrands);
-
-    //     // Group categories by the first letter
-    //     $groupedCategories = [];
-    //     foreach ($categories as $category) {
-    //         $firstLetter = strtoupper($category->category_name[0]); // Get the first letter and convert it to uppercase
-    //         if (!isset($groupedCategories[$firstLetter])) {
-    //             $groupedCategories[$firstLetter] = []; // Initialize the array for this letter
-    //         }
-    //         $groupedCategories[$firstLetter][] = $category; // Add the brand to the corresponding letter
-    //     }
-
-    //     // Sort the grouped categories by the first letter
-    //     ksort($groupedCategories);
-
-    //     return view('services.rental.index', [
-    //         "rentals" => $rentals,
-    //         "title" => $title,
-    //         "categories" => $categories,
-    //         "groupedBrands" => $groupedBrands, // Pass grouped brands to the view
-    //         "groupedCategories" => $groupedCategories // Pass grouped brands to the view
-    //     ]);
-    // }
-
-
-
-
+    
 
     // Show the details of a specific rental
     public function show(Type $type)
     {
+        
         return view('services.rental.show', [
             "title" => $type->type_name,
             "rental" => $type,
@@ -193,5 +97,49 @@ class RentalController extends Controller
         $clickData = RentalClick::select('rental_name', 'clicks_per_day')->get();
 
         return view('dashboard.index', compact('clickData'));
+    }
+    private function buildDynamicTitle($search, $selectedBrands, $selectedCategories)
+    {
+        $titleParts = [];
+        
+        // Add search term if present
+        if ($search) {
+            $titleParts[] = "Search results for \"" . strip_tags($search) . "\"";
+        }
+
+        // Get brand names
+        if (!empty($selectedBrands)) {
+            $brandNames = Brand::whereIn('brand_slug', $selectedBrands)
+                ->pluck('brand_name')
+                ->toArray();
+                
+            if (count($brandNames) === 1) {
+                $titleParts[] = $brandNames[0];
+            } elseif (count($brandNames) > 1) {
+                $lastBrand = array_pop($brandNames);
+                $titleParts[] = implode(', ', $brandNames) . ' and ' . $lastBrand;
+            }
+        }
+
+        // Get category names
+        if (!empty($selectedCategories)) {
+            $categoryNames = Category::whereIn('category_slug', $selectedCategories)
+                ->pluck('category_name')
+                ->toArray();
+                
+            if (count($categoryNames) === 1) {
+                $titleParts[] = $categoryNames[0];
+            } elseif (count($categoryNames) > 1) {
+                $lastCategory = array_pop($categoryNames);
+                $titleParts[] = implode(', ', $categoryNames) . ' and ' . $lastCategory;
+            }
+        }
+
+        // Build the final title
+        if (empty($titleParts)) {
+            return 'All Rentals';
+        }
+
+        return implode(' | ', $titleParts);
     }
 }

@@ -16,33 +16,37 @@ class RentalManagementController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $page = $request->input('page', 1);
-        $search = $request->input('search');
-        $query = Type::query()->with('brand', 'category');
+        $query = Type::with(['brand', 'category'])
+        ->filter(request(['search', 'brand', 'category']))
+        ->sort($request->sort);
 
-        if ($search) {
-            $query->where('type_name', 'like', "%{$search}%")
-                ->orWhere('type_description', 'like', "%{$search}%")
-                ->orWhereHas('category', function ($query) use ($search) {
-                    $query->where('category_name', 'like', "%{$search}%");
-                })
-                ->orWhereHas('brand', function ($query) use ($search) {
-                    $query->where('brand_name', 'like', "%{$search}%");
-                });
-        }
+        $selectedBrands = is_array($request->brand) ? $request->brand : ($request->brand ? [$request->brand] : []);
+        $selectedCategories = is_array($request->category) ? $request->category : ($request->category ? [$request->category] : []);
 
-        $query->orderBy('type_name', 'asc');
-        $totalRentals = $query->count();
+        $rentals = $query->paginate(10)->withQueryString();
 
-        $rentals = $query->skip(($page - 1) * $perPage)->take($perPage)->get();
+        $categories = Category::withCount('types')->get();
+        $brands = Brand::withCount('types')->get(); 
+
+        $groupedBrands = $brands->groupBy(function($brand) {
+            return strtoupper(substr($brand->brand_name, 0, 1));
+        })->sortKeys();
+
+        $groupedCategories = $categories->groupBy(function($category) {
+            return strtoupper(substr($category->category_name, 0, 1));
+        })->sortKeys();
+
+
+
 
         return view('dashboard.machinery-rentals.rentals-management.index', [
             'rentals' => $rentals,
-            'totalRentals' => $totalRentals,
-            'perPage' => $perPage,
-            'currentPage' => $page,
-            'search' => $search, 
+            "groupedBrands" => $groupedBrands,
+            "groupedCategories" => $groupedCategories,
+            'selectedBrands' => $selectedBrands,
+            'selectedCategories' => $selectedCategories,
+            'categories' => Category::orderBy('category_name', 'asc')->get(),
+            'brands' => Brand::orderBy('brand_name', 'asc')->get(),
         ]);
     }
 

@@ -20,7 +20,8 @@ class BrandSeeder extends Seeder
                 'brand_slug' => 'caterpillar',
                 'brand_description' => 'Caterpillar Inc. is the world’s leading manufacturer of construction and mining equipment, including excavators, motor graders, and loaders.',
                 // 'brand_image' => 'caterpillar-logo.png',
-                'brand_color' => 'red'
+                'brand_bg_color' => '#fee2e2',
+                'brand_tx_color' => '#dc2626'
             ],
             [
                 'brand_id' => 2,
@@ -28,7 +29,8 @@ class BrandSeeder extends Seeder
                 'brand_slug' => 'komatsu',
                 'brand_description' => 'Komatsu is a Japanese multinational corporation that manufactures construction, mining, and forestry machinery, including bulldozers and excavators.',
                 // 'brand_image' => 'komatsu-logo.png',
-                'brand_color' => 'blue'
+                'brand_bg_color' => '#DBEAFE',
+                'brand_tx_color' => '#2563EB',
             ],
             [
                 'brand_id' => 3,
@@ -36,7 +38,8 @@ class BrandSeeder extends Seeder
                 'brand_slug' => 'volvo',
                 'brand_description' => 'Volvo Construction Equipment is one of the world’s leading manufacturers of excavators, wheel loaders, and articulated haulers.',
                 // 'brand_image' => 'volvo-ce-logo.png',
-                'brand_color' => 'yellow'
+                'brand_bg_color' => '#fef9c3',
+                'brand_tx_color' => '#ca8a04',
             ],
             [
                 'brand_id' => 4,
@@ -44,7 +47,8 @@ class BrandSeeder extends Seeder
                 'brand_slug' => 'hitachi',
                 'brand_description' => 'Hitachi Construction Machinery specializes in manufacturing excavators, dump trucks, and cranes for construction and mining.',
                 // 'brand_image' => 'hitachi-logo.png',
-                'brand_color' => 'green'
+                'brand_bg_color' => '#d1fae5',
+                'brand_tx_color' => '#16a34a',
             ],
             [
                 'brand_id' => 5,
@@ -52,7 +56,8 @@ class BrandSeeder extends Seeder
                 'brand_slug' => 'jcb',
                 'brand_description' => 'JCB is a global construction equipment company known for manufacturing backhoe loaders, excavators, and compactors.',
                 // 'brand_image' => 'jcb-logo.png',
-                'brand_color' => 'purple'
+                'brand_bg_color' => '#f3e8ff',
+                'brand_tx_color' => '#9333ea',
             ],
             [
                 'brand_id' => 6,

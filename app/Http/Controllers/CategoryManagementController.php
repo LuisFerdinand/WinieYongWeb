@@ -15,27 +15,14 @@ class CategoryManagementController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = 10;
-        $page = $request->input('page', 1);
-        $search = $request->input('search');
-        $query = Category::query()->withCount('types');
+        $query = Category::query()->withCount('types')
+        ->filter(request(['search']))
+        ->sort($request->sort);
 
-        if ($search) {
-            $query->where('category_name', 'like', "%{$search}%")
-                ->orWhere('category_description', 'like', "%{$search}%");
-        }
-
-        $query->orderBy('category_name', 'asc');
-        $totalCategories = $query->count();
-
-        $categories = $query->skip(($page - 1) * $perPage)->take($perPage)->get();
-
+        $categories = $query->paginate(6)->withQueryString();
         return view('dashboard.machinery-rentals.categories-management.index', [
             'categories' => $categories,
-            'totalCategories' => $totalCategories,
-            'perPage' => $perPage,
-            'currentPage' => $page,
-            'search' => $search, 
+            
         ]);
     }
 

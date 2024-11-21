@@ -14,27 +14,14 @@ class BrandManagementController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = 10;
-        $page = $request->input('page', 1);
-        $search = $request->input('search');
-        $query = Brand::query()->withCount('types');
+        $query = Brand::query()->withCount('types')
+        ->filter(request(['search']))
+        ->sort($request->sort);
 
-        if ($search) {
-            $query->where('brand_name', 'like', "%{$search}%")
-                ->orWhere('brand_description', 'like', "%{$search}%");
-        }
-
-        $query->orderBy('brand_name', 'asc');
-        $totalBrands = $query->count();
-
-        $brands = $query->skip(($page - 1) * $perPage)->take($perPage)->get();
-
+        $brands = $query->paginate(10)->withQueryString();
         return view('dashboard.machinery-rentals.brands-management.index', [
             'brands' => $brands,
-            'totalBrands' => $totalBrands,
-            'perPage' => $perPage,
-            'currentPage' => $page,
-            'search' => $search, 
+            
         ]);
     }
 
@@ -57,6 +44,8 @@ class BrandManagementController extends Controller
             'brand_slug' => 'required',
             'brand_image' => 'image|file|max:1024',
             'brand_description' => 'required|string',
+            'brand_bg_color' => 'required|string',
+            'brand_tx_color' => 'required|string',
         ]);
 
         if ($request->file('brand_image')) {

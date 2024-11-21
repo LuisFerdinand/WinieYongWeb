@@ -18,7 +18,8 @@ return new class extends Migration
             $table->text('brand_description')->nullable();
             $table->string('brand_image', 255)->nullable();
             $table->string('brand_image_url', 255)->nullable();
-            $table->string('brand_color')->default('blue');
+            $table->string('brand_bg_color')->default('#DBEAFE');
+            $table->string('brand_tx_color')->default('#2563EB');
             $table->timestamps();
         });
     }
