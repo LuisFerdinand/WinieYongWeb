@@ -50,7 +50,7 @@
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Text Color</label>
                                 <div class="flex items-center space-x-2">
                                     <!-- Color Picker Input -->
-                                    <input type="color" id="colorTxPicker" class="w-10 h-10 p-1 border rounded-lg" value="#2563EB">
+                                    <input type="color" id="colorTxPicker" class="w-10 h-10 p-1 border rounded-lg" value="#2563EB" name="brand_tx_color">
 
                                     <!-- Hex Code Input -->
                                     <input type="text" id="hexTxCode" class="w-32 text-gray-900 text-sm border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 flex-grow" value="#2563EB">
@@ -71,15 +71,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Color</label>
-                        <div class="flex items-center space-x-2">
-                            <!-- Color Picker Input -->
-                            <input type="color" id="colorPicker" class="w-10 h-10 p-1 border rounded-lg" value="#111111">
-
-                            <!-- Hex Code Input -->
-                            <input type="text" id="hexCode" class="w-32 text-gray-900 text-sm border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 flex-grow" value="#111111">
-                        </div>
                     <div class="sm:col-span-2">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                         <input type="hidden" id="description" name="brand_description" value="{{ old('brand_description') }}">
