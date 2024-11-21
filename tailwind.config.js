@@ -14,6 +14,7 @@ export default {
                 primary: {
                     DEFAULT: "#0284C7",
                     700: "#0369A1",
+                    900: "#025080",
                 },
                 rental: {
                     50: "#eff6ff",
@@ -67,20 +68,6 @@ export default {
             ],
         },
         plugins: [require("flowbite/plugin")],
-        safelist: [
-            "bg-red-100",
-            "bg-green-100",
-            "bg-yellow-100",
-            "bg-blue-100",
-            "bg-rental-100",
-            "bg-purple-100",
-
-            "text-red-600",
-            "text-green-600",
-            "text-yellow-600",
-            "text-blue-600",
-            "text-rental-600",
-            "text-purple-600",
-        ],
     },
+    safelist: ["bg-[#fee2e2]", "text-[#dc2626]"],
 };
