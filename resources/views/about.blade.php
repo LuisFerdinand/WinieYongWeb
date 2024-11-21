@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-center md:justify-start space-x-6">
-                        <a href="#" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
+                        <a href="https://www.facebook.com/profile.php?id=61551899050491" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
                             <i class="fab fa-facebook-f text-xl"></i>
                         </a>
                         <a href="#" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
@@ -45,7 +45,7 @@
                         <a href="#" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
                             <i class="fab fa-linkedin-in text-xl"></i>
                         </a>
-                        <a href="#" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
+                        <a href="https://www.instagram.com/skp_sunward/" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
                     </div>
@@ -190,7 +190,7 @@
                     <p class="text-gray-600 mt-2">Quality heavy machines available for rent to suit your project needs.</p>
                 </div>
                 <div class="bg-teal-500 text-center py-3 hover:bg-teal-600 transition duration-300">
-                    <a href="/rental" class="text-white font-bold px-4 py-2 inline-block rounded-lg transition">View Rental Services</a>
+                    <a href="{{ route('rental.index') }}" class="text-white font-bold px-4 py-2 inline-block rounded-lg transition">View Rental Services</a>
                 </div>
             </div>
 
