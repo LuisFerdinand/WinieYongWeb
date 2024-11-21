@@ -131,7 +131,7 @@
         </div>
 
         <!-- Accordion Item 6 -->
-        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2">
+        <!-- <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2">
             <h2 class="accordion-header mb-0">
                 <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-gray-50 border-0 transition-transform duration-200 ease-in-out hover:bg-teal-100 focus:outline-none"
                     type="button" aria-expanded="false" aria-controls="accordion-collapse6">
@@ -146,7 +146,7 @@
             <div id="accordion-collapse6" class="accordion-body hidden px-5 py-4 text-gray-600">
                 Our commitment to sustainability means that our machinery incorporates the latest eco-friendly technologies. We strive to reduce environmental impact while maintaining high performance, helping you meet your green goals.
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 
