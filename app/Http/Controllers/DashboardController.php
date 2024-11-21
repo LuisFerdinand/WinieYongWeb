@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\ProductClick;
-use App\Models\RentalClick; // Ensure to import the RentalClick model
+use App\Models\RentalClick;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -38,11 +39,19 @@ class DashboardController extends Controller
                 ];
             });
 
+        // Fetch total products count
+        $totalProductsCount = Product::count();
+
+        // Fetch products for chart visualization
+        $productsData = Product::select('name', 'id')->get();
+
         return view('dashboard.index', [
             'productClicks' => $productClicks,
             'totalProductClicks' => $totalProductClicks,
             'rentalClicks' => $rentalClicks,
-            'totalRentalClicks' => $totalRentalClicks
+            'totalRentalClicks' => $totalRentalClicks,
+            'totalProductsCount' => $totalProductsCount,
+            'productsData' => $productsData
         ]);
     }
 }
