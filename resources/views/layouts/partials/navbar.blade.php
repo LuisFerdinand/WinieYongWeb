@@ -6,7 +6,7 @@
             <a href="{{ route('home') }}" class="flex items-center text-gray-300">
                 <img src="{{ asset('img/logo.png') }}" alt="Jaya Sambas Perkasa Logo" class="h-auto w-16 mr-1">
                 <span class="text-[30px] mr-1"> |</span>
-                <p class="text-xs font-inter pt-2 "> Sambas Karya <br> Perkasa</p>
+                <p class="text-l font-inter pt-2 "> PT. Sambas Karya Perkasa</p>
             </a>
         </h1>
 

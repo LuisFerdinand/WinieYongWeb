@@ -8,7 +8,7 @@
     <div class="relative max-w-[1440px] container mx-auto h-full flex flex-col justify-center items-center text-center md:text-left md:items-start p-4">
         <!-- Company Tagline -->
         <p class="text-teal-500 font-bold mb-2 tracking-widest uppercase" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
-            | Sambas Karya Perkasa
+            | PT. Sambas Karya Perkasa
         </p>
         <!-- Main Heading -->
         <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 text-gray-100" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">

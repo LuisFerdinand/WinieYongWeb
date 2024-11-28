@@ -127,7 +127,7 @@
 </section>
 
 <!-- Certifications Section with Margin-Top -->
-<section class="max-w-[1440px] mx-auto px-4 py-20">
+<!-- <section class="max-w-[1440px] mx-auto px-4 py-20">
     <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Certifications</span></p>
     <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Our Certifications of Heavy Machine Business</h1>
 
@@ -149,7 +149,7 @@
             <div class="item" style="--position: 10"><img src="img/certificate/unnamed10.jpg" alt=""></div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- Partners Section with Margin-Top -->
 <section class="max-w-[1440px] mx-auto px-4 py-20">
@@ -220,16 +220,23 @@
             <div class="w-full md:w-1/3 lg:w-1/4 p-4">
                 <div class="bg-white rounded-lg shadow-lg p-6">
                     <img src="{{ asset('img/team-member1.jpg') }}" alt="Team Member 1" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h3 class="text-xl font-semibold mb-2">John Doe</h3>
-                    <p class="text-gray-600">CEO</p>
+                    <h3 class="text-xl font-semibold mb-2">Budianto</h3>
+                    <p class="text-gray-600">Director</p>
                 </div>
             </div>
 
             <div class="w-full md:w-1/3 lg:w-1/4 p-4">
                 <div class="bg-white rounded-lg shadow-lg p-6">
                     <img src="{{ asset('img/team-member2.jpg') }}" alt="Team Member 2" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Jane Smith</h3>
-                    <p class="text-gray-600">Operations Manager</p>
+                    <h3 class="text-xl font-semibold mb-2">Djau Kwang Pau</h3>
+                    <p class="text-gray-600">Vice Director</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/3 lg:w-1/4 p-4">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <img src="{{ asset('img/team-member2.jpg') }}" alt="Team Member 2" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Rita Yongitami</h3>
+                    <p class="text-gray-600">Commissioner</p>
                 </div>
             </div>
 
