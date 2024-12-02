@@ -6,19 +6,21 @@
 <div class="max-w-[1440px] mx-auto py-20 px-6">
 
     <!-- Introduction Section -->
-    <section class="py-16">
-        <p class="text-teal-600 tracking-widest font-bold mb-2">|<span> Sunward</span></p>
-        <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6">Welcome to Sunward Heavy Machinery</h1>
-        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+    <section class="py-16" data-aos="fade-up">
+        <p class="text-teal-600 tracking-widest font-bold mb-2" data-aos="fade-right">|<span> Sunward</span></p>
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6" data-aos="zoom-in">
+            Welcome to Sunward Heavy Machinery
+        </h1>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4" data-aos="fade-left">
             Sunward is an innovative and leading brand in the heavy machinery industry, specializing in the production of construction equipment that meets global standards. With a wide range of products like excavators, cranes, bulldozers, and more, Sunward is dedicated to advancing the construction industry with superior technology and durable equipment.
         </p>
-        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+        <p class="text-lg text-gray-700 leading-relaxed mb-4" data-aos="fade-left" data-aos-delay="100">
             Whether you're in construction, mining, or any other heavy-duty industry, Sunward offers machinery that will make your work easier, faster, and more efficient. Our machinery is built to handle the toughest environments while maintaining performance and precision.
         </p>
-        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+        <p class="text-lg text-gray-700 leading-relaxed mb-4" data-aos="fade-left" data-aos-delay="200">
             Discover more about our cutting-edge products below and take your projects to the next level with Sunward.
         </p>
-        <div class="flex items-center space-x-6 mb-4 px-10">
+        <div class="flex items-center space-x-6 mb-4 px-10" data-aos="fade-up" data-aos-delay="300">
             <a href="https://wa.me/628115628833" target="_blank" class="text-gray-600 hover:text-teal-600 transition-colors duration-300 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
                 <i class="fab fa-whatsapp text-4xl"></i>
             </a>
@@ -30,7 +32,7 @@
             </a>
         </div>
         <!-- Link to Sunward Official Website with Teal Button Styling -->
-        <a href="https://id.sunwardmachine.com/" target="_blank" class="inline-block bg-teal-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-teal-700 transition duration-300">
+        <a href="https://id.sunwardmachine.com/" target="_blank" class="inline-block bg-teal-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-teal-700 transition duration-300" data-aos="zoom-in" data-aos-delay="400">
             Visit Sunward Official Website
         </a>
     </section>

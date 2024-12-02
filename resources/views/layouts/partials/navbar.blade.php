@@ -77,32 +77,32 @@
                 </button>
 
                 <!-- Mobile Home -->
-                <a href="{{ route('home') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <a href="{{ route('home') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('home') ? 'bg-gray-700' : '' }}">
                     Home
                 </a>
 
                 <!-- Mobile About -->
-                <a href="{{ route('about') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <a href="{{ route('about') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('about') ? 'bg-gray-700' : '' }}">
                     About
                 </a>
 
                 <!-- Mobile Products -->
-                <a href="{{ route('sunward.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <a href="{{ route('sunward.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('sunward.index') ? 'bg-gray-700' : '' }}">
                     Sunward
                 </a>
 
                 <!-- Mobile Machinery Rental -->
-                <a href="{{ route('rental.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <a href="{{ route('rental.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('rental.index') ? 'bg-gray-700' : '' }}">
                     Machinery Rental
                 </a>
 
                 <!-- Mobile Career -->
-                <a href="{{ route('career.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <a href="{{ route('career.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('career.index') ? 'bg-gray-700' : '' }}">
                     Career
                 </a>
 
                 <!-- Mobile Contact -->
-                <a href="{{ route('contact') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <a href="{{ route('contact') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ request()->routeIs('contact') ? 'bg-gray-700' : '' }}">
                     Contact
                 </a>
             </div>

@@ -35,13 +35,13 @@
 
 <section id="accordion-section" class="max-w-[1440px] mx-auto py-20 px-4">
     <!-- Section Title -->
-    <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Benefit</span></p>
-    <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Why Choose Us</h1>
+    <p class="text-teal-600 text-center tracking-widest font-bold mb-0" data-aos="fade-up" data-aos-duration="1000">|<span> Benefit</span></p>
+    <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Why Choose Us</h1>
 
     <!-- Accordion Items -->
-    <div class="bg-white rounded-lg shadow-lg p-4">
+    <div class="bg-white rounded-lg shadow-lg p-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
         <!-- Accordion Item 1 -->
-        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2">
+        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2" data-aos="fade-up" data-aos-duration="1000">
             <h2 class="accordion-header mb-0">
                 <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-gray-50 border-0 transition-transform duration-200 ease-in-out hover:bg-teal-100 focus:outline-none"
                     type="button" aria-expanded="false" aria-controls="accordion-collapse1">
@@ -59,7 +59,7 @@
         </div>
 
         <!-- Accordion Item 2 -->
-        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2">
+        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
             <h2 class="accordion-header mb-0">
                 <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-gray-50 border-0 transition-transform duration-200 ease-in-out hover:bg-teal-100 focus:outline-none"
                     type="button" aria-expanded="false" aria-controls="accordion-collapse2">
@@ -77,7 +77,7 @@
         </div>
 
         <!-- Accordion Item 3 -->
-        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2">
+        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
             <h2 class="accordion-header mb-0">
                 <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-gray-50 border-0 transition-transform duration-200 ease-in-out hover:bg-teal-100 focus:outline-none"
                     type="button" aria-expanded="false" aria-controls="accordion-collapse3">
@@ -95,7 +95,7 @@
         </div>
 
         <!-- Accordion Item 4 -->
-        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2">
+        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
             <h2 class="accordion-header mb-0">
                 <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-gray-50 border-0 transition-transform duration-200 ease-in-out hover:bg-teal-100 focus:outline-none"
                     type="button" aria-expanded="false" aria-controls="accordion-collapse4">
@@ -113,7 +113,7 @@
         </div>
 
         <!-- Accordion Item 5 -->
-        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2">
+        <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
             <h2 class="accordion-header mb-0">
                 <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-gray-50 border-0 transition-transform duration-200 ease-in-out hover:bg-teal-100 focus:outline-none"
                     type="button" aria-expanded="false" aria-controls="accordion-collapse5">
@@ -129,33 +129,19 @@
                 We prioritize safety by ensuring our machines comply with the latest industry regulations. All equipment undergoes rigorous testing, ensuring they meet safety standards and minimize risks on-site.
             </div>
         </div>
-
-        <!-- Accordion Item 6 -->
-        <!-- <div class="accordion-item rounded-lg border border-neutral-200 bg-white shadow-md mb-2">
-            <h2 class="accordion-header mb-0">
-                <button class="accordion-button flex justify-between items-center w-full px-5 py-4 text-left text-base font-semibold text-neutral-800 bg-gray-50 border-0 transition-transform duration-200 ease-in-out hover:bg-teal-100 focus:outline-none"
-                    type="button" aria-expanded="false" aria-controls="accordion-collapse6">
-                    Eco-Friendly Technologies
-                    <span class="accordion-icon transition-transform duration-200 ease-in-out">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                        </svg>
-                    </span>
-                </button>
-            </h2>
-            <div id="accordion-collapse6" class="accordion-body hidden px-5 py-4 text-gray-600">
-                Our commitment to sustainability means that our machinery incorporates the latest eco-friendly technologies. We strive to reduce environmental impact while maintaining high performance, helping you meet your green goals.
-            </div>
-        </div> -->
     </div>
 </section>
 
+
 <section class="py-20 px-4 max-w-[1440px] mx-auto my-auto">
-    <p class="text-teal-600 text-center tracking-widest font-bold mb-0">|<span> Workflow</span></p>
-    <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10">Our Project Workflow</h1>
+    <!-- Section Header -->
+    <p class="text-teal-600 text-center tracking-widest font-bold mb-0" data-aos="fade-up" data-aos-duration="1000">|<span> Workflow</span></p>
+    <h1 class="text-4xl text-center md:text-6xl font-bold leading-tight mb-10" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Our Project Workflow</h1>
+
+    <!-- Workflow Steps -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative py-10">
         <!-- Step 1: Site Assessment -->
-        <div class="flex flex-col items-center text-center">
+        <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
             <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white border-2 border-teal-500 rounded-full">
                 <svg class="w-10 h-10 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
@@ -168,7 +154,7 @@
         </div>
 
         <!-- Step 2: Equipment Selection -->
-        <div class="flex flex-col items-center text-center">
+        <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
             <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white border-2 border-teal-500 rounded-full">
                 <svg class="w-10 h-10 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -181,7 +167,7 @@
         </div>
 
         <!-- Step 3: Customization & Planning -->
-        <div class="flex flex-col items-center text-center">
+        <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
             <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white border-2 border-teal-500 rounded-full">
                 <svg class="w-10 h-10 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -194,7 +180,7 @@
         </div>
 
         <!-- Step 4: Delivery & Setup -->
-        <div class="flex flex-col items-center text-center">
+        <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
             <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white border-2 border-teal-500 rounded-full">
                 <svg class="w-10 h-10 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
@@ -207,6 +193,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- Add Swiper CSS -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />

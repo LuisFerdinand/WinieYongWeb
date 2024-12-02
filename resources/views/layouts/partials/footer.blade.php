@@ -30,7 +30,7 @@
                     <a href="{{ route('rental.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Machinery Rental</a>
                 </li>
                 <li>
-                    <a href="{{ route('career.index') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Contact</a>
+                    <a href="{{ route('contact') }}" class="flex items-center px-4 py-2 text-sm font-semibold text-gray-300 hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -38,15 +38,18 @@
         <!-- Social Media Section -->
         <div class="flex flex-col items-center md:items-start">
             <h2 class="text-xl font-bold mb-6">Follow Us</h2>
-            <div class="flex space-x-4">
-                <a href="https://www.instagram.com/skp_sunward/" target="_blank" class="text-gray-300 hover:text-teal-500">
+            <div class="flex flex-col justify-center space-y-2">
+                <a href="https://www.instagram.com/skp_sunward/" target="_blank" class="text-gray-300 hover:text-teal-500 flex space-x-3">
                     <i class="fab fa-instagram fa-2x"></i>
+                    <p class="text-gray-600">skp_sunward</p>
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=61551899050491" target="_blank" class="text-gray-300 hover:text-teal-500">
+                <a href="https://www.facebook.com/profile.php?id=61551899050491" target="_blank" class="text-gray-300 hover:text-teal-500 flex space-x-3">
                     <i class="fab fa-facebook fa-2x"></i>
+                    <p class="text-gray-600">Skp Sunward </p>
                 </a>
-                <a href="https://wa.me/6282256831863" target="_blank" class="text-gray-300 hover:text-teal-500">
+                <a href="https://wa.me/6282256831863" target="_blank" class="text-gray-300 hover:text-teal-500 flex space-x-3">
                     <i class="fab fa-whatsapp fa-2x"></i>
+                    <p class="text-gray-600">+62 822-5683-1863</p>
                 </a>
             </div>
         </div>

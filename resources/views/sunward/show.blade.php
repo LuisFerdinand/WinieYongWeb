@@ -31,40 +31,7 @@
                     <p class="text-gray-700 leading-relaxed">{{ $product->description }}</p>
                 </div>
 
-                <!-- Product Details -->
-                <div class="mb-6">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-3">Product Details</h2>
-                    <ul class="space-y-2">
-                        @if($product->model_number)
-                        <li class="flex justify-between"><strong>Model Number:</strong> <span>{{ $product->model_number }}</span></li>
-                        @endif
-                        @if($product->power_output)
-                        <li class="flex justify-between"><strong>Power Output:</strong> <span>{{ $product->power_output }} HP</span></li>
-                        @endif
-                        @if($product->dimensions)
-                        <li class="flex justify-between"><strong>Dimensions:</strong> <span>{{ $product->dimensions }}</span></li>
-                        @endif
-                        @if($product->fuel_type)
-                        <li class="flex justify-between"><strong>Fuel Type:</strong> <span>{{ $product->fuel_type }}</span></li>
-                        @endif
-                        @if($product->usage_instructions)
-                        <li class="flex justify-between"><strong>Usage Instructions:</strong> <span>{{ $product->usage_instructions }}</span></li>
-                        @endif
-                        @if($product->reviews_count)
-                        <li class="flex justify-between"><strong>Reviews Count:</strong> <span>{{ $product->reviews_count }}</span></li>
-                        @endif
-                        @if($product->rating)
-                        <li class="flex justify-between"><strong>Rating:</strong>
-                            <span class="flex items-center">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <span class="{{ $i < floor($product->rating) ? 'text-yellow-500' : 'text-gray-300' }}">&#9733;</span>
-                            @endfor
-                            <span class="ml-2 text-gray-600">({{ number_format($product->rating, 1) }})</span>
-                            </span>
-                        </li>
-                        @endif
-                    </ul>
-                </div>
+
 
                 <!-- Specifications Table -->
                 <div class="mb-6">
