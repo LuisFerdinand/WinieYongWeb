@@ -61,11 +61,6 @@
                       {{ $rental->brand->brand_name }}
                     </span>
                   </a>
-                  {{-- <span class="me-2 rounded bg-primary-100 px-0.5 py-0.5 text-md font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300"> 
-                            <a href="#" class="text-xl font-medium leading-tight text-rental-600 hover:underline dark:text-white">
-                              {{ $rental->brand->brand_name }}
-                  </a>
-                  </span> --}}
                   <div class="text-start">
                     <a href="#" class="text-5xl font-extrabold leading-tight text-gray-900 hover:underline dark:text-white justify-start ">{{ $rental->type_name }}</a>
                   </div>
@@ -74,19 +69,49 @@
                   </div>
                 </div>
 
-
-                <div class="flex items-center justify-center gap-1 text-slate-400 font-medium">
-                  <a href="https://wa.me/+6285248209388?text=I%20am%20interested%20in%20" target="_blank">
-                    <button type="button" class="inline-flex items-center rounded-lg bg-green-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                      <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd" />
-                        <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
-                      </svg>
+                <div class=" flex flex-col gap-3">
+                  
+                  <div class="flex items-center justify-end text-slate-400 font-medium">
+                    <a href="https://wa.me/+6285248209388?text=I%20am%20interested%20in%20" target="_blank">
+                      <button type="button" class="inline-flex items-center rounded-lg bg-green-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                        <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                          <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd" />
+                          <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
+                        </svg>
+                      </button>
+                    </a>
+  
+  
+                  </div>
+                  <div class="relative inline-block">
+                    <button 
+                        type="button" 
+                        class="group relative rounded-lg px-3 py-1.5 text-sm font-semibold border-2 transition-colors 
+                        hover:bg-gray-100 hover:border-2 hover:border-teal-500 focus:outline-none focus:ring-2 
+                        focus:ring-teal-500 focus:ring-offset-2"
+                    >
+                        <span class="text-lg font-semibold text-teal-600">
+                            {{ $rental->type_length * $rental->type_width * $rental->type_height }}
+                        </span> m<sup>3</sup>
+                        
+                        <!-- Tooltip -->
+                        <div class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2
+                                    invisible opacity-0 transition-all duration-300
+                                    group-hover:visible group-hover:opacity-100">
+                            <!-- Tooltip content -->
+                            <div class="relative rounded-lg bg-gray-900 px-3 py-2 text-sm text-white shadow-lg">
+                                <p class="whitespace-nowrap">
+                                    Dimensions: {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }} m<sup>3</sup>
+                                </p>
+                                <!-- Arrow -->
+                                <div class="absolute left-1/2 top-full -translate-x-1/2
+                                           border-4 border-transparent border-t-gray-900"></div>
+                            </div>
+                        </div>
                     </button>
-                  </a>
-
-
+                  </div>
                 </div>
+                
               </div>
 
               <hr class="border-gray-400 my-2">

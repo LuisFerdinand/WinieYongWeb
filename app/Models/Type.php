@@ -12,7 +12,6 @@ class Type extends Model
     use HasFactory;
     use Sluggable;
     protected $primaryKey = 'type_id';
-    // protected $fillable = ['type_name', 'brand_id', 'type_slug', 'type_description', 'category_id'];
     protected $guarded = ['type_id'];
     
     public function scopeFilter($query, array $filters) {

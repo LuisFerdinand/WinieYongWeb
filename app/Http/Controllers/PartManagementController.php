@@ -7,106 +7,95 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
+use Cviebrock\EloquentSluggable\Services\SlugService;
+
 class PartManagementController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10; // Number of items per page
-        $page = $request->input('page', 1); // Get the current page, default is 1
-
-        $totalParts = Part::count(); // Get total number of parts
-        $parts = Part::skip(($page - 1) * $perPage)->take($perPage)->get(); // Fetch parts for the current page
-
-        return view('dashboard.part-management.index', [
+        $query = Part::query()
+        ->filter(request(['search']))
+        ->sort($request->sort);
+        $parts = $query->paginate(10)->withQueryString();
+        return view('dashboard.parts-management.index', [
             'parts' => $parts,
-            'totalParts' => $totalParts,
-            'perPage' => $perPage,
-            'currentPage' => $page,
+            
         ]);
     }
 
     public function create()
     {
-        return view('dashboard.part-management.create');
+        return view('dashboard.parts-management.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'category' => 'nullable|string',
-            'contact' => 'required|string',
-            'location' => 'required|string',
-            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+        $validatedData = $request->validate([
+            'part_name' => 'required|string|max:255',
+            'part_slug' => 'required|string',
+            'part_description' => 'required|string',
+            'part_category' => 'required|string|max:255',
+            'part_contact' => 'required|string',
+            'part_price' => 'required|integer|min:1',
+            'part_location' => 'required|string',
+            'part_image' => 'image|file|max:1024',
         ]);
 
-        // Handle file upload
-        $path = null; // Initialize the path variable
-        if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url');
-            $path = $file->store('parts', 'public'); // Save to public storage
+        if ($request->file('part_image')) {
+            $validatedData['part_image'] = $request->file('part_image')->store('part-images');
         }
 
-        // Create the part, merging the path if it exists
-        Part::create(array_merge($request->all(), ['image_url' => $path]));
-        return redirect()->route('part-management.index')->with('success', 'Part created successfully.');
+        Part::create($validatedData);
+
+        return redirect()->route('parts-management.index')->with('success', 'Part created successfully.');
     }
 
-    public function edit($id)
+    public function edit(Part $part)
     {
-        $part = Part::findOrFail($id);
-        return view('dashboard.part-management.edit', compact('part'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'category' => 'nullable|string',
-            'contact' => 'required|string',
-            'location' => 'required|string',
-            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+        return view('dashboard.parts-management.edit', [
+            'part'=>$part
         ]);
+    }
 
-        $part = Part::findOrFail($id);
-
-        // Handle file upload
-        if ($request->hasFile('image_url')) {
-            // Delete the old image if it exists
-            if ($part->image_url) {
-                Storage::disk('public')->delete($part->image_url);
+    public function update(Request $request, Part $part)
+    {
+        $rules = [
+            'part_slug' => 'required|string',
+            'part_description' => 'required|string',
+            'part_category' => 'required|string|max:255',
+            'part_contact' => 'required|string',
+            'part_price' => 'required|integer|min:1',
+            'part_location' => 'required|string',
+            'part_image' => 'image|file|max:1024',
+        ];
+        if($request->part_name!=$part->part_name){
+            $rules['part_name'] = 'required|max:255';
+        }
+        $validatedData = $request->validate($rules);
+        if ($request->file('part_image')) {
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
             }
-
-            // Store the new image
-            $file = $request->file('image_url');
-            $path = $file->store('parts', 'public'); // Save to public storage
-            $part->image_url = $path;
+            $validatedData['part_image'] = $request->file('part_image')->store('part-images');
         }
 
-        // Update the part with the other fields
-        $part->update($request->except('image_url')); // Exclude image_url from mass assignment
-        $part->save();
+        Part::where('part_id', $part->part_id)->update($validatedData);
 
-        return redirect()->route('part-management.index')->with('success', 'Part updated successfully.');
+        return redirect()->route('parts-management.index')->with('success', 'Part has been updated successfully!');
     }
 
 
-    public function destroy($id)
+    public function destroy(Part $part)
     {
-        $part = Part::findOrFail($id);
-
-        // Check if the image exists and delete it from storage
-        if ($part->image_url) {
-            Storage::disk('public')->delete($part->image_url);
+        if($part->part_image){
+            Storage::delete($part->part_image);
         }
-
-        // Delete the part record from the database
-        $part->delete();
-
-        return redirect()->route('part-management.index')->with('success', 'Part deleted successfully.');
+        Part::destroy($part->part_id);
+        
+        return redirect()->route('parts-management.index')->with('success', 'Part has been deleted successfully!');
+    }
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Part::class, 'part_slug', $request->name);
+        return response()->json(['slug'=>$slug]);
     }
 }

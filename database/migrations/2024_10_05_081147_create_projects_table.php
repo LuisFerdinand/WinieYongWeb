@@ -14,13 +14,15 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->id(); // Unique ID for the project
+            $table->id('project_id'); // Unique ID for the project
             $table->string('project_name'); // Name of the project
+            $table->string('project_slug')->unique();
             $table->text('project_description')->nullable(); // Description of the project
-            $table->date('project_date'); // Date of the project
+            $table->date('project_date'); // Date of the projectP
             $table->string('project_image')->nullable(); // Image of the project
+            $table->string('project_image_url')->nullable(); // Image of the project
             $table->string('project_client')->nullable(); // Client associated with the project
-            $table->string('project_status')->default('ongoing'); // Status of the project (e.g., ongoing, completed)
+            $table->enum('project_status', ['Ongoing', 'Completed', 'On Hold', 'Cancelled', 'Planned'])->default('Ongoing');
             $table->text('project_highlights')->nullable(); // Key highlights or achievements in the project
             $table->timestamps(); // Timestamps for created and updated times
         });

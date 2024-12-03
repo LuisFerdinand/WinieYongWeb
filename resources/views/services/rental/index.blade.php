@@ -288,15 +288,44 @@
                 </div>
               </div>
 
-              <div class="absolute bottom-0 right-0 mb-2">
-                <span class="text-sm text-end align-bottom">
+              {{-- <div class="absolute bottom-0 right-0 mb-2">
+                <span class="text-sm text-end align-bottom ">
                   <span class="text-lg font-semibold text-teal-600">
                     {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }}
                   </span> m<sup>3</sup>
                 </span>
 
+              </div> --}}
+              <div class="absolute bottom-0 right-0 mb-2">
+                <button 
+                    type="button" 
+                    class="group rounded-lg px-3 py-1.5 
+                           text-sm font-semibold border-2 transition-colors 
+                           hover:bg-gray-100 hover:border-2 hover:border-teal-500 focus:outline-none focus:ring-2 
+                           focus:ring-teal-500 focus:ring-offset-2"
+                >
+                    <span class="text-lg font-semibold text-teal-600">
+                        {{ $rental->type_length * $rental->type_width * $rental->type_height }}
+                    </span> m<sup>3</sup>
+                    
+                    <!-- Tooltip -->
+                    <div class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2
+                                invisible opacity-0 transition-all duration-300
+                                group-hover:visible group-hover:opacity-100">
+                        <!-- Tooltip content -->
+                        <div class="relative rounded-lg bg-gray-900 px-3 py-2 text-sm text-white shadow-lg">
+                            <p class="whitespace-nowrap">
+                                Dimensions: {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }} m<sup>3</sup>
+                            </p>
+                            <!-- Arrow -->
+                            <div class="absolute left-1/2 top-full -translate-x-1/2
+                                       border-4 border-transparent border-t-gray-900"></div>
+                        </div>
+                    </div>
+                </button>
               </div>
             </div>
+            
 
 
             <hr class="border-black my-2">

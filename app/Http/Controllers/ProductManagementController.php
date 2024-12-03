@@ -7,135 +7,98 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str; // Import Str facade for slug generation
 
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ProductManagementController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $page = $request->input('page', 1);
-        $search = $request->input('search');
-
-        // Fetch products based on search query
-        $query = Product::query();
-
-        if ($search) {
-            $query->where('name', 'like', "%{$search}%")
-                ->orWhere('description', 'like', "%{$search}%")
-                ->orWhere('model_number', 'like', "%{$search}%");
-        }
-
-        $totalProducts = $query->count(); // Get total number of products based on search
-        $products = $query->skip(($page - 1) * $perPage)->take($perPage)->get(); // Fetch products for the current page
-
-        return view('dashboard.product-management.index', [
+        $query = Product::query()
+        ->filter(request(['search']))
+        ->sort($request->sort);
+        $products = $query->paginate(10)->withQueryString();
+        return view('dashboard.products-management.index', [
             'products' => $products,
-            'totalProducts' => $totalProducts,
-            'perPage' => $perPage,
-            'currentPage' => $page,
-            'search' => $search, // Pass search input to the view
         ]);
     }
 
 
     public function create()
     {
-        return view('dashboard.product-management.create');
+        return view('dashboard.products-management.create');
     }
 
     public function store(Request $request)
     {
-        // Validate incoming request data
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'model_number' => 'nullable|string',
-            'power_output' => 'nullable|numeric',
-            'dimensions' => 'nullable|string|max:255',
-            'fuel_type' => 'nullable|string|max:255',
-            'usage_instructions' => 'nullable|string',
-            'image_url' => 'nullable|file|image|max:5048', // Validate image upload
+        $validatedData = $request->validate([
+            'product_name' => 'required|string|max:255',
+            'product_slug' => 'required|string',
+            'product_description' => 'required|string',
+            'product_model_number' => 'required|string|max:255',
+            'product_price' => 'required|integer|min:1',
+            'product_power_output' => 'required|numeric|min:0.1',
+            'product_dimensions' => 'required|string',
+            'product_fuel_type' => 'required|string',
+            'product_usage_instructions' => 'required|string',
+            'product_image' => 'image|file|max:1024',
         ]);
 
-        // Initialize the data array for the product
-        $data = $request->only(['name', 'description', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions']);
-
-        // Generate slug from the name
-        $data['slug'] = Str::slug($request->input('name'));
-
-        // Handle file upload
-        if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url');
-            $path = $file->store('sunwards', 'public'); // Save to public storage
-            $data['image_url'] = $path; // Add the path to the data array
+        if ($request->file('product_image')) {
+            $validatedData['product_image'] = $request->file('product_image')->store('product-images');
         }
 
-        // Create the product with the gathered data
-        Product::create($data);
+        Product::create($validatedData);
 
-        return redirect()->route('product-management.index')->with('success', 'Product created successfully.');
+        return redirect()->route('products-management.index')->with('success', 'Product created successfully.');
     }
 
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $product = Product::findOrFail($id);
-        return view('dashboard.product-management.edit', compact('product'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        // Validate incoming request data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'model_number' => 'nullable|string|max:255',
-            'power_output' => 'nullable|numeric',
-            'dimensions' => 'nullable|string|max:255',
-            'fuel_type' => 'nullable|string|max:255',
-            'usage_instructions' => 'nullable|string',
-            'image_url' => 'nullable|file|image|max:5048', // Validate image upload
+        return view('dashboard.products-management.edit', [
+            'product'=>$product
         ]);
+    }
 
-        // Find the product by ID
-        $product = Product::findOrFail($id);
-
-        // Initialize the data array for the product
-        $data = $request->only(['name', 'description', 'model_number', 'power_output', 'dimensions', 'fuel_type', 'usage_instructions']);
-
-        // Generate slug from the name
-        $data['slug'] = Str::slug($request->input('name'));
-
-        // Handle file upload
-        if ($request->hasFile('image_url')) {
-            // Delete the old image if it exists
-            if ($product->image_url && Storage::disk('public')->exists($product->image_url)) {
-                Storage::disk('public')->delete($product->image_url);
+    public function update(Request $request, Product $product)
+    {
+        $rules = [
+            'product_slug' => 'required|string',
+            'product_description' => 'required|string',
+            'product_model_number' => 'required|string|max:255',
+            'product_price' => 'required|integer|min:1',
+            'product_power_output' => 'required|numeric|min:0.1',
+            'product_dimensions' => 'required|string',
+            'product_fuel_type' => 'required|string',
+            'product_usage_instructions' => 'required|string',
+            'product_image' => 'image|file|max:1024',
+        ];
+        if($request->product_name!=$product->product_name){
+            $rules['product_name'] = 'required|max:255';
+        }
+        $validatedData = $request->validate($rules);
+        if ($request->file('product_image')) {
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
             }
-
-            // Store the new image
-            $file = $request->file('image_url');
-            $path = $file->store('sunwards', 'public'); // Save to public storage
-            $data['image_url'] = $path; // Add the path to the data array
+            $validatedData['product_image'] = $request->file('product_image')->store('product-images');
         }
 
-        // Update the product with the gathered data
-        $product->update($data);
+        Product::where('product_id', $product->product_id)->update($validatedData);
 
-        return redirect()->route('product-management.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('products-management.index')->with('success', 'Product has been updated successfully!');
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($id);
-
-        // Check if the image exists and delete it from storage
-        if ($product->image_url) {
-            Storage::disk('public')->delete($product->image_url);
+        if($product->product_image){
+            Storage::delete($product->product_image);
         }
-
-        // Delete the product record from the database
-        $product->delete();
-
-        return redirect()->route('product-management.index')->with('success', 'Part deleted successfully.');
+        Product::destroy($product->product_id);
+        
+        return redirect()->route('products-management.index')->with('success', 'Product has been deleted successfully!');
+    }
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Product::class, 'product_slug', $request->name);
+        return response()->json(['slug'=>$slug]);
     }
 }

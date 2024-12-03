@@ -43,7 +43,7 @@ class DashboardController extends Controller
         $totalProductsCount = Product::count();
 
         // Fetch products for chart visualization
-        $productsData = Product::select('name', 'id')->get();
+        $productsData = Product::select('product_name', 'product_id')->get();
 
         return view('dashboard.index', [
             'productClicks' => $productClicks,

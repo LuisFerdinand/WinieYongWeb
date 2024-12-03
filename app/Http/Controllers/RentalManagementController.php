@@ -79,10 +79,11 @@ class RentalManagementController extends Controller
         ]);
 
         if ($request->file('type_image')) {
-            $validatedData['type_image'] = $request->file('type_image')->store('post-images');
+            $validatedData['type_image'] = $request->file('type_image')->store('rental-images');
         }
-
-        // Create the rental with the gathered data
+        // Masukkan FILESYSTEM_DRIVER ke env dengan nilai 'public'
+        // Run php artisan storage:link
+        
         Type::create($validatedData);
 
         return redirect()->route('rentals-management.index')->with('success', 'Rental created successfully.');
@@ -122,7 +123,7 @@ class RentalManagementController extends Controller
             if($request->oldImage){
                 Storage::delete($request->oldImage);
             }
-            $validatedData['type_image'] = $request->file('type_image')->store('post-images');
+            $validatedData['type_image'] = $request->file('type_image')->store('rental-images');
         }
 
         Type::where('type_id', $type->type_id)->update($validatedData);

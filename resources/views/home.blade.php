@@ -210,11 +210,18 @@
                 <!-- Dynamic Project Slides -->
                 @foreach($projects as $project)
                 <div class="swiper-slide bg-white rounded-lg shadow-md overflow-hidden ">
+                    @if ($project->project_image)
                     <img src="{{ asset('storage/' . $project->project_image) }}" alt="{{ $project->project_name }}" class="w-full h-48 object-cover">
+                    @elseif($project->project_image_url)
+                    <img src="{{ asset($project->project_image_url) }}" alt="{{ $project->project_name }}" class="w-full h-48 object-cover">
+                    @else
+                    <img src="{{ asset('img/NoImg.png') }}" alt="{{ $project->project_name }}" class="w-full h-48 object-cover">
+                    @endif
+                    
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">{{ $project->project_name }}</h3>
                         <p class="text-gray-600 mb-4">{{ Str::limit($project->project_description, 100) }}</p>
-                        <a href="{{ route('project.show', $project->id) }}" class="text-teal-600 font-semibold hover:text-teal-800">Learn More →</a>
+                        <a href="{{ route('project.show', $project->project_id) }}" class="text-teal-600 font-semibold hover:text-teal-800">Learn More →</a>
                     </div>
                 </div>
                 @endforeach

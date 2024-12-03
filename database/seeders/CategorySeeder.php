@@ -50,6 +50,56 @@ class CategorySeeder extends Seeder
                 'category_description' => 'Versatile construction machines used for moving, loading, or transporting materials like gravel, sand, or soil.',
                 'category_image_url' => 'https://s7d2.scene7.com/is/image/Caterpillar/C842352',
             ],
+            [
+                'category_name' => 'Cranes',
+                'category_slug' => 'cranes',
+                'category_description' => 'Heavy machinery used for lifting and moving heavy loads at construction sites.',
+            ],
+            [
+                'category_name' => 'Concrete Mixers',
+                'category_slug' => 'concrete-mixers',
+                'category_description' => 'Specialized vehicles designed to mix and transport concrete for construction projects.',
+            ],
+            [
+                'category_name' => 'Scaffolding',
+                'category_slug' => 'scaffolding',
+                'category_description' => 'Temporary structures used to support workers and materials during building construction or maintenance.',
+            ],
+            [
+                'category_name' => 'Power Tools',
+                'category_slug' => 'power-tools',
+                'category_description' => 'Handheld electrical or pneumatic tools used for drilling, cutting, and other construction tasks.',
+            ],
+            [
+                'category_name' => 'Safety Equipment',
+                'category_slug' => 'safety-equipment',
+                'category_description' => 'Protective gear and equipment designed to ensure worker safety on construction sites.',
+            ],
+            [
+                'category_name' => 'Trenchers',
+                'category_slug' => 'trenchers',
+                'category_description' => 'Machines used for digging narrow trenches for pipes, cables, or drainage systems.',
+            ],
+            [
+                'category_name' => 'Dump Trucks',
+                'category_slug' => 'dump-trucks',
+                'category_description' => 'Heavy-duty vehicles used for transporting and dumping loose materials like sand, gravel, or demolition waste.',
+            ],
+            [
+                'category_name' => 'Welding Equipment',
+                'category_slug' => 'welding-equipment',
+                'category_description' => 'Tools and machines used for joining metals in construction and fabrication projects.',
+            ],
+            [
+                'category_name' => 'Aerial Work Platforms',
+                'category_slug' => 'aerial-work-platforms',
+                'category_description' => 'Elevated work platforms like cherry pickers and scissor lifts used for working at height.',
+            ],
+            [
+                'category_name' => 'Generators',
+                'category_slug' => 'generators',
+                'category_description' => 'Portable or stationary power generation equipment for providing electricity at construction sites.',
+            ]
         ];
     
         // Iterate over each category and create it in the database

@@ -159,21 +159,21 @@
         </div>
     </section>
     <div class="overflow-x-scroll">
-        <table class="w-full bg-white text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
             <thead class="bg-gray-800 text-white text-xs uppercase dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-2 py-3">#</th>
+                    <th scope="col" class="px-2 py-3 rounded-tl-lg">#</th>
                     <th scope="col" class="pr-6 pl-2 py-3">Name</th>
                     <th scope="col" class="pr-6 pl-2 py-4">Description</th>
-                    <th scope="col" class="pr-6 pl-2 py-4">Total Rentals</th>
-                    <th scope="col" class="pr-6 pl-2 py-4">Actions</th>
+                    <th scope="col" class="pr-6 pl-2 py-4 ">Total Rentals</th>
+                    <th scope="col" class="pr-6 pl-2 py-4 rounded-tr-lg">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($brands as $brand)
                     
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="border-x px-0">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 @if($loop->last) !border-0 @endif">
+                    <td class="border-x px-0 @if($loop->last) rounded-bl-lg @endif">
                         <div class="flex items-center justify-center">
                             {{ ($brands->currentPage() - 1) * $brands->perPage() + $loop->iteration }}.
                         </div>
@@ -209,7 +209,7 @@
                         </div>
                     </td>
     
-                    <td class="border-x px-2 py-4">
+                    <td class="border-x px-2 py-4 @if($loop->last) rounded-br-lg @endif">
                         <div class="flex items-center justify-center gap-2">
 
                             <a 
@@ -331,7 +331,9 @@
                     const deleteUrl = `/dashboard/services/machinery-rentals/brands-management/${brandData.brand_slug}`;
                     let imageContent = "";
                     if (brandData.brand_image) {
-                        imageContent = `<img class="w-full dark:hidden rounded-md object-cover" src="{{ asset('storage/') }}${brandData.brand_image}" alt="" />`;
+                        imageContent = `<img class="w-full dark:hidden rounded-md object-cover" src="{{ asset('storage/') }}/${brandData.brand_image}" alt="" />`;
+                        
+
                     } else if (brandData.brand_image_url) {
                         imageContent = `<img class="w-full dark:hidden rounded-md object-cover" src="${brandData.brand_image_url}" alt="" />`;
                     } else {

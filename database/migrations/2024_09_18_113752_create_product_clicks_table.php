@@ -22,7 +22,7 @@ class CreateProductClicksTable extends Migration
             $table->timestamps();
 
             // Add a foreign key constraint to product_id, linking to the products table
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
         });
     }
 

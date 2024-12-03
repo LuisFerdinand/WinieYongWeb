@@ -4,7 +4,7 @@
 <div class="max-w-[1440px] mx-auto min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 mt-32 ">
     <div class="text-center mb-12">
         <p class="text-teal-600 tracking-widest font-bold">|<span> Career</span></p>
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-6">{{ $job->title }}</h1>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-6">{{ $job->job_title }}</h1>
         <p class="text-base sm:text-lg text-gray-500">Explore this exciting career opportunity.</p>
     </div>
 
@@ -24,22 +24,22 @@
 
     <div class="w-full max-w-3xl bg-white rounded-lg border shadow-lg p-6 mb-10">
         <div class="mb-6">
-            <p class="text-lg text-gray-700 mb-2"><strong class="font-medium">Position:</strong> {{ $job->position }}</p>
-            <p class="text-lg text-gray-700 mb-2"><strong class="font-medium">Work Type:</strong> {{ ucfirst($job->work_type) }}</p>
-            <p class="text-lg text-gray-700 mb-2"><strong class="font-medium">Total Positions:</strong> {{ $job->total_positions }}</p>
-            <p class="text-lg text-gray-700 mb-4"><strong class="font-medium">Status:</strong> {{ ucfirst($job->status) }}</p>
+            <p class="text-lg text-gray-700 mb-2"><strong class="font-medium">Department:</strong> {{ $job->job_department }}</p>
+            <p class="text-lg text-gray-700 mb-2"><strong class="font-medium">Work Type:</strong> {{ ucfirst($job->job_work_type) }}</p>
+            <p class="text-lg text-gray-700 mb-2"><strong class="font-medium">Total Positions:</strong> {{ $job->job_total_positions }}</p>
+            <p class="text-lg text-gray-700 mb-4"><strong class="font-medium">Status:</strong> {{ ucfirst($job->job_status) }}</p>
         </div>
 
         <h2 class="text-3xl font-semibold mb-6 text-gray-800">Job Description</h2>
-        <p class="text-base text-gray-700 mb-10">{{ $job->description }}</p>
+        <p class="text-base text-gray-700 mb-10">{{ $job->job_description }}</p>
 
         <h2 class="text-3xl font-semibold mb-6 text-gray-800">Requirements</h2>
-        <p class="text-base text-gray-700 mb-10">{{ $job->requirements }}</p>
+        <p class="text-base text-gray-700 mb-10">{{ $job->job_requirements }}</p>
 
-        @if($job->status === 'open')
+        @if($job->job_status === 'Open')
         <div class="mt-10">
             <h2 class="text-3xl font-semibold mb-6 text-gray-800">Apply for this Position</h2>
-            <form action="{{ route('career.apply', $job->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <form action="{{ route('career.apply', $job->job_id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                 @csrf
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>

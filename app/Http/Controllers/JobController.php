@@ -13,7 +13,7 @@ class JobController extends Controller
     // Display the career page with open jobs
     public function index()
     {
-        $jobs = Job::where('status', 'open')->get();
+        $jobs = Job::where('job_status', 'open')->get();
         return view('career.index', compact('jobs'));
     }
 
