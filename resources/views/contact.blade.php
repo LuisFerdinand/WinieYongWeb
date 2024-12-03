@@ -64,7 +64,23 @@
                 <!-- Contact Form -->
                 <div class="lg:w-1/2 bg-white p-12 lg:p-16">
                     <h3 class="text-2xl font-semibold mb-8" data-aos="fade-left" data-aos-delay="300">Send Us a Message</h3>
-                    <form action="#" method="POST" data-aos="fade-left" data-aos-delay="400">
+                    @if (session('success'))
+                    <div class="p-4 mb-4 text-green-800 bg-green-200 rounded">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                    <div class="p-4 mb-4 text-red-800 bg-red-200 rounded">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
+                    <form action="{{ route('contact.submit') }}" method="POST" data-aos="fade-left" data-aos-delay="400">
+                        @csrf
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <input type="text" name="first-name" id="first-name" placeholder="First Name" class="w-full p-3 border border-gray-300 rounded-md">
                             <input type="text" name="last-name" id="last-name" placeholder="Last Name" class="w-full p-3 border border-gray-300 rounded-md">
@@ -73,10 +89,15 @@
                             <input type="email" name="email" id="email" placeholder="Email Address" class="w-full p-3 border border-gray-300 rounded-md">
                         </div>
                         <div class="mt-6">
+                            <input type="text" name="subject" id="subject" placeholder="Subject" class="w-full p-3 border border-gray-300 rounded-md">
+                        </div>
+                        <div class="mt-6">
                             <textarea name="message" id="message" rows="4" placeholder="Your Message" class="w-full p-3 border border-gray-300 rounded-md"></textarea>
                         </div>
                         <button type="submit" class="mt-8 py-3 px-8 bg-teal-600 text-white rounded-md hover:bg-teal-700" data-aos="fade-left" data-aos-delay="500">Send Message</button>
                     </form>
+
+
                 </div>
             </div>
         </div>

@@ -12,21 +12,25 @@ class ContactController extends Controller
     {
         // Validate the form inputs
         $request->validate([
-            'name' => 'required|string|max:255',
+            'first-name' => 'required|string|max:255',
+            'last-name' => 'required|string|max:255',
             'email' => 'required|email',
+            'subject' => 'required|string|max:255',
             'message' => 'required',
         ]);
 
         // Prepare data for email
         $data = [
-            'name' => $request->input('name'),
+            'first_name' => $request->input('first-name'),
+            'last_name' => $request->input('last-name'),
             'email' => $request->input('email'),
+            'subject' => $request->input('subject'),
             'message' => $request->input('message'),
         ];
 
         // Send the email
         Mail::to('ferdinandluis88@gmail.com')
-            ->send(new ContactFormMail($data)); // Pass the data to the mailable
+            ->send(new ContactFormMail($data));
 
         // Return a success response or redirect
         return redirect()->back()->with('success', 'Your message has been sent successfully!');

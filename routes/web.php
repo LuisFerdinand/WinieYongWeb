@@ -147,7 +147,7 @@ Route::middleware(['auth', 'check.role:admin'])->prefix('dashboard/services/mach
     Route::resource('rentals-management', RentalManagementController::class)
         ->parameters(['rentals-management' => 'type:type_slug']);
     Route::resource('categories-management', CategoryManagementController::class)
-    ->parameters(['categories-management' => 'category:category_slug']);
+        ->parameters(['categories-management' => 'category:category_slug']);
     Route::resource('brands-management', BrandManagementController::class)
         ->parameters(['brands-management' => 'brand:brand_slug']);
 });
@@ -169,7 +169,7 @@ Route::middleware(['auth', 'check.role:admin'])->group(function () {
 });
 
 // Mail to Contact
-Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 
 // Cv Storage
