@@ -53,7 +53,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('project-management.index') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200 {{ Request::is('project-management') ? 'bg-black text-white font-semibold' : '' }}">
+                        <a href="{{ route('projects-management.index') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200 {{ Request::is('dashboard/projects*') ? ' text-white font-semibold underline' : '' }}">
                             <i class="fa-solid fa-briefcase mr-3"></i> Projects
                         </a>
                     </li>
@@ -67,7 +67,7 @@
 
                     <!-- Products Dropdown Menu -->
                     <li class="relative">
-                        <button id="products-button" type="button" class="w-full flex items-center justify-between px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 ">
+                        <button id="products-button" type="button" class="w-full flex items-center justify-between px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 {{ Request::is('dashboard/products*') ? ' text-white font-semibold underline' : '' }}">
                             <span class="flex items-center">
                                 <i class="fas fa-truck-moving mr-3"></i> Products
                             </span>
@@ -76,14 +76,14 @@
                             </svg>
                         </button>
                         <div id="products-dropdown" class="hidden mt-1 space-y-1">
-                            <a href="{{ route('job-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200  {{ Request::is('job-management') ? 'bg-black text-white font-semibold' : '' }}" role="menuitem">
+                            <a href="{{ route('jobs-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200  {{ Request::is('dashboard/products/jobs-management*') ? 'bg-black text-white font-semibold' : '' }}" role="menuitem">
                                 <i class="fas fa-briefcase mr-2"></i> Job Management
                             </a>
 
-                            <a href="{{ route('part-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200 {{ Request::is('part-management') ? 'bg-black text-white font-semibold' : '' }}" role="menuitem">
+                            <a href="{{ route('parts-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200 {{ Request::is('dashboard/products/parts-management*') ? 'bg-black text-white font-semibold' : '' }}" role="menuitem">
                                 <i class="fas fa-wrench mr-2"></i> Parts & Accessories
                             </a>
-                            <a href="{{ route('product-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200 {{ Request::is('product-management') ? 'bg-black text-white font-semibold' : '' }}" role="menuitem">
+                            <a href="{{ route('products-management.index') }}" class="block px-8 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition-colors duration-200 {{ Request::is('dashboard/products/products-management*') ? 'bg-black text-white font-semibold' : '' }}" role="menuitem">
                                 <i class="fas fa-industry mr-2"></i> Sunward
                             </a>
                         </div>
@@ -198,7 +198,7 @@
                 event.stopPropagation();
             });
 
-            // Rentals dropdown toggle (if needed as a separate toggle, or keep as part of services)
+            // Rentals dropdown toggle (if needed as a separate toggle, or keep as parts of services)
             const rentalsButton = document.getElementById('rentals-button');
             const rentalsDropdown = document.getElementById('rentals-dropdown'); // Make sure rentals-dropdown exists if separate
 

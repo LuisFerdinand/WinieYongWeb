@@ -5,116 +5,97 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+
 class JobManagementController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10; // Number of items per page
-        $page = $request->input('page', 1); // Get the current page, default is 1
-
-        $totalJobs = Job::count(); // Get total number of jobs
-        $jobs = Job::skip(($page - 1) * $perPage)->take($perPage)->get(); // Fetch jobs for the current page
-
-        return view('dashboard.job-management.index', [
+        $query = Job::query()
+        ->filter(request(['search']))
+        ->sort($request->sort);
+        $jobs = $query->paginate(10)->withQueryString();
+        return view('dashboard.jobs-management.index', [
             'jobs' => $jobs,
-            'totalJobs' => $totalJobs,
-            'perPage' => $perPage,
-            'currentPage' => $page,
+            
         ]);
     }
 
     public function create()
     {
-        return view('dashboard.job-management.create');
+        return view('dashboard.jobs-management.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'position' => 'required|string|max:255',
-            'work_type' => 'required|in:remote,on-site',
-            'total_positions' => 'required|integer|min:1',
-            'requirements' => 'required|string',
-            'status' => 'required|in:open,closed',
-            'application_deadline' => 'nullable|date',
-            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
+        $validatedData = $request->validate([
+            'job_title' => 'required|string|max:255',
+            'job_slug' => 'required|string',
+            'job_description' => 'required|string',
+            'job_department' => 'required|string|max:255',
+            'job_work_type' => 'required|string',
+            'job_total_positions' => 'required|integer|min:1',
+            'job_requirements' => 'required|string',
+            'job_status' => 'required|string',
+            'job_image' => 'image|file|max:1024',
         ]);
 
-        // Handle file upload
-        $imagePath = null;
-        if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url');
-            $imagePath = $file->store('images', 'public'); // Save to public storage
+        if ($request->file('job_image')) {
+            $validatedData['job_image'] = $request->file('job_image')->store('job-images');
         }
 
-        // Create a new job record
-        Job::create([
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'position' => $request->input('position'),
-            'work_type' => $request->input('work_type'),
-            'total_positions' => $request->input('total_positions'),
-            'requirements' => $request->input('requirements'),
-            'status' => $request->input('status'),
-            'application_deadline' => $request->input('application_deadline'),
-            'image_url' => $imagePath,
-        ]);
+        Job::create($validatedData);
 
-        return redirect()->route('job-management.index')->with('success', 'Job created successfully.');
+        return redirect()->route('jobs-management.index')->with('success', 'Job created successfully.');
     }
 
-    public function edit($id)
+    public function edit(Job $job)
     {
-        $job = Job::findOrFail($id);
-        return view('dashboard.job-management.edit', compact('job'));
+        return view('dashboard.jobs-management.edit', [
+            'job'=>$job
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Job $job)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'position' => 'required|string|max:255',
-            'work_type' => 'required|in:remote,on-site',
-            'total_positions' => 'required|integer|min:1',
-            'requirements' => 'required|string',
-            'status' => 'required|in:open,closed',
-            'application_deadline' => 'nullable|date',
-            'image_url' => 'nullable|file|image|max:2048', // Validate image upload
-        ]);
-
-        $job = Job::findOrFail($id);
-
-        // Handle file upload
-        if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url');
-            $imagePath = $file->store('images', 'public'); // Save to public storage
-            $job->image_url = $imagePath;
+        $rules = [
+            'job_slug' => 'required|string',
+            'job_description' => 'required|string',
+            'job_department' => 'required|string|max:255',
+            'job_work_type' => 'required|string',
+            'job_total_positions' => 'required|integer|min:1',
+            'job_requirements' => 'required|string',
+            'job_status' => 'required|string',
+            'job_image' => 'image|file|max:1024',
+        ];
+        if($request->job_title!=$job->job_title){
+            $rules['job_title'] = 'required|max:255';
+        }
+        $validatedData = $request->validate($rules);
+        if ($request->file('job_image')) {
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['job_image'] = $request->file('job_image')->store('job-images');
         }
 
-        // Update the job record
-        $job->update([
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'position' => $request->input('position'),
-            'work_type' => $request->input('work_type'),
-            'total_positions' => $request->input('total_positions'),
-            'requirements' => $request->input('requirements'),
-            'status' => $request->input('status'),
-            'application_deadline' => $request->input('application_deadline'),
-            'image_url' => $job->image_url,
-        ]);
+        Job::where('job_id', $job->job_id)->update($validatedData);
 
-        return redirect()->route('job-management.index')->with('success', 'Job updated successfully.');
+        return redirect()->route('jobs-management.index')->with('success', 'Job has been updated successfully!');
     }
 
-    public function destroy($id)
+    public function destroy(Job $job)
     {
-        $job = Job::findOrFail($id);
-        $job->delete();
-
-        return redirect()->route('job-management.index')->with('success', 'Job deleted successfully.');
+        if($job->job_image){
+            Storage::delete($job->job_image);
+        }
+        Job::destroy($job->job_id);
+        
+        return redirect()->route('jobs-management.index')->with('success', 'Job has been deleted successfully!');
+    }
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Job::class, 'job_slug', $request->name);
+        return response()->json(['slug'=>$slug]);
     }
 }

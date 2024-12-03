@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('title'); // Job title
-            $table->text('description'); // Job description
-            $table->string('position'); // Job position
-            $table->enum('work_type', ['remote', 'on-site']); // Remote or On-site
-            $table->integer('total_positions'); // Total positions available
-            $table->text('requirements'); // Job requirements
-            $table->enum('status', ['open', 'closed'])->default('open'); // Status (open/closed)
+            $table->id('job_id');
+            $table->string('job_title');
+            $table->string("job_slug")->unique();
+            $table->text('job_description'); // Job descriptionp
+            $table->string('job_department'); // Job position
+            $table->enum('job_work_type', ['Remote', 'Onsite', 'Hybrid']); // Remote or On-site
+            $table->integer('job_total_positions'); // Total positions available
+            $table->text('job_requirements'); // Job requirements
+            $table->enum('job_status', ['Open', 'Closed'])->default('Open'); // Status (open/closed)
+            $table->string('job_image', 255)->nullable();
+            $table->string('job_image_url', 255)->nullable();
             $table->timestamps();
         });
     }

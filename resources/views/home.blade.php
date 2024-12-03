@@ -227,7 +227,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">{{ $project->project_name }}</h3>
                         <p class="text-gray-600 mb-4">{{ Str::limit($project->project_description, 100) }}</p>
-                        <a href="{{ route('project.show', $project->id) }}" class="text-teal-600 font-semibold hover:text-teal-800">Learn More →</a>
+                        <a href="{{ route('project.show', $project->project_id) }}" class="text-teal-600 font-semibold hover:text-teal-800">Learn More →</a>
                     </div>
                 </div>
                 @endforeach

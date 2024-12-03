@@ -31,7 +31,7 @@ use App\Models\Category;
 use App\Models\Brand;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/projects/{id}', [PageController::class, 'show'])->name('project.show');
+Route::get('/projects/{project_id}', [PageController::class, 'show'])->name('project.show');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', function () {
     return view('contact');
@@ -44,48 +44,8 @@ Route::get('services/rental/{type:type_slug}', [RentalController::class, 'show']
 Route::get('/search', [RentalController::class, 'search'])->name('rentals.search');
 Route::resource('services/rental', RentalController::class)->only(['index', 'show']);
 Route::get('/rentals/search', [RentalController::class, 'search'])->name('rental.search');
-Route::get('services/c/{category:category_slug}', function (Category $category) {
-    return view('services.rental.index', [
-        'rentals' => $category->types->load('category', 'brand'),
-        'title' => "Types by Category: $category->category_name"
-    ]);
-});
-Route::get('/2/categories', function (Category $category) {
-    return view('2/categories', [
-        'title' => 'Type Categories',
-        'categories' => Category::all()
-    ]);
-});
-Route::get('/2/brands/{brand:brand_slug}', function (Brand $brand) {
-    return view('2/posts', [
-        'title' => "Types by Brand: $brand->brand_name",
-        'types' => $brand->types->load('category', 'brand')
-    ]);
-});
 
 
-Route::get('/2/categories/{category:category_slug}', function (Category $category) {
-    return view('2/posts', [
-        'types' => $category->types,
-        'title' => "Types by Category: $category->category_name"
-    ]);
-});
-Route::get('/2/categories', function (Category $category) {
-    return view('2/categories', [
-        'title' => 'Type Categories',
-        'categories' => Category::all()
-    ]);
-});
-Route::get('/2/brands/{brand:brand_slug}', function (Brand $brand) {
-    return view('2/posts', [
-        'title' => "Types by Brand: $brand->brand_name",
-        'types' => $brand->types
-    ]);
-});
-
-
-Route::get('/2/posts', [TypeController::class, 'index']);
-Route::get('/2/posts/{type:type_slug}', [TypeController::class, 'show']);
 
 // Route to repair page
 Route::get('services/repair', [ServiceController::class, 'repair'])->name('service.repair');
@@ -130,19 +90,17 @@ Route::middleware(['auth', 'check.role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 });
 
-Route::middleware(['auth', 'check.role:admin'])->group(function () {
-    Route::resource('part-management', PartManagementController::class);
-    Route::resource('job-management', JobManagementController::class);
-    Route::resource('product-management', ProductManagementController::class);
-    Route::resource('project-management', ProjectManagementController::class);
-});
 
 // Route Create Slug
 Route::get('dashboard/services/machinery-rentals/rentals-management/checkSlug', [RentalManagementController::class, 'checkSlug']);
 Route::get('dashboard/services/machinery-rentals/categories-management/checkSlug', [RentalManagementController::class, 'checkSlug']);
 Route::get('dashboard/services/machinery-rentals/brands-management/checkSlug', [RentalManagementController::class, 'checkSlug']);
+Route::get('dashboard/products/jobs-management/checkSlug', [JobManagementController::class, 'checkSlug']);
+Route::get('dashboard/products/parts-management/checkSlug', [PartManagementController::class, 'checkSlug']);
+Route::get('dashboard/products-management/checkSlug', [ProductManagementController::class, 'checkSlug']);
+Route::get('dashboard/projects-management/checkSlug', [ProjectManagementController::class, 'checkSlug']);
 
-// Route Rental Management
+// Machinery Rental Management
 Route::middleware(['auth', 'check.role:admin'])->prefix('dashboard/services/machinery-rentals')->group(function () {
     Route::resource('rentals-management', RentalManagementController::class)
         ->parameters(['rentals-management' => 'type:type_slug']);
@@ -150,6 +108,22 @@ Route::middleware(['auth', 'check.role:admin'])->prefix('dashboard/services/mach
     ->parameters(['categories-management' => 'category:category_slug']);
     Route::resource('brands-management', BrandManagementController::class)
         ->parameters(['brands-management' => 'brand:brand_slug']);
+});
+
+// Product Management
+Route::middleware(['auth', 'check.role:admin'])->prefix('dashboard/products')->group(function () {
+    Route::resource('jobs-management', JobManagementController::class)
+        ->parameters(['jobs-management' => 'job:job_slug']);
+    Route::resource('parts-management', PartManagementController::class)
+        ->parameters(['parts-management' => 'part:part_slug']);
+    Route::resource('products-management', ProductManagementController::class)
+        ->parameters(['products-management' => 'product:product_slug']);
+});
+
+// Project Management
+Route::middleware(['auth', 'check.role:admin'])->prefix('dashboard')->group(function () {
+    Route::resource('projects-management', ProjectManagementController::class)
+    ->parameters(['projects-management' => 'project:project_slug']);;
 });
 
 

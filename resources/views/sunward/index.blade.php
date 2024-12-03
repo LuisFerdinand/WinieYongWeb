@@ -59,7 +59,15 @@
                     @foreach($products as $index => $product)
                     <div class="absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out"
                         :class="{ 'opacity-100': activeIndex === {{ $index }}, 'opacity-0': activeIndex !== {{ $index }} }">
-                        <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
+                        @if ($product->product_image)
+                        <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->product_name }}" class="w-full h-full object-contain">
+                        @elseif($product->product_image_url)
+                        <img src="{{ $product->product_image_url }}" alt="{{ $product->product_name }}" class="w-full h-full object-contain">
+                        @else
+                        <img src="{{ asset('img/NoImg.png') }}" alt="" alt="{{ $product->product_name }}" class="w-full h-full object-contain">
+                        @endif
+                        
+                        
                     </div>
                     @endforeach
 
@@ -80,11 +88,11 @@
                 <div class="w-full md:w-1/2 overflow-hidden p-6">
                     @foreach($products as $index => $product)
                     <div x-show="activeIndex === {{ $index }}" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100">
-                        <h3 class="text-3xl font-semibold text-gray-800 uppercase mb-0">{{ $product->name }}</h3>
-                        <p class="text-teal-500 font-bold tracking-wide mb-2">{{$product->model_number}}</p>
-                        <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 200) }}</p>
-                        <p class="text-xl font-bold mb-4">{{ $product->power_output}} HP</p>
-                        <a href="{{ route('sunward.show', $product->slug) }}" class="text-teal-600 hover:underline">View Details</a>
+                        <h3 class="text-3xl font-semibold text-gray-800 uppercase mb-0">{{ $product->product_name }}</h3>
+                        <p class="text-teal-500 font-bold tracking-wide mb-2">{{$product->product_model_number}}</p>
+                        <p class="text-gray-600 mb-4">{{ Str::limit($product->product_description, 200) }}</p>
+                        <p class="text-xl font-bold mb-4">{{ $product->product_power_output}} HP</p>
+                        <a href="{{ route('sunward.show', $product->product_slug) }}" class="text-teal-600 hover:underline">View Details</a>
                     </div>
                     @endforeach
                 </div>

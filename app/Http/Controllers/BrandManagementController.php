@@ -96,7 +96,7 @@ class BrandManagementController extends Controller
             if($request->oldImage){
                 Storage::delete($request->oldImage);
             }
-            $validatedData['brand_image'] = $request->file('brand_image')->store('post-images');
+            $validatedData['brand_image'] = $request->file('brand_image')->store('brand-images');
         }
 
         Brand::where('brand_id', $brand->brand_id)->update($validatedData);

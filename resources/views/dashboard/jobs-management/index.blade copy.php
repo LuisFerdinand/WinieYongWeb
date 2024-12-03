@@ -16,7 +16,7 @@
     </div>
     @endif
 
-    <a href="{{ route('job-management.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg mb-4 inline-block">Add New Job</a>
+    <a href="{{ route('jobs-management.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg mb-4 inline-block">Add New Job</a>
 
     <!-- Responsive Table Wrapper -->
     <div class="overflow-x-auto">
@@ -52,8 +52,8 @@
                         @endif
                     </td>
                     <td class="border px-4 py-2">
-                        <a href="{{ route('job-management.edit', $job->id) }}" class="text-yellow-500 font-bold hover:text-yellow-300">Edit</a>
-                        <form action="{{ route('job-management.destroy', $job->id) }}" method="POST" class="inline-block">
+                        <a href="{{ route('jobs-management.edit', $job->id) }}" class="text-yellow-500 font-bold hover:text-yellow-300">Edit</a>
+                        <form action="{{ route('jobs-management.destroy', $job->id) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 font-bold hover:text-red-300">Delete</button>

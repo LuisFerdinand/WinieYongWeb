@@ -19,7 +19,7 @@ class CategoryManagementController extends Controller
         ->filter(request(['search']))
         ->sort($request->sort);
 
-        $categories = $query->paginate(6)->withQueryString();
+        $categories = $query->paginate(10)->withQueryString();
         return view('dashboard.machinery-rentals.categories-management.index', [
             'categories' => $categories,
             
@@ -93,7 +93,7 @@ class CategoryManagementController extends Controller
             if($request->oldImage){
                 Storage::delete($request->oldImage);
             }
-            $validatedData['category_image'] = $request->file('category_image')->store('post-images');
+            $validatedData['category_image'] = $request->file('category_image')->store('category-images');
         }
 
         Category::where('category_id', $category->category_id)->update($validatedData);

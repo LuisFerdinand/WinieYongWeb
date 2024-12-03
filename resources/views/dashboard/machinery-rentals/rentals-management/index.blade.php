@@ -247,21 +247,21 @@
         </div>
     </section>
     <div class="overflow-x-scroll">
-        <table class="w-full bg-white text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="bg-gray-800 text-white text-xs uppercase dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-2 py-3">#</th>
+                    <th scope="col" class="px-2 py-3 rounded-tl-lg">#</th>
                     <th scope="col" class="pr-6 pl-2 py-3">Name</th>
                     <th scope="col" class="pr-6 pl-2 py-4">Brand</th>
                     <th scope="col" class="pr-6 pl-2 py-4">Availability</th>
-                    <th scope="col" class="pr-6 pl-2 py-4">Actions</th>
+                    <th scope="col" class="pr-6 pl-2 py-4 rounded-tr-lg">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($rentals as $rental)
-                    
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="border-x px-0">
+                
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 @if($loop->last) !border-0 @endif">
+                    <td class="border-x px-0 @if($loop->last) rounded-bl-lg @endif">
                         <div class="flex items-center justify-center">
                             {{ ($rentals->currentPage() - 1) * $rentals->perPage() + $loop->iteration }}.
                         </div>
@@ -309,7 +309,7 @@
                         @endif
                     </td>
     
-                    <td class="border-x px-2 py-4">
+                    <td class="border-x px-2 py-4 @if($loop->last) rounded-br-lg @endif">
                         <div class="flex items-center justify-center gap-2">
                             {{-- <a href="{{ route('rentals-management.show', $rental->type_slug) }}"
                             class="text-rental-500 font-bold hover:text-rental-300">
@@ -583,7 +583,8 @@
                     const deleteUrl = `/dashboard/services/machinery-rentals/rentals-management/${rentalData.type_slug}`;
                     let imageContent = "";
                     if (rentalData.type_image) {
-                        imageContent = `<img class="w-full dark:hidden rounded-md object-cover" src="{{ asset('storage/') }}${rentalData.type_image}" alt="" />`;
+                        imageContent = `<img class="w-full dark:hidden rounded-md object-cover" src="{{ asset('storage/') }}/${rentalData.type_image}" alt="" />`;
+
                     } else if (rentalData.type_image_url) {
                         imageContent = `<img class="w-full dark:hidden rounded-md object-cover" src="${rentalData.type_image_url}" alt="" />`;
                     } else {
@@ -628,34 +629,61 @@
                                             <a href="#" class="text-2xl font-bold leading-tight text-gray-500 hover:underline dark:text-white justify-start ">${ rentalData.category.category_name }</a>
                                             </div>
                                         </div>
-                                        
-                            
-                                        <div class="flex items-center justify-center gap-1 text-slate-400 font-medium">
-                                            <a href="${editUrl}">
-                                                <button type="button" class="inline-flex items-center rounded-lg bg-yellow-500 px-2.5 py-2 text-sm font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                    <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path fill-rule="evenodd" d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z" clip-rule="evenodd"/>
-                                                        <path fill-rule="evenodd" d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z" clip-rule="evenodd"/>
+                                        <div class=" flex flex-col gap-3 items-end">
+                                            <div class="flex items-center justify-center gap-1 text-slate-400 font-medium">
+                                                <a href="${editUrl}">
+                                                    <button type="button" class="inline-flex items-center rounded-lg bg-yellow-500 px-2.5 py-2 text-sm font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                        <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path fill-rule="evenodd" d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z" clip-rule="evenodd"/>
+                                                            <path fill-rule="evenodd" d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z" clip-rule="evenodd"/>
+                                                        </svg>
+                                                    </button>
+                                                </a>
+                                                <form action="${deleteUrl}" method="POST" class="inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="inline-flex items-center rounded-lg bg-red-500 px-2.5 py-2 text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onclick="return confirm('Are you sure?')">
+                                                        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                                <button type="button" class="inline-flex items-center rounded-lg bg-green-500 px-2.5 py-2 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                    <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+                                                    <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
                                                     </svg>
                                                 </button>
-                                            </a>
-                                            <form action="${deleteUrl}" method="POST" class="inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="inline-flex items-center rounded-lg bg-red-500 px-2.5 py-2 text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onclick="return confirm('Are you sure?')">
-                                                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
-                                                    </svg>
+                                            
+                                            
+                                            </div>
+                                            <div class="relative inline-block">
+                                                <button 
+                                                    type="button" 
+                                                    class="group relative rounded-lg px-3 py-1.5 text-sm font-semibold border-2 transition-colors 
+                                                    hover:bg-gray-100 hover:border-2 hover:border-teal-500 focus:outline-none focus:ring-2 
+                                                    focus:ring-teal-500 focus:ring-offset-2"
+                                                >
+                                                    <span class="text-lg font-semibold text-teal-600">
+                                                        ${ rentalData.type_length * rentalData.type_width * rentalData.type_height }
+                                                    </span> m<sup>3</sup>
+                                                    
+                                                    <!-- Tooltip -->
+                                                    <div class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2
+                                                                invisible opacity-0 transition-all duration-300
+                                                                group-hover:visible group-hover:opacity-100">
+                                                        <!-- Tooltip content -->
+                                                        <div class="relative rounded-lg bg-gray-900 px-3 py-2 text-sm text-white shadow-lg">
+                                                            <p class="whitespace-nowrap">
+                                                                Dimensions: ${ rentalData.type_length }&times;${ rentalData.type_width }&times;${ rentalData.type_height } m<sup>3</sup>
+                                                            </p>
+                                                            <!-- Arrow -->
+                                                            <div class="absolute left-1/2 top-full -translate-x-1/2
+                                                                    border-4 border-transparent border-t-gray-900"></div>
+                                                        </div>
+                                                    </div>
                                                 </button>
-                                            </form>
-                                            <button type="button" class="inline-flex items-center rounded-lg bg-green-500 px-2.5 py-2 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                                <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
-                                                <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
-                                                </svg>
-                                            </button>
-                                        
-                                        
+                                            </div>
                                         </div>
                                     </div>
                                     

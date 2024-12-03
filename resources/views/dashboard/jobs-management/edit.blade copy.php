@@ -4,7 +4,7 @@
 <div class="container mx-auto mt-8">
     <h1 class="text-2xl font-bold mb-4">Edit Job</h1>
 
-    <form action="{{ route('job-management.update', $job->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('jobs-management.update', $job->job_slug) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -65,7 +65,7 @@
 
             <div class="mt-4">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Update Job</button>
-                <a href="{{ route('job-management.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded-lg">Cancel</a>
+                <a href="{{ route('jobs-management.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded-lg">Cancel</a>
             </div>
         </div>
     </form>

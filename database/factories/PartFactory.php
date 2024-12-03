@@ -12,7 +12,7 @@ class PartFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word,
+            'part_name' => $this->faker->word,
             'description' => $this->faker->paragraph,
             'price' => $this->faker->randomFloat(2, 10000, 5000000),
             'image_url' => $this->faker->imageUrl(640, 480, 'parts', true),

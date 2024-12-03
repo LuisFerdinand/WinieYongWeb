@@ -48,7 +48,7 @@
                     </div>
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Upload Image</label>
-                        <img class="img-preview w-full h-auto max-w-xs rounded-lg" alt="">
+                        <img class="img-preview w-full h-auto max-w-xs rounded-lg mb-2" alt="">
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                         @error('category_image') 
                         bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500
