@@ -20,7 +20,9 @@ class ContactFormMail extends Mailable
                 'first_name' => $this->data['first_name'],
                 'last_name' => $this->data['last_name'],
                 'email' => $this->data['email'],
+                'subject' => $this->data['subject'], // Include the subject
                 'message' => $this->data['message'],
-            ]);
+            ])
+            ->subject($this->data['subject']); // Set the email subject
     }
 }
