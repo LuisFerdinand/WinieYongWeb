@@ -5,11 +5,11 @@
 @section('content')
 
 <div class="max-w-[1440px] mx-auto text-center px-4 py-0 mt-20">
-  <section class="bg-gray-50 py-6 antialiased dark:bg-gray-900 md:py-6">
+  <section class="py-6 antialiased md:py-6">
     <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
       <div class="mb-3 pt-8 items-end justify-between space-y-4 sm:flex sm:space-y-0 md:mb-8 sm:pt-4">
         <div>
-          <h2 class="mt-0 text-xl font-semibold sm:mt-2 text-teal-600 dark:text-white sm:text-2xl">| Machinery Rentals</h2>
+          <h2 class="text-teal-600 text-center tracking-widest font-bold mb-2">| Machinery Rentals</h2>
         </div>
         <div class="flex items-center space-x-1 md:space-x-3 gap-0">
           <button data-modal-toggle="filterModal" data-modal-target="filterModal" type="button" class="flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 sm:w-auto">
@@ -292,206 +292,205 @@
                 <span class="text-sm text-end align-bottom ">
                   <span class="text-lg font-semibold text-teal-600">
                     {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }}
-                  </span> m<sup>3</sup>
-                </span>
+              </span> m<sup>3</sup>
+              </span>
 
-              </div> --}}
-              <div class="absolute bottom-0 right-0 mb-2">
-                <button 
-                    type="button" 
-                    class="group rounded-lg px-3 py-1.5 
+            </div> --}}
+            <div class="absolute bottom-0 right-0 mb-2">
+              <button
+                type="button"
+                class="group rounded-lg px-3 py-1.5 
                            text-sm font-semibold border-2 transition-colors 
                            hover:bg-gray-100 hover:border-2 hover:border-teal-500 focus:outline-none focus:ring-2 
-                           focus:ring-teal-500 focus:ring-offset-2"
-                >
-                    <span class="text-lg font-semibold text-teal-600">
-                        {{ $rental->type_length * $rental->type_width * $rental->type_height }}
-                    </span> m<sup>3</sup>
-                    
-                    <!-- Tooltip -->
-                    <div class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2
+                           focus:ring-teal-500 focus:ring-offset-2">
+                <span class="text-lg font-semibold text-teal-600">
+                  {{ $rental->type_length * $rental->type_width * $rental->type_height }}
+                </span> m<sup>3</sup>
+
+                <!-- Tooltip -->
+                <div class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2
                                 invisible opacity-0 transition-all duration-300
                                 group-hover:visible group-hover:opacity-100">
-                        <!-- Tooltip content -->
-                        <div class="relative rounded-lg bg-gray-900 px-3 py-2 text-sm text-white shadow-lg">
-                            <p class="whitespace-nowrap">
-                                Dimensions: {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }} m<sup>3</sup>
-                            </p>
-                            <!-- Arrow -->
-                            <div class="absolute left-1/2 top-full -translate-x-1/2
+                  <!-- Tooltip content -->
+                  <div class="relative rounded-lg bg-gray-900 px-3 py-2 text-sm text-white shadow-lg">
+                    <p class="whitespace-nowrap">
+                      Dimensions: {{ $rental->type_length }}&times;{{ $rental->type_width }}&times;{{ $rental->type_height }} m<sup>3</sup>
+                    </p>
+                    <!-- Arrow -->
+                    <div class="absolute left-1/2 top-full -translate-x-1/2
                                        border-4 border-transparent border-t-gray-900"></div>
-                        </div>
-                    </div>
-                </button>
-              </div>
-            </div>
-            
-
-
-            <hr class="border-black my-2">
-            <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 text-start">
-              <div class="col-span-1">
-                <p class="font-semibold text-gray-800">Operating Weight:</p>
-                <p class="">{{ $rental->type_operating_weight }} kg</p>
-              </div>
-              <div class="col-span-1">
-                <p class="font-semibold text-gray-800">Engine Power:</p>
-                <p>{{ $rental->type_engine_power }} HP</p>
-              </div>
-              <div class="col-span-1">
-                <p class="font-semibold text-gray-800">Fuel Capacity:</p>
-                <p>{{ $rental->type_fuel_capacity }} liters</p>
-              </div>
-              <div class="col-span-1">
-                <p class="font-semibold text-gray-800">Max Speed:</p>
-                <p>{{ $rental->type_max_speed }} km/h</p>
-              </div>
-            </div>
-
-            <hr class="border-black my-2">
-
-
-
-            <div class="mt-4 flex items-center justify-evenly gap-4">
-              <a href="{{ route('rental.show', $rental->type_slug) }}">
-
-                <button type="button" class="inline-flex items-center rounded-lg bg-rental-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-rental-800 focus:outline-none focus:ring-4  focus:ring-rental-300 dark:bg-rental-600 dark:hover:bg-rental-700 dark:focus:ring-rental-800 flex-grow justify-center">
-                  <svg class="-ms-2 me-1 h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
-                    <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                  </svg>
-                  View Details
-                </button>
-              </a>
-              <a href="https://wa.me/+6285248209388?text=I%20am%20interested%20in%20" target="_blank">
-                <button type="button" class="inline-flex items-center rounded-lg bg-green-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                  <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd" />
-                    <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
-                  </svg>
-                </button>
-              </a>
-
-            </div>
-          </div>
-        </div>
-        @empty
-        <div class="col-span-full text-center p-6 bg-gray-100 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m2 0h3m-8-6h-3a4 4 0 1 0 0 8h3a4 4 0 1 0 0-8zM12 8v5m-4-4h8" />
-          </svg>
-          <p class="mt-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-            No Rentals Available
-          </p>
-          <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            We couldn’t find any rentals that match your search. Please check back later or explore other categories.
-          </p>
-        </div>
-        @endforelse
-      </div>
-      <div class="mt-8 ">
-        {{ $rentals->appends(request()->input())->links() }}
-      </div>
-      <!-- Filter modal -->
-      <form action="{{ route('rentals.index') }}" method="get" id="filterModal" tabindex="-1" aria-hidden="true" class="fixed left-0 right-0 top-0 z-50 hidden h-modal w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
-        @if(request('search'))
-        <input type="hidden" name="search" value="{{ request('search') }}">
-        @endif
-        <div class="relative h-full w-full max-w-xl md:h-auto">
-          <!-- Modal content -->
-          <div class="relative rounded-lg bg-white shadow dark:bg-gray-800">
-            <!-- Modal header -->
-            <div class="flex items-start justify-between rounded-t p-4 md:p-5">
-              <h3 class="text-lg font-normal text-gray-500 dark:text-gray-400">Filters</h3>
-              <button type="button" class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="filterModal">
-                <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
-                </svg>
-                <span class="sr-only">Close modal</span>
+                  </div>
+                </div>
               </button>
             </div>
-            <!-- Modal body -->
-            <div class="px-4 md:px-5">
-              <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-                <ul class="-mb-px flex flex-wrap text-center text-sm font-medium" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
-                  <li class="mr-1" role="presentation">
-                    <button class="inline-block pb-2 pr-1" id="category-tab" data-tabs-target="#category" type="button" role="tab" aria-controls="profile" aria-selected="false">Category</button>
-                  </li>
-                  <li class="mr-1" role="presentation">
-                    <button class="inline-block px-2 pb-2 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300" id="brand-tab" data-tabs-target="#brand" type="button" role="tab" aria-controls="brand" aria-selected="false">Brand</button>
-                  </li>
-                </ul>
-              </div>
+          </div>
 
-              <div id="myTabContent" class="overflow-y-scroll">
-                <div class="grid grid-cols-2 gap-4 md:grid-cols-3" id="category" role="tabpanel" aria-labelledby="category-tab">
-                  @foreach ($groupedCategories as $letter => $categoriesGroup)
-                  @if (count($categoriesGroup) > 0)
-                  <div>
-                    <h5 class="text-lg font-bold uppercase text-black dark:text-white text-left border-b border-gray-900">{{ $letter }}</h5>
-                    @foreach ($categoriesGroup as $category)
-                    <div class="space-y-2">
-                      <div class="flex items-center border-b border-gray-300 py-2">
-                        <input
-                          id="category_{{ $category->category_slug }}"
-                          type="checkbox"
-                          name="category[]"
-                          value="{{ $category->category_slug }}"
-                          {{ in_array($category->category_slug, $selectedCategories) ? 'checked' : '' }}
-                          class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600"
-                          data-count="{{ $category->types_count }}" />
-                        <label for="category_{{ $category->category_slug }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 text-start tracking-tighter">
-                          {{ $category->category_name }} ({{ $category->types_count }})
-                        </label>
-                      </div>
-                    </div>
-                    @endforeach
-                  </div>
-                  @endif
-                  @endforeach
-                </div>
-              </div>
 
-              <div id="brand" role="tabpanel" aria-labelledby="brand-tab">
-                <div class="grid grid-cols-3 gap-4 overflow-y-scroll h-96">
-                  @foreach ($groupedBrands as $letter => $brandsGroup)
-                  @if (count($brandsGroup) > 0)
-                  <div>
-                    <h5 class="text-lg font-bold uppercase text-black dark:text-white text-left border-b border-gray-900">{{ $letter }}</h5>
-                    @foreach ($brandsGroup as $brand)
-                    <div class="space-y-2">
-                      <div class="flex items-center border-b border-gray-300 py-2">
-                        <input
-                          id="brand_{{ $brand->brand_slug }}"
-                          type="checkbox"
-                          name="brand[]"
-                          value="{{ $brand->brand_slug }}"
-                          {{ in_array($brand->brand_slug, $selectedBrands) ? 'checked' : '' }}
-                          class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600"
-                          data-count="{{ $brand->types_count }}" />
-                        <label for="brand_{{ $brand->brand_slug }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 text-start tracking-tighter">
-                          {{ $brand->brand_name }} ({{ $brand->types_count }})
-                        </label>
-                      </div>
-                    </div>
-                    @endforeach
-                  </div>
-                  @endif
-                  @endforeach
-                </div>
-              </div>
 
-              <!-- Modal footer -->
-              <hr class="border-b border-gray-200 dark:border-gray-700 mt-4">
-              <div class="flex items-center space-x-4 rounded-b p-2 dark:border-gray-600 md:p-3">
-                <button type="submit" class="rounded-lg bg-primary-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-700 dark:hover:bg-primary-800 dark:focus:ring-primary-800">Apply Filters</button>
-                <a href="{{ route('rentals.index') }}" class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900">
-                  Reset Filters
-                </a>
-              </div>
+          <hr class="border-black my-2">
+          <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 text-start">
+            <div class="col-span-1">
+              <p class="font-semibold text-gray-800">Operating Weight:</p>
+              <p class="">{{ $rental->type_operating_weight }} kg</p>
+            </div>
+            <div class="col-span-1">
+              <p class="font-semibold text-gray-800">Engine Power:</p>
+              <p>{{ $rental->type_engine_power }} HP</p>
+            </div>
+            <div class="col-span-1">
+              <p class="font-semibold text-gray-800">Fuel Capacity:</p>
+              <p>{{ $rental->type_fuel_capacity }} liters</p>
+            </div>
+            <div class="col-span-1">
+              <p class="font-semibold text-gray-800">Max Speed:</p>
+              <p>{{ $rental->type_max_speed }} km/h</p>
             </div>
           </div>
-      </form>
+
+          <hr class="border-black my-2">
+
+
+
+          <div class="mt-4 flex items-center justify-evenly gap-4">
+            <a href="{{ route('rental.show', $rental->type_slug) }}">
+
+              <button type="button" class="inline-flex items-center rounded-lg bg-rental-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-rental-800 focus:outline-none focus:ring-4  focus:ring-rental-300 dark:bg-rental-600 dark:hover:bg-rental-700 dark:focus:ring-rental-800 flex-grow justify-center">
+                <svg class="-ms-2 me-1 h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                  <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                View Details
+              </button>
+            </a>
+            <a href="https://wa.me/+6285248209388?text=I%20am%20interested%20in%20" target="_blank">
+              <button type="button" class="inline-flex items-center rounded-lg bg-green-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd" />
+                  <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
+                </svg>
+              </button>
+            </a>
+
+          </div>
+        </div>
+      </div>
+      @empty
+      <div class="col-span-full text-center p-6 bg-gray-100 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m2 0h3m-8-6h-3a4 4 0 1 0 0 8h3a4 4 0 1 0 0-8zM12 8v5m-4-4h8" />
+        </svg>
+        <p class="mt-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+          No Rentals Available
+        </p>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          We couldn’t find any rentals that match your search. Please check back later or explore other categories.
+        </p>
+      </div>
+      @endforelse
+    </div>
+    <div class="mt-8 ">
+      {{ $rentals->appends(request()->input())->links() }}
+    </div>
+    <!-- Filter modal -->
+    <form action="{{ route('rentals.index') }}" method="get" id="filterModal" tabindex="-1" aria-hidden="true" class="fixed left-0 right-0 top-0 z-50 hidden h-modal w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
+      @if(request('search'))
+      <input type="hidden" name="search" value="{{ request('search') }}">
+      @endif
+      <div class="relative h-full w-full max-w-xl md:h-auto">
+        <!-- Modal content -->
+        <div class="relative rounded-lg bg-white shadow dark:bg-gray-800">
+          <!-- Modal header -->
+          <div class="flex items-start justify-between rounded-t p-4 md:p-5">
+            <h3 class="text-lg font-normal text-gray-500 dark:text-gray-400">Filters</h3>
+            <button type="button" class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="filterModal">
+              <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="px-4 md:px-5">
+            <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+              <ul class="-mb-px flex flex-wrap text-center text-sm font-medium" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+                <li class="mr-1" role="presentation">
+                  <button class="inline-block pb-2 pr-1" id="category-tab" data-tabs-target="#category" type="button" role="tab" aria-controls="profile" aria-selected="false">Category</button>
+                </li>
+                <li class="mr-1" role="presentation">
+                  <button class="inline-block px-2 pb-2 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300" id="brand-tab" data-tabs-target="#brand" type="button" role="tab" aria-controls="brand" aria-selected="false">Brand</button>
+                </li>
+              </ul>
+            </div>
+
+            <div id="myTabContent" class="overflow-y-scroll">
+              <div class="grid grid-cols-2 gap-4 md:grid-cols-3" id="category" role="tabpanel" aria-labelledby="category-tab">
+                @foreach ($groupedCategories as $letter => $categoriesGroup)
+                @if (count($categoriesGroup) > 0)
+                <div>
+                  <h5 class="text-lg font-bold uppercase text-black dark:text-white text-left border-b border-gray-900">{{ $letter }}</h5>
+                  @foreach ($categoriesGroup as $category)
+                  <div class="space-y-2">
+                    <div class="flex items-center border-b border-gray-300 py-2">
+                      <input
+                        id="category_{{ $category->category_slug }}"
+                        type="checkbox"
+                        name="category[]"
+                        value="{{ $category->category_slug }}"
+                        {{ in_array($category->category_slug, $selectedCategories) ? 'checked' : '' }}
+                        class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600"
+                        data-count="{{ $category->types_count }}" />
+                      <label for="category_{{ $category->category_slug }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 text-start tracking-tighter">
+                        {{ $category->category_name }} ({{ $category->types_count }})
+                      </label>
+                    </div>
+                  </div>
+                  @endforeach
+                </div>
+                @endif
+                @endforeach
+              </div>
+            </div>
+
+            <div id="brand" role="tabpanel" aria-labelledby="brand-tab">
+              <div class="grid grid-cols-3 gap-4 overflow-y-scroll h-96">
+                @foreach ($groupedBrands as $letter => $brandsGroup)
+                @if (count($brandsGroup) > 0)
+                <div>
+                  <h5 class="text-lg font-bold uppercase text-black dark:text-white text-left border-b border-gray-900">{{ $letter }}</h5>
+                  @foreach ($brandsGroup as $brand)
+                  <div class="space-y-2">
+                    <div class="flex items-center border-b border-gray-300 py-2">
+                      <input
+                        id="brand_{{ $brand->brand_slug }}"
+                        type="checkbox"
+                        name="brand[]"
+                        value="{{ $brand->brand_slug }}"
+                        {{ in_array($brand->brand_slug, $selectedBrands) ? 'checked' : '' }}
+                        class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600"
+                        data-count="{{ $brand->types_count }}" />
+                      <label for="brand_{{ $brand->brand_slug }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 text-start tracking-tighter">
+                        {{ $brand->brand_name }} ({{ $brand->types_count }})
+                      </label>
+                    </div>
+                  </div>
+                  @endforeach
+                </div>
+                @endif
+                @endforeach
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <hr class="border-b border-gray-200 dark:border-gray-700 mt-4">
+            <div class="flex items-center space-x-4 rounded-b p-2 dark:border-gray-600 md:p-3">
+              <button type="submit" class="rounded-lg bg-primary-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-700 dark:hover:bg-primary-800 dark:focus:ring-primary-800">Apply Filters</button>
+              <a href="{{ route('rentals.index') }}" class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900">
+                Reset Filters
+              </a>
+            </div>
+          </div>
+        </div>
+    </form>
 
 
 

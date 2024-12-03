@@ -13,9 +13,7 @@
                 <p class="text-teal-600 text-center tracking-widest font-bold mb-0 md:text-left" data-aos="fade-down">|<span> About Us</span></p>
                 <h1 class="text-4xl md:text-5xl font-bold text-teal-900 mb-4 text-center md:text-left" data-aos="zoom-in">A team of reliable and experienced Contractors</h1>
                 <p id="mainText" class="text-gray-700 mb-6 text-sm text-center md:text-left md:text-base" data-aos="fade-left">
-                    We are PT Sambas Karya Perkasa, your trusted partner for Excavators and Dump Trucks tailored to meet your project site needs. Founded by seasoned veterans in the heavy equipment industry, our expertise ensures optimal productivity with a deep understanding of various heavy machinery.
-                    <br>
-                    As the official distributor of SUNWARD, PT Sambas Karya Perkasa is committed to both sales and after-sales services. With world-class product quality comparable to the TOP 5 global brands, supported by a fleet and skilled technicians trained directly by SUNWARD, we guarantee reliability and excellence for all your heavy equipment needs.
+                    PT Sambas Karya Perkasa, an official distributor of SUNWARD, provides top-quality Excavators and Dump Trucks with sales and after-sales services tailored to your project needs. Backed by industry veterans, world-class products rivaling top global brands, and skilled technicians trained by SUNWARD, we ensure reliability and optimal productivity in heavy equipment solutions.
                 </p>
                 <div id="buttonContainer" class="flex flex-wrap gap-2 mb-6 justify-center md:justify-start border-b-2 pb-2" data-aos="fade-up">
                     <button onclick="showText('values', this)" class="btn-transition bg-teal-500 text-white px-3 py-1 rounded-full text-xs md:text-sm active-button">Our Values</button>
@@ -27,9 +25,11 @@
                 </div>
                 <div class="flex flex-col space-y-4">
                     <div class="flex items-center justify-center md:justify-start space-x-4" data-aos="fade-right">
-                        <button class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded transition-all duration-300 text-sm md:text-base">
-                            LEARN MORE
-                        </button>
+                        <a href="{{ route('contact') }}">
+                            <button class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded transition-all duration-300 text-sm md:text-base">
+                                LEARN MORE
+                            </button>
+                        </a>
                         <div class="flex items-center text-gray-700 text-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -40,9 +40,6 @@
                     <div class="flex items-center justify-center md:justify-start space-x-6" data-aos="fade-up">
                         <a href="https://www.facebook.com/profile.php?id=61551899050491" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
                             <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="#" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
-                            <i class="fab fa-twitter text-xl"></i>
                         </a>
                         <a href="#" class="text-teal-500 hover:text-teal-600 transition-colors duration-300">
                             <i class="fab fa-linkedin-in text-xl"></i>

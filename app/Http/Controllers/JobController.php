@@ -70,7 +70,7 @@ class JobController extends Controller
 
         try {
             // Send email
-            Mail::to('ferdinandluis88@gmail.com')->send(new JobApplicationMail($data));
+            Mail::to('sambaskaryaperkasarecruitment@gmail.com')->send(new JobApplicationMail($data));
             return redirect()->back()->with('success', 'Application submitted successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to send application. Please try again.');

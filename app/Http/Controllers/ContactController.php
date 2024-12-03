@@ -29,7 +29,7 @@ class ContactController extends Controller
         ];
 
         // Send the email
-        Mail::to('ferdinandluis88@gmail.com')
+        Mail::to('sambaskaryaperkasarecruitment@gmail.com')
             ->send(new ContactFormMail($data));
 
         // Return a success response or redirect

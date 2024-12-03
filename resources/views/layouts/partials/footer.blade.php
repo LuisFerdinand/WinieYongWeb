@@ -4,7 +4,7 @@
         <div class="flex flex-col items-center md:items-start mb-4">
             <img src="{{ asset('img/logo.png') }}" alt="Sambas Karya Perkasa" class="h-24 lg:h-48 mb-4">
             <div class="text-center md:text-left">
-                <h2 class="text-xl font-bold">Sambas Karya Perkasa</h2>
+                <h2 class="text-xl font-bold">PT. Sambas Karya Perkasa</h2>
                 <p class="text-gray-600 mt-1">
                     Jl. Raya Sambas No. 123, Sambas, Kalimantan Barat, Indonesia <br>
                     Phone: +62 822-5683-1863 <br>
