@@ -17,14 +17,14 @@
         @foreach($jobs as $job)
         <div class="relative bg-white rounded-lg border shadow-lg transform hover:-translate-y-1 transition duration-300 ease-in-out overflow-hidden">
             <div class="p-6">
-                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-3">{{ $job->title }}</h2>
-                <p class="text-sm text-teal-600 mb-1">{{ ucfirst($job->work_type) }}</p>
-                <p class="text-gray-600 mb-4">{{ Str::limit($job->description, 100) }}</p>
-                <p class="text-sm text-gray-600"><strong>Total Positions:</strong> {{ $job->total_positions }}</p>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-3">{{ $job->job_title }}</h2>
+                <p class="text-sm text-teal-600 mb-1">{{ ucfirst($job->job_work_type) }}</p>
+                <p class="text-gray-600 mb-4">{{ Str::limit($job->job_description, 100) }}</p>
+                <p class="text-sm text-gray-600"><strong>Total Positions:</strong> {{ $job->job_total_positions }}</p>
 
                 <hr class="my-4 border-t border-gray-300">
 
-                <a href="{{ route('career.show', $job->id) }}" class="block w-full text-center text-white bg-teal-600 py-2 rounded-md font-semibold hover:bg-teal-700 transition duration-200">View Details</a>
+                <a href="{{ route('career.show', $job->job_id) }}" class="block w-full text-center text-white bg-teal-600 py-2 rounded-md font-semibold hover:bg-teal-700 transition duration-200">View Details</a>
             </div>
         </div>
         @endforeach

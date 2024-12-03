@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $product->name)
+@section('title', $product->product_name)
 
 @section('content')
 <div class="max-w-[1440px] mx-auto px-4 py-32 lg:px-6 min-h-screen">
@@ -8,7 +8,7 @@
     <!-- Breadcrumb and Product Name -->
     <section class="mb-8">
         <p class="text-teal-600 font-bold">|<span> Sunward</span></p>
-        <h1 class="text-3xl lg:text-5xl font-extrabold text-gray-800 mb-2 lg:mb-4">{{ $product->name }}</h1>
+        <h1 class="text-3xl lg:text-5xl font-extrabold text-gray-800 mb-2 lg:mb-4">{{ $product->product_name }}</h1>
     </section>
 
     <!-- Product Details Section -->
@@ -17,7 +17,16 @@
         <!-- Product Image -->
         <div class="w-full lg:w-1/2">
             <div class="relative pb-[100%] overflow-hidden rounded-lg shadow-lg">
-                <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="absolute top-0 left-0 w-full h-full object-cover object-center rounded-lg">
+                @if ($product->product_image)
+                <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->product_name }}" class="absolute top-0 left-0 w-full h-full object-cover object-center rounded-lg">
+                @elseif($product->product_image_url)
+                <img src="{{ asset( $product->product_image_url) }}" alt="{{ $product->product_name }}" class="absolute top-0 left-0 w-full h-full object-cover object-center rounded-lg">
+                @else
+                <img src="{{ asset('img/NoImg.png') }}" alt="{{ $product->product_name }}" class="absolute top-0 left-0 w-full h-full object-cover object-center rounded-lg">
+                
+                @endif
+
+                
             </div>
         </div>
 
@@ -28,38 +37,38 @@
                 <!-- Product Description -->
                 <div class="mb-6">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-3">Product Description</h2>
-                    <p class="text-gray-700 leading-relaxed">{{ $product->description }}</p>
+                    <p class="text-gray-700 leading-relaxed">{{ $product->product_description }}</p>
                 </div>
 
                 <!-- Product Details -->
                 <div class="mb-6">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-3">Product Details</h2>
                     <ul class="space-y-2">
-                        @if($product->model_number)
-                        <li class="flex justify-between"><strong>Model Number:</strong> <span>{{ $product->model_number }}</span></li>
+                        @if($product->product_model_number)
+                        <li class="flex justify-between"><strong>Model Number:</strong> <span>{{ $product->product_model_number }}</span></li>
                         @endif
-                        @if($product->power_output)
-                        <li class="flex justify-between"><strong>Power Output:</strong> <span>{{ $product->power_output }} HP</span></li>
+                        @if($product->product_power_output)
+                        <li class="flex justify-between"><strong>Power Output:</strong> <span>{{ $product->product_power_output }} HP</span></li>
                         @endif
-                        @if($product->dimensions)
-                        <li class="flex justify-between"><strong>Dimensions:</strong> <span>{{ $product->dimensions }}</span></li>
+                        @if($product->product_dimensions)
+                        <li class="flex justify-between"><strong>Dimensions:</strong> <span>{{ $product->product_dimensions }}</span></li>
                         @endif
-                        @if($product->fuel_type)
-                        <li class="flex justify-between"><strong>Fuel Type:</strong> <span>{{ $product->fuel_type }}</span></li>
+                        @if($product->product_fuel_type)
+                        <li class="flex justify-between"><strong>Fuel Type:</strong> <span>{{ $product->product_fuel_type }}</span></li>
                         @endif
-                        @if($product->usage_instructions)
-                        <li class="flex justify-between"><strong>Usage Instructions:</strong> <span>{{ $product->usage_instructions }}</span></li>
+                        @if($product->product_usage_instructions)
+                        <li class="flex justify-between"><strong>Usage Instructions:</strong> <span>{{ $product->product_usage_instructions }}</span></li>
                         @endif
-                        @if($product->reviews_count)
-                        <li class="flex justify-between"><strong>Reviews Count:</strong> <span>{{ $product->reviews_count }}</span></li>
+                        @if($product->product_reviews_count)
+                        <li class="flex justify-between"><strong>Reviews Count:</strong> <span>{{ $product->product_reviews_count }}</span></li>
                         @endif
-                        @if($product->rating)
+                        @if($product->product_rating)
                         <li class="flex justify-between"><strong>Rating:</strong>
                             <span class="flex items-center">
                                 @for ($i = 0; $i < 5; $i++)
-                                    <span class="{{ $i < floor($product->rating) ? 'text-yellow-500' : 'text-gray-300' }}">&#9733;</span>
+                                    <span class="{{ $i < floor($product->product_rating) ? 'text-yellow-500' : 'text-gray-300' }}">&#9733;</span>
                             @endfor
-                            <span class="ml-2 text-gray-600">({{ number_format($product->rating, 1) }})</span>
+                            <span class="ml-2 text-gray-600">({{ number_format($product->product_rating, 1) }})</span>
                             </span>
                         </li>
                         @endif
@@ -78,34 +87,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($product->model_number)
+                                @if($product->product_model_number)
                                 <tr>
                                     <td class="p-4 border-b">{{ 'Model Number' }}</td>
-                                    <td class="p-4 border-b">{{ $product->model_number }}</td>
+                                    <td class="p-4 border-b">{{ $product->product_model_number }}</td>
                                 </tr>
                                 @endif
-                                @if($product->power_output)
+                                @if($product->product_power_output)
                                 <tr>
                                     <td class="p-4 border-b">{{ 'Power Output' }}</td>
-                                    <td class="p-4 border-b">{{ $product->power_output }} HP</td>
+                                    <td class="p-4 border-b">{{ $product->product_power_output }} HP</td>
                                 </tr>
                                 @endif
-                                @if($product->dimensions)
+                                @if($product->product_dimensions)
                                 <tr>
                                     <td class="p-4 border-b">{{ 'Dimensions' }}</td>
-                                    <td class="p-4 border-b">{{ $product->dimensions }}</td>
+                                    <td class="p-4 border-b">{{ $product->product_dimensions }}</td>
                                 </tr>
                                 @endif
-                                @if($product->fuel_type)
+                                @if($product->product_fuel_type)
                                 <tr>
                                     <td class="p-4 border-b">{{ 'Fuel Type' }}</td>
-                                    <td class="p-4 border-b">{{ $product->fuel_type }}</td>
+                                    <td class="p-4 border-b">{{ $product->product_fuel_type }}</td>
                                 </tr>
                                 @endif
-                                @if($product->usage_instructions)
+                                @if($product->product_usage_instructions)
                                 <tr>
                                     <td class="p-4 border-b">{{ 'Usage Instructions' }}</td>
-                                    <td class="p-4 border-b">{{ $product->usage_instructions }}</td>
+                                    <td class="p-4 border-b">{{ $product->product_usage_instructions }}</td>
                                 </tr>
                                 @endif
                             </tbody>
@@ -115,7 +124,7 @@
 
                 <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ route('products.trackClick', $product->slug) }}" target="_blank"
+                    <a href="{{ route('products.trackClick', $product->product_slug) }}" target="_blank"
                         class="bg-teal-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-teal-700 transition duration-300 text-center flex-grow">
                         Contact via WhatsApp
                     </a>

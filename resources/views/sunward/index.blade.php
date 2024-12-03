@@ -87,13 +87,19 @@
                 <!-- Product Information -->
                 <div class="w-full md:w-1/2 overflow-hidden p-6">
                     @foreach($products as $index => $product)
-                    <div x-show="activeIndex === {{ $index }}" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100">
-                        <h3 class="text-3xl font-semibold text-gray-800 uppercase mb-0">{{ $product->product_name }}</h3>
-                        <p class="text-teal-500 font-bold tracking-wide mb-2">{{$product->product_model_number}}</p>
-                        <p class="text-gray-600 mb-4">{{ Str::limit($product->product_description, 200) }}</p>
-                        <p class="text-xl font-bold mb-4">{{ $product->product_power_output}} HP</p>
-                        <a href="{{ route('sunward.show', $product->product_slug) }}" class="text-teal-600 hover:underline">View Details</a>
-                    </div>
+                        <div x-show="activeIndex === {{ $index }}" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100">
+                            <h3 class="text-3xl font-semibold text-gray-800 uppercase mb-0">{{ $product->product_name }}</h3>
+                            <p class="text-teal-500 font-bold tracking-wide mb-2">{{$product->product_model_number}}</p>
+                            <p class="text-gray-600 mb-4">{{ Str::limit($product->product_description, 200) }}</p>
+                            
+                            @if($product->product_power_output)
+                                <p class="text-xl font-bold mb-4">Power Output: {{ $product->product_power_output }} HP</p>
+                            @else
+                                <p class="text-xl font-bold mb-4 text-gray-500">Power Output: Not Specified</p>
+                            @endif
+                            
+                            <a href="{{ route('sunward.show', $product->product_slug) }}" class="text-teal-600 hover:underline">View Details</a>
+                        </div>
                     @endforeach
                 </div>
             </div>

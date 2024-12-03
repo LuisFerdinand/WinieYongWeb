@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function show($slug)
     {
         // Use slug to find the product
-        $product = Product::where('slug', $slug)->firstOrFail();
+        $product = Product::where('product_slug', $slug)->firstOrFail();
         return view('sunward.show', compact('product'));
     }
 
